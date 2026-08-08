@@ -57,7 +57,7 @@ export function BstThemeProvider({
   return (
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
-        <div className="bst-theme-root" style={containerStyle}>
+        <div className="bst-theme-root" data-theme={themeName} style={containerStyle}>
           {children}
         </div>
       </ConfigProvider>

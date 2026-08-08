@@ -1,5 +1,6 @@
 import React from 'react';
 import { theme } from 'antd';
+import { useBstTheme } from '../../theme';
 import './Button.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -58,11 +59,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    const { token } = theme.useToken();
+    const { themeName, token } = useBstTheme();
     const sizeValues = sizeMap[size];
 
     // Resolve variant-specific colors from Ant Design tokens
-    const variantStyles = getVariantStyles(variant, token);
+    const variantStyles = getVariantStyles(variant, token, themeName);
 
     const buttonStyle: React.CSSProperties = {
       ...variantStyles,
@@ -91,6 +92,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type={htmlType}
         className={classNames}
+        data-theme={themeName}
         disabled={disabled}
         style={buttonStyle}
         {...rest}
@@ -108,7 +110,56 @@ Button.displayName = 'Button';
 function getVariantStyles(
   variant: ButtonVariant,
   t: ReturnType<typeof theme.useToken>['token'],
+  themeName?: string,
 ): React.CSSProperties {
+  if (themeName === 'black-metal') {
+    switch (variant) {
+      case 'primary':
+        return {
+          backgroundColor: t.colorPrimary,
+          color: '#0A0A0A',
+          borderColor: t.colorPrimary,
+          ['--bst-btn-hover-bg' as string]: '#FFFFFF',
+          ['--bst-btn-hover-border' as string]: '#FFFFFF',
+          ['--bst-btn-hover-color' as string]: '#000000',
+          ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
+          ['--bst-btn-active-color' as string]: '#000000',
+        };
+
+      case 'secondary':
+        return {
+          backgroundColor: 'transparent',
+          color: t.colorPrimary,
+          borderColor: t.colorPrimary,
+          ['--bst-btn-hover-bg' as string]: t.colorPrimary,
+          ['--bst-btn-hover-border' as string]: t.colorPrimary,
+          ['--bst-btn-hover-color' as string]: '#0A0A0A',
+          ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
+          ['--bst-btn-active-color' as string]: '#000000',
+        };
+
+      case 'ghost':
+        return {
+          backgroundColor: 'transparent',
+          color: t.colorPrimary,
+          borderColor: 'transparent',
+          ['--bst-btn-hover-bg' as string]: 'rgba(240, 234, 214, 0.15)',
+          ['--bst-btn-hover-border' as string]: 'transparent',
+          ['--bst-btn-hover-color' as string]: t.colorPrimary,
+        };
+
+      case 'danger':
+        return {
+          backgroundColor: t.colorError,
+          color: '#FFFFFF',
+          borderColor: t.colorError,
+          ['--bst-btn-hover-bg' as string]: '#C00000',
+          ['--bst-btn-hover-border' as string]: '#C00000',
+          ['--bst-btn-active-bg' as string]: '#800000',
+        };
+    }
+  }
+
   switch (variant) {
     case 'primary':
       return {

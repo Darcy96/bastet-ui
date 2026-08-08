@@ -7,7 +7,7 @@ import { theme, type ThemeConfig } from 'antd';
  * - Light (Inter)
  * - Dark (Inter)
  * - Oriental (Noto Serif)
- * - Black Metal (Cinzel Decorative)
+ * - Black Metal (UnifrakturMaguntia - Bone White Dimmu Style)
  * - Barbie (Fredoka)
  */
 
@@ -57,19 +57,25 @@ const orientalTheme: ThemeConfig = {
   },
 };
 
-// ─── Black Metal ──────────────────────────────────────────────
+// ─── Black Metal (Bone White Dimmu Style) ─────────────────────
 const blackMetalTheme: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
-    colorPrimary: '#595959',
+    colorPrimary: '#F0EAD6',      // Bone white primary accent
     colorSuccess: '#555548',
-    colorWarning: '#725830',
+    colorWarning: '#D89614',
     colorError: '#991A1A',
-    colorBgBase: '#000000',
-    colorTextBase: '#CCCCCC',
-    colorBorder: '#282828',
-    borderRadius: 2,
-    fontFamily: "'Cinzel Decorative', 'Times New Roman', serif",
+    colorBgBase: '#0A0A0A',        // Deep black
+    colorTextBase: '#F0EAD6',      // Bone white text
+    colorBorder: '#F0EAD6',        // Bone white border
+    borderRadius: 0,              // Sharp 0px corners
+    fontFamily: "'UnifrakturMaguntia', 'Cinzel Decorative', serif",
+  },
+  components: {
+    Button: {
+      colorPrimaryHover: '#F0EAD6',
+      colorPrimaryActive: '#D9D3C3',
+    },
   },
 };
 
