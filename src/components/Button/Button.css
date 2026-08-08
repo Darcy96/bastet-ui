@@ -1,0 +1,65 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Button Styles
+   Structural styles only. Colors are injected inline via
+   Ant Design tokens (theme.useToken).
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-button {
+  /* Reset */
+  appearance: none;
+  border: 1px solid;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+  vertical-align: middle;
+
+  /* Transitions */
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    box-shadow 200ms ease,
+    transform 100ms ease;
+}
+
+/* ─── Hover ────────────────────────────────────────────────── */
+.bst-button:hover:not(:disabled) {
+  background-color: var(--bst-btn-hover-bg);
+  border-color: var(--bst-btn-hover-border);
+  color: var(--bst-btn-hover-color, inherit);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Active ───────────────────────────────────────────────── */
+.bst-button:active:not(:disabled) {
+  background-color: var(--bst-btn-active-bg, var(--bst-btn-hover-bg));
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ─── Focus Visible ────────────────────────────────────────── */
+.bst-button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ─── Disabled ─────────────────────────────────────────────── */
+.bst-button--disabled,
+.bst-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ─── Full Width ───────────────────────────────────────────── */
+.bst-button--full-width {
+  width: 100%;
+}
