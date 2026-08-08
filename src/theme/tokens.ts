@@ -4,11 +4,11 @@ import { theme, type ThemeConfig } from 'antd';
  * Bastet UI — Design Tokens
  *
  * 5 theme presets defined with exact Ant Design seed tokens:
- * - Light
- * - Dark
- * - Oriental
- * - Black Metal
- * - Barbie
+ * - Light (Inter)
+ * - Dark (Inter)
+ * - Oriental (Noto Serif)
+ * - Black Metal (Cinzel Decorative)
+ * - Barbie (Fredoka)
  */
 
 // ─── Light ────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ const orientalTheme: ThemeConfig = {
     colorTextBase: '#1A0F05',
     colorBorder: '#D4B896',
     borderRadius: 4,
-    fontFamily: "'Inter', 'Noto Serif', serif",
+    fontFamily: "'Noto Serif', Georgia, serif",
   },
 };
 
@@ -69,7 +69,7 @@ const blackMetalTheme: ThemeConfig = {
     colorTextBase: '#CCCCCC',
     colorBorder: '#282828',
     borderRadius: 2,
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamily: "'Cinzel Decorative', 'Times New Roman', serif",
   },
 };
 
@@ -85,7 +85,7 @@ const barbieTheme: ThemeConfig = {
     colorTextBase: '#1A0510',
     colorBorder: '#FFC1D0',
     borderRadius: 16,
-    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+    fontFamily: "'Fredoka', 'Quicksand', sans-serif",
   },
 };
 

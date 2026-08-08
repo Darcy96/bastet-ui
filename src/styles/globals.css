@@ -1,11 +1,11 @@
 /* ═══════════════════════════════════════════════════════════════
    Bastet UI — Global Base Styles
-   Color tokens are managed by Ant Design ConfigProvider.
-   This file handles resets, typography, and structural utilities.
+   Color and typography tokens are managed by BstThemeProvider / Ant Design.
+   This file imports Google Fonts and sets CSS resets.
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─── Font Import ──────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* ─── Google Fonts Import ───────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Fredoka:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ─── CSS Reset ────────────────────────────────────────────── */
 *,

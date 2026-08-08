@@ -46,10 +46,20 @@ export function BstThemeProvider({
     [themeName],
   );
 
+  const containerStyle: React.CSSProperties = {
+    fontFamily: themeConfig.token?.fontFamily,
+    color: themeConfig.token?.colorTextBase,
+    backgroundColor: themeConfig.token?.colorBgBase,
+    minHeight: '100%',
+    transition: 'color 200ms ease, background-color 200ms ease',
+  };
+
   return (
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
-        {children}
+        <div className="bst-theme-root" style={containerStyle}>
+          {children}
+        </div>
       </ConfigProvider>
     </BstThemeContext.Provider>
   );
