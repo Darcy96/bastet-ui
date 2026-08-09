@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Navbar Styles & Theme Micro-Interactions
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-navbar {
+  width: 100%;
+  border-bottom: 1px solid;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.bst-navbar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* ─── Inner Container ──────────────────────────────────────── */
+.bst-navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  gap: 16px;
+}
+
+/* ─── Brand ────────────────────────────────────────────────── */
+.bst-navbar__brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bst-navbar__brand-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ─── Links ────────────────────────────────────────────────── */
+.bst-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bst-navbar__link {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+
+  transition:
+    color 200ms ease,
+    background-color 200ms ease,
+    transform 150ms ease;
+}
+
+.bst-navbar__link:hover {
+  color: var(--bst-nav-link-hover) !important;
+  background-color: rgba(128, 128, 128, 0.08);
+  transform: translateY(-1px);
+}
+
+.bst-navbar__link:active {
+  transform: translateY(0);
+}
+
+/* ─── Actions (ThemeSwitcher slot) ─────────────────────────── */
+.bst-navbar__actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ─── 💖 Barbie Theme ──────────────────────────────────────── */
+.bst-navbar[data-theme='barbie'],
+.bst-theme-root[data-theme='barbie'] .bst-navbar {
+  box-shadow: 0 2px 16px rgba(255, 105, 180, 0.15);
+}
+
+.bst-navbar[data-theme='barbie'] .bst-navbar__link:hover,
+.bst-theme-root[data-theme='barbie'] .bst-navbar__link:hover {
+  background-color: rgba(255, 105, 180, 0.1);
+}
+
+/* ─── 🤘 Black Metal Theme ────────────────────────────────── */
+.bst-navbar[data-theme='black-metal'],
+.bst-theme-root[data-theme='black-metal'] .bst-navbar {
+  border-bottom-width: 2px;
+  border-bottom-color: #F0EAD6 !important;
+  backdrop-filter: none;
+}
+
+.bst-navbar[data-theme='black-metal'] .bst-navbar__brand-text,
+.bst-theme-root[data-theme='black-metal'] .bst-navbar__brand-text {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  font-size: 1.5rem;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.bst-navbar[data-theme='black-metal'] .bst-navbar__link,
+.bst-theme-root[data-theme='black-metal'] .bst-navbar__link {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  border-radius: 0;
+}
+
+.bst-navbar[data-theme='black-metal'] .bst-navbar__link:hover,
+.bst-theme-root[data-theme='black-metal'] .bst-navbar__link:hover {
+  background-color: rgba(240, 234, 214, 0.1);
+  box-shadow: 0 0 10px rgba(240, 234, 214, 0.2);
+}
+
+/* ─── 🏯 Oriental Theme ───────────────────────────────────── */
+.bst-navbar[data-theme='oriental'],
+.bst-theme-root[data-theme='oriental'] .bst-navbar {
+  border-bottom-color: #D4B896 !important;
+}
+
+.bst-navbar[data-theme='oriental'] .bst-navbar__link:hover,
+.bst-theme-root[data-theme='oriental'] .bst-navbar__link:hover {
+  background-color: rgba(250, 84, 28, 0.08);
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .bst-navbar__inner {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+
+  .bst-navbar__links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .bst-navbar__actions {
+    order: 2;
+  }
+}
