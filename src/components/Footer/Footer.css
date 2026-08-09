@@ -73,8 +73,8 @@
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
-.bst-footer[data-theme='barbie'] .bst-footer__social-link:hover,
-.bst-theme-root[data-theme='barbie'] .bst-footer .bst-footer__social-link:hover {
+.bst-footer[data-theme='pink'] .bst-footer__social-link:hover,
+.bst-theme-root[data-theme='pink'] .bst-footer .bst-footer__social-link:hover {
   background-color: rgba(255, 105, 180, 0.12);
   transform: scale(1.1) translateY(-2px);
   box-shadow: 0 4px 14px rgba(255, 105, 180, 0.3);

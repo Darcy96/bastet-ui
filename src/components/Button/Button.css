@@ -45,16 +45,16 @@
 
 /* ─── 💖 Barbie Theme Micro-Interactions ────────────────────── */
 /* Hover: Pop/Bounce + Hot Pink Glow */
-.bst-button[data-theme='barbie']:hover:not(:disabled),
-.bst-theme-root[data-theme='barbie'] .bst-button:hover:not(:disabled) {
+.bst-button[data-theme='pink']:hover:not(:disabled),
+.bst-theme-root[data-theme='pink'] .bst-button:hover:not(:disabled) {
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 8px 24px rgba(255, 105, 180, 0.45), 0 0 12px rgba(255, 20, 147, 0.3);
   letter-spacing: 0.5px;
 }
 
 /* Active (Click): Bouncy Squeeze/Press Down */
-.bst-button[data-theme='barbie']:active:not(:disabled),
-.bst-theme-root[data-theme='barbie'] .bst-button:active:not(:disabled) {
+.bst-button[data-theme='pink']:active:not(:disabled),
+.bst-theme-root[data-theme='pink'] .bst-button:active:not(:disabled) {
   transform: scale(0.94) translateY(1px);
   box-shadow: 0 2px 8px rgba(255, 105, 180, 0.6);
   transition-duration: 50ms;

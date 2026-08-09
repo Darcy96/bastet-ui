@@ -79,8 +79,8 @@ const blackMetalTheme: ThemeConfig = {
   },
 };
 
-// ─── Barbie ───────────────────────────────────────────────────
-const barbieTheme: ThemeConfig = {
+// ─── Pink ───────────────────────────────────────────────────
+const pinkTheme: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: '#FF69B4',
@@ -102,7 +102,7 @@ export const themes = {
   dark: darkTheme,
   oriental: orientalTheme,
   'black-metal': blackMetalTheme,
-  barbie: barbieTheme,
+  pink: pinkTheme,
 } as const;
 
 export type ThemeName = keyof typeof themes;

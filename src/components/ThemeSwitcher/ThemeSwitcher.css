@@ -61,14 +61,14 @@
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
-.bst-theme-switcher[data-theme='barbie'] .bst-theme-switcher__btn:hover:not(.bst-theme-switcher__btn--active),
-.bst-theme-root[data-theme='barbie'] .bst-theme-switcher__btn:hover:not(.bst-theme-switcher__btn--active) {
+.bst-theme-switcher[data-theme='pink'] .bst-theme-switcher__btn:hover:not(.bst-theme-switcher__btn--active),
+.bst-theme-root[data-theme='pink'] .bst-theme-switcher__btn:hover:not(.bst-theme-switcher__btn--active) {
   transform: scale(1.05) translateY(-1px);
   box-shadow: 0 4px 14px rgba(255, 105, 180, 0.35);
 }
 
-.bst-theme-switcher[data-theme='barbie'] .bst-theme-switcher__btn--active,
-.bst-theme-root[data-theme='barbie'] .bst-theme-switcher__btn--active {
+.bst-theme-switcher[data-theme='pink'] .bst-theme-switcher__btn--active,
+.bst-theme-root[data-theme='pink'] .bst-theme-switcher__btn--active {
   box-shadow: 0 4px 16px rgba(255, 105, 180, 0.45);
 }
 

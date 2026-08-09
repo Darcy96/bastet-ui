@@ -29,7 +29,7 @@ const themeLabels: Record<ThemeName, { emoji: string; label: string }> = {
   dark:         { emoji: '🌙', label: 'Dark' },
   oriental:     { emoji: '🏯', label: 'Oriental' },
   'black-metal': { emoji: '🤘', label: 'Black Metal' },
-  barbie:       { emoji: '💖', label: 'Barbie' },
+  pink:         { emoji: '💖', label: 'Pink' },
 };
 
 // ─── Size Map ─────────────────────────────────────────────────

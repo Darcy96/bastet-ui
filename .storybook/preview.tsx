@@ -11,7 +11,7 @@ const THEME_OPTIONS: Record<ThemeName, string> = {
   dark: '🌙 Dark',
   oriental: '🏯 Oriental',
   'black-metal': '🤘 Black Metal',
-  barbie: '💖 Barbie',
+  pink: '💖 Pink',
 };
 
 const preview: Preview = {
