@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — HeroCreativeLayout Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-hero-creative {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--bst-text);
+}
+
+/* Optional: a subtle background glow based on the primary color */
+.bst-hero-creative::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(circle, var(--bst-primary) 0%, transparent 60%);
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(100px);
+}
+
+/* ─── Navbar Slot ────────────────────────────────────────────── */
+
+.bst-hero-creative__nav {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* ─── Main Content ───────────────────────────────────────────── */
+
+.bst-hero-creative__main {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ─── Text Block ─────────────────────────────────────────────── */
+
+.bst-hero-creative__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bst-hero-creative__text-block h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.bst-hero-creative__text-block h1 .bst-highlight {
+  color: var(--bst-primary);
+}
+
+.bst-hero-creative__text-block p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--bst-text-secondary);
+  margin: 0;
+  max-width: 90%;
+}
+
+.bst-hero-creative__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── Visual Block (Sandbox) ─────────────────────────────────── */
+
+.bst-hero-creative__visual-block {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating organic card utility classes (for consumers to use inside visualContentSlot) */
+.bst-floating-card {
+  background-color: var(--bst-bg);
+  border: 1px solid var(--bst-border);
+  border-radius: var(--bst-radius);
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bst-floating-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+  border-color: var(--bst-primary);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 992px) {
+  .bst-hero-creative__main {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 64px;
+    padding-top: 64px;
+  }
+
+  .bst-hero-creative__text-block p {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .bst-hero-creative__actions {
+    justify-content: center;
+  }
+}

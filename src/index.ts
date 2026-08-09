@@ -22,5 +22,5 @@ export { Navbar } from './components/Navbar';
 export type { NavbarProps, NavbarLink } from './components/Navbar';
 
 export { Footer } from './components/Footer';
+export * from './components/HeroCreativeLayout';
 export type { FooterProps, SocialLink, SocialPlatform } from './components/Footer';
-

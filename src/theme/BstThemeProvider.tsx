@@ -39,11 +39,13 @@ export function BstThemeProvider({
   theme: themeName = 'light',
   children,
 }: BstThemeProviderProps) {
-  const themeConfig = themes[themeName];
+  // Fallback to light if an invalid or old cached theme name is passed
+  const themeConfig = themes[themeName] || themes['light'];
+  const safeThemeName = themes[themeName] ? themeName : 'light';
 
   const contextValue = useMemo<BstThemeContextValue>(
-    () => ({ themeName }),
-    [themeName],
+    () => ({ themeName: safeThemeName }),
+    [safeThemeName],
   );
 
   const containerStyle: React.CSSProperties = {
@@ -57,7 +59,7 @@ export function BstThemeProvider({
   return (
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
-        <div className="bst-theme-root" data-theme={themeName} style={containerStyle}>
+        <div className="bst-theme-root" data-theme={safeThemeName} style={containerStyle}>
           {children}
         </div>
       </ConfigProvider>

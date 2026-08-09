@@ -73,7 +73,8 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
     ref,
   ) => {
     const { themeName: contextTheme, token } = useBstTheme();
-    const activeTheme = activeThemeProp ?? contextTheme;
+    const activeThemeRaw = activeThemeProp ?? contextTheme;
+    const activeTheme = themeNames.includes(activeThemeRaw as ThemeName) ? activeThemeRaw : 'light';
     const sizeValues = sizeMap[size];
 
     const groupClasses = [
