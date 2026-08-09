@@ -48,7 +48,7 @@ const orientalTheme: ThemeConfig = {
     colorPrimary: '#FA541C',
     colorSuccess: '#52C41A',
     colorWarning: '#FAAD14',
-    colorError: '#F5222D',
+    colorError: '#A8071A', // Deeper crimson red to contrast with the orange primary
     colorBgBase: '#FFF5EB',
     colorTextBase: '#1A0F05',
     colorBorder: '#D4B896',
@@ -85,8 +85,8 @@ const barbieTheme: ThemeConfig = {
   token: {
     colorPrimary: '#FF69B4',
     colorSuccess: '#38A169',
-    colorWarning: '#E53E3E',
-    colorError: '#E83399',
+    colorWarning: '#FAAD14',
+    colorError: '#F5222D', // Standard pure red to contrast with the pink primary
     colorBgBase: '#FFF5F8',
     colorTextBase: '#1A0510',
     colorBorder: '#FFC1D0',
