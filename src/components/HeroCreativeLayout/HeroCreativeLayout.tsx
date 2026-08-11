@@ -1,14 +1,21 @@
 import React from 'react';
 import { useBstTheme } from '../../theme';
+import { Carousel } from '../Carousel';
 import './HeroCreativeLayout.css';
 
 export interface HeroCreativeLayoutProps {
   /** Slot for the top navigation bar (e.g., Navbar component) */
   navbarSlot?: React.ReactNode;
-  /** Slot for the main text content (Title, subtitle, CTA buttons) */
-  textContentSlot: React.ReactNode;
-  /** Slot for the right visual area (Avatars, organic shapes, floating cards) */
+  /** Slot for the main title (H1) */
+  titleSlot: React.ReactNode;
+  /** Slot for the description text */
+  descriptionSlot?: React.ReactNode;
+  /** Slot for the CTA buttons */
+  actionsSlot?: React.ReactNode;
+  /** Slot for the right visual area (Avatars, organic shapes, floating cards) - shown on Desktop */
   visualContentSlot?: React.ReactNode;
+  /** Array of items to show in an interactive carousel on Mobile screens */
+  mobileCarouselItems?: React.ReactNode[];
   /** Additional CSS class for the wrapper */
   className?: string;
   /** Additional inline styles */
@@ -35,8 +42,11 @@ export const HeroCreativeLayout = React.forwardRef<HTMLDivElement, HeroCreativeL
   (
     {
       navbarSlot,
-      textContentSlot,
+      titleSlot,
+      descriptionSlot,
+      actionsSlot,
       visualContentSlot,
+      mobileCarouselItems,
       className,
       style,
     },
@@ -79,15 +89,41 @@ export const HeroCreativeLayout = React.forwardRef<HTMLDivElement, HeroCreativeL
 
         {/* Main Content Area */}
         <div className="bst-hero-creative__main">
-          {/* Left: Text Content */}
-          <div className="bst-hero-creative__text-block">
-            {textContentSlot}
+          {/* Title */}
+          <div className="bst-hero-creative__title">
+            {titleSlot}
           </div>
 
-          {/* Right: Visual Content (Creative Sandbox) */}
-          {visualContentSlot && (
+          {/* Desktop Description */}
+          {descriptionSlot && (
+            <div className="bst-hero-creative__description-desktop">
+              {descriptionSlot}
+            </div>
+          )}
+
+          {/* Visual Content (Creative Sandbox / Carousel) */}
+          {(visualContentSlot || mobileCarouselItems) && (
             <div className="bst-hero-creative__visual-block">
-              {visualContentSlot}
+              {/* Desktop view (static sandbox) */}
+              {visualContentSlot && (
+                <div className="bst-hero-creative__visual-desktop">
+                  {visualContentSlot}
+                </div>
+              )}
+              
+              {/* Mobile Carousel View */}
+              {mobileCarouselItems && mobileCarouselItems.length > 0 && (
+                <div className="bst-hero-creative__visual-mobile">
+                  <Carousel items={mobileCarouselItems} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Actions */}
+          {actionsSlot && (
+            <div className="bst-hero-creative__actions-block">
+              {actionsSlot}
             </div>
           )}
         </div>

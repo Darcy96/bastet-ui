@@ -44,7 +44,8 @@
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  grid-template-rows: auto auto auto;
+  gap: 24px 48px;
   align-items: center;
   max-width: 1200px;
   width: 100%;
@@ -52,15 +53,15 @@
   padding: 40px 24px 80px;
 }
 
-/* ─── Text Block ─────────────────────────────────────────────── */
+/* ─── Typography & Actions ───────────────────────────────────── */
 
-.bst-hero-creative__text-block {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.bst-hero-creative__title {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: end;
 }
 
-.bst-hero-creative__text-block h1 {
+.bst-hero-creative__title h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
   font-weight: 800;
@@ -68,16 +69,28 @@
   letter-spacing: -0.02em;
 }
 
-.bst-hero-creative__text-block h1 .bst-highlight {
+.bst-hero-creative__title h1 .bst-highlight {
   color: var(--bst-primary);
 }
 
-.bst-hero-creative__text-block p {
+.bst-hero-creative__description-desktop {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: center;
+}
+
+.bst-hero-creative__description-desktop p {
   font-size: 1.125rem;
   line-height: 1.6;
   color: var(--bst-text-secondary);
   margin: 0;
   max-width: 90%;
+}
+
+.bst-hero-creative__actions-block {
+  grid-column: 1;
+  grid-row: 3;
+  align-self: start;
 }
 
 .bst-hero-creative__actions {
@@ -97,6 +110,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  grid-column: 2;
+  grid-row: 1 / span 3;
 }
 
 /* Floating organic card utility classes (for consumers to use inside visualContentSlot) */
@@ -117,19 +132,41 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 
+.bst-hero-creative__visual-mobile {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media (max-width: 992px) {
   .bst-hero-creative__main {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
     text-align: center;
     gap: 64px;
     padding-top: 64px;
   }
 
-  .bst-hero-creative__text-block {
-    align-items: center;
+  .bst-hero-creative__title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .bst-hero-creative__description-desktop {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .bst-hero-creative__actions-block {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .bst-hero-creative__visual-block {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: auto;
   }
 
-  .bst-hero-creative__text-block p {
+  .bst-hero-creative__description-desktop p {
     max-width: 100%;
     margin: 0 auto;
   }
@@ -141,29 +178,54 @@
 
 @media (max-width: 768px) {
   .bst-hero-creative__main {
+    display: flex;
+    flex-direction: column;
     gap: 40px;
     padding-top: 32px;
     padding-bottom: 48px;
   }
 
-  .bst-hero-creative__text-block h1 {
+  .bst-hero-creative__title {
+    order: 1;
+  }
+  .bst-hero-creative__visual-block {
+    order: 2;
+  }
+  .bst-hero-creative__actions-block {
+    order: 3;
+    width: 100%;
+  }
+
+  .bst-hero-creative__title h1 {
     font-size: clamp(2rem, 8vw, 2.5rem);
   }
 
   .bst-hero-creative__actions {
     flex-direction: column;
     width: 100%;
-    margin-top: 24px;
+    margin-top: 0;
   }
 
-  /* Make direct children (buttons) full width on mobile */
   .bst-hero-creative__actions > * {
     width: 100% !important;
   }
 
-  /* Scale down the visual sandbox to prevent overflowing or crowding */
+  .bst-hero-creative__description-desktop {
+    display: none;
+  }
+
+  .bst-hero-creative__visual-desktop {
+    display: none;
+  }
+
+  .bst-hero-creative__visual-mobile {
+    display: flex;
+  }
+
   .bst-hero-creative__visual-block {
-    min-height: 320px;
-    transform: scale(0.9);
+    min-height: auto;
+    transform: none;
   }
 }
+
+
