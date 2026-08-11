@@ -18,9 +18,13 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button
 export { ThemeSwitcher } from './components/ThemeSwitcher';
 export type { ThemeSwitcherProps, ThemeSwitcherSize } from './components/ThemeSwitcher';
 
+export { LanguageSwitcher } from './components/LanguageSwitcher';
+export type { LanguageSwitcherProps } from './components/LanguageSwitcher';
+
 export { Navbar } from './components/Navbar';
 export type { NavbarProps, NavbarLink } from './components/Navbar';
 
 export { Footer } from './components/Footer';
 export * from './components/HeroCreativeLayout';
+export * from './components/LanguageSwitcher';
 export type { FooterProps, SocialLink, SocialPlatform } from './components/Footer';

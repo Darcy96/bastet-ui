@@ -1,0 +1,44 @@
+.bst-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  padding: 2px;
+  border: 1px solid var(--bst-border);
+  transition: all 0.2s ease;
+}
+
+.bst-lang-switcher__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent; /* borders managed by React style */
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  outline: none;
+}
+
+.bst-lang-switcher__btn:focus-visible {
+  box-shadow: 0 0 0 2px rgba(var(--bst-primary-rgb), 0.2);
+}
+
+.bst-lang-switcher__btn--active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+.bst-lang-switcher__btn:not(.bst-lang-switcher__btn--active):hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.bst-lang-switcher[data-theme="dark"] .bst-lang-switcher__btn:not(.bst-lang-switcher__btn--active):hover,
+.bst-lang-switcher[data-theme="black-metal"] .bst-lang-switcher__btn:not(.bst-lang-switcher__btn--active):hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.bst-lang-switcher__icon {
+  margin-right: 6px;
+  display: inline-flex;
+  align-items: center;
+}

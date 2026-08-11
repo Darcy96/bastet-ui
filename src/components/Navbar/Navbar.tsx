@@ -24,6 +24,10 @@ export interface NavbarProps {
   activeTheme?: ThemeName;
   /** Display variant for the integrated ThemeSwitcher */
   themeSwitcherVariant?: 'group' | 'dropdown';
+  /** Custom render function for links (useful for Next.js <Link>) */
+  renderLink?: (link: NavbarLink, className: string, style: React.CSSProperties) => React.ReactNode;
+  /** Slot for injecting the LanguageSwitcher component */
+  languageSwitcherSlot?: React.ReactNode;
   /** If true, the navbar sticks to the top of the viewport */
   sticky?: boolean;
   /** Additional CSS class */
@@ -63,6 +67,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       onThemeChange,
       activeTheme,
       themeSwitcherVariant = 'dropdown',
+      renderLink,
+      languageSwitcherSlot,
       sticky = false,
       className,
       style,
@@ -115,35 +121,44 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
           {/* Links */}
           {links.length > 0 && (
             <ul className="bst-navbar__links" role="navigation">
-              {links.map((link) => (
-                <li key={link.href} className="bst-navbar__link-item">
-                  <a
-                    href={link.href}
-                    className="bst-navbar__link"
-                    style={{
-                      color: token.colorTextSecondary,
-                      fontFamily: token.fontFamily,
-                      ['--bst-nav-link-hover' as string]: token.colorPrimary,
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {links.map((link) => {
+                const linkStyle: React.CSSProperties = {
+                  color: token.colorTextSecondary,
+                  fontFamily: token.fontFamily,
+                  ['--bst-nav-link-hover' as string]: token.colorPrimary,
+                };
+                
+                return (
+                  <li key={link.href} className="bst-navbar__link-item">
+                    {renderLink ? (
+                      renderLink(link, 'bst-navbar__link', linkStyle)
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="bst-navbar__link"
+                        style={linkStyle}
+                      >
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           )}
 
-          {/* Theme Switcher */}
-          {onThemeChange && (
-            <div className="bst-navbar__actions">
+          {/* Actions */}
+          <div className="bst-navbar__actions">
+            {languageSwitcherSlot}
+            {onThemeChange && (
               <ThemeSwitcher
                 onThemeChange={onThemeChange}
                 activeTheme={currentTheme}
                 size="sm"
                 variant={themeSwitcherVariant}
               />
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </nav>
     );
