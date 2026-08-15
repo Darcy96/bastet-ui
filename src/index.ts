@@ -27,6 +27,12 @@ export type { NavbarProps, NavbarLink } from './components/Navbar';
 export { Footer } from './components/Footer';
 export type { FooterProps, SocialLink, SocialPlatform } from './components/Footer';
 
+export { HorizontalExperience } from './components/HorizontalExperience';
+export type { HorizontalExperienceProps, ExperienceItem } from './components/HorizontalExperience';
+
+export { Modal } from './components/Modal';
+export type { ModalProps } from './components/Modal';
+
 export { HeroCreativeLayout } from './components/HeroCreativeLayout';
 export type { HeroCreativeLayoutProps } from './components/HeroCreativeLayout';
 
