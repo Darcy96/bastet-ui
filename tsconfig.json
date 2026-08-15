@@ -29,8 +29,9 @@
       "@/*": ["./src/*"]
     },
 
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "outDir": "./dist"
   },
   "include": ["src", ".storybook"],
-  "exclude": ["node_modules", "dist", "**/*.test.tsx"]
+  "exclude": ["node_modules", "dist"]
 }
