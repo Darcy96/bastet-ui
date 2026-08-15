@@ -1,6 +1,7 @@
 import React from 'react';
 import { theme } from 'antd';
 import { useBstTheme } from '../../theme';
+import { CONTRAST_LIGHT, CONTRAST_DARK, DANGER_HOVER, DANGER_ACTIVE } from '../../utils/colors';
 import './Button.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -117,10 +118,10 @@ function getVariantStyles(
       case 'primary':
         return {
           backgroundColor: t.colorPrimary,
-          color: '#0A0A0A',
+          color: CONTRAST_DARK,
           borderColor: t.colorPrimary,
-          ['--bst-btn-hover-bg' as string]: '#FFFFFF',
-          ['--bst-btn-hover-border' as string]: '#FFFFFF',
+          ['--bst-btn-hover-bg' as string]: CONTRAST_LIGHT,
+          ['--bst-btn-hover-border' as string]: CONTRAST_LIGHT,
           ['--bst-btn-hover-color' as string]: '#000000',
           ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
           ['--bst-btn-active-color' as string]: '#000000',
@@ -133,7 +134,7 @@ function getVariantStyles(
           borderColor: t.colorPrimary,
           ['--bst-btn-hover-bg' as string]: t.colorPrimary,
           ['--bst-btn-hover-border' as string]: t.colorPrimary,
-          ['--bst-btn-hover-color' as string]: '#0A0A0A',
+          ['--bst-btn-hover-color' as string]: CONTRAST_DARK,
           ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
           ['--bst-btn-active-color' as string]: '#000000',
         };
@@ -151,11 +152,11 @@ function getVariantStyles(
       case 'danger':
         return {
           backgroundColor: t.colorError,
-          color: '#FFFFFF',
+          color: CONTRAST_LIGHT,
           borderColor: t.colorError,
-          ['--bst-btn-hover-bg' as string]: '#C00000',
-          ['--bst-btn-hover-border' as string]: '#C00000',
-          ['--bst-btn-active-bg' as string]: '#800000',
+          ['--bst-btn-hover-bg' as string]: DANGER_HOVER,
+          ['--bst-btn-hover-border' as string]: DANGER_HOVER,
+          ['--bst-btn-active-bg' as string]: DANGER_ACTIVE,
         };
     }
   }
@@ -164,7 +165,7 @@ function getVariantStyles(
     case 'primary':
       return {
         backgroundColor: t.colorPrimary,
-        color: '#FFFFFF',
+        color: CONTRAST_LIGHT,
         borderColor: t.colorPrimary,
         ['--bst-btn-hover-bg' as string]: t.colorPrimaryHover,
         ['--bst-btn-hover-border' as string]: t.colorPrimaryHover,
@@ -193,7 +194,7 @@ function getVariantStyles(
     case 'danger':
       return {
         backgroundColor: t.colorError,
-        color: '#FFFFFF',
+        color: CONTRAST_LIGHT,
         borderColor: t.colorError,
         ['--bst-btn-hover-bg' as string]: t.colorErrorHover,
         ['--bst-btn-hover-border' as string]: t.colorErrorHover,

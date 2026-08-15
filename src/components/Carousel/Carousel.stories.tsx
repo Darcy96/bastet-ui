@@ -1,7 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useGlobals } from 'storybook/preview-api';
 import { Carousel } from './Carousel';
+import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+
+const StoryWrapper = ({ children }: { children: React.ReactNode }) => {
+  const { themeName, token } = useBstTheme();
+  return (
+    <div 
+      data-theme={themeName} 
+      style={{ 
+        width: '400px',
+        padding: '24px', 
+        background: token.colorBgContainer,
+        '--bst-primary': token.colorPrimary,
+        '--bst-bg': token.colorBgContainer,
+        '--bst-text': token.colorText,
+        '--bst-border': token.colorBorder,
+      } as React.CSSProperties}
+    >
+      {children}
+    </div>
+  );
+};
 
 const meta = {
   title: 'Components/Carousel',
@@ -28,10 +49,13 @@ export const Default: Story = {
   render: (args) => {
     const [globals] = useGlobals();
     const activeTheme = (globals['bstTheme'] || 'light') as ThemeName;
+    
     return (
-      <div data-theme={activeTheme} style={{ width: '400px', padding: '24px', background: 'var(--bst-bg, #fff)' }}>
-        <Carousel {...args} items={mockItems} />
-      </div>
+      <BstThemeProvider theme={activeTheme}>
+        <StoryWrapper>
+          <Carousel {...args} items={mockItems} />
+        </StoryWrapper>
+      </BstThemeProvider>
     );
   },
 };

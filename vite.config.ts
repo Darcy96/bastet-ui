@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
@@ -46,4 +47,13 @@ export default defineConfig({
       '@': resolve(__dirname, 'src'),
     },
   },
+
+  // ─── Test Configuration ───────────────────────────────────────
+  test: {
+    environment: 'jsdom',  // Simula un navegador (DOM) en Node/Bun
+    globals: true,          // Permite usar describe/it/expect sin importar
+    setupFiles: './src/test/setup.ts',  // Carga matchers de RTL
+    css: true,              // Procesa archivos CSS (no los ignora)
+  },
 });
+

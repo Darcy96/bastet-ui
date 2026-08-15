@@ -104,5 +104,5 @@
 [data-theme="oriental"] .bst-carousel__dot--active {
   border-color: var(--bst-primary);
   background: var(--bst-primary);
-  transform: rotate(45deg);
+  transform: rotate(45deg) scale(1.2);
 }

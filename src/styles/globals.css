@@ -28,8 +28,8 @@ body {
   line-height: 1.6;
 }
 
-/* ─── Smooth Transitions ───────────────────────────────────── */
-*:where(:not(input):not(textarea):not(select)) {
+/* ─── Smooth Transitions (scoped to Bastet theme root) ────── */
+.bst-theme-root *:where(:not(input):not(textarea):not(select)) {
   transition-property: color, background-color, border-color, box-shadow, opacity;
   transition-duration: 150ms;
   transition-timing-function: ease;

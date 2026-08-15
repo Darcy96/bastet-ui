@@ -19,13 +19,16 @@ export { ThemeSwitcher } from './components/ThemeSwitcher';
 export type { ThemeSwitcherProps, ThemeSwitcherSize } from './components/ThemeSwitcher';
 
 export { LanguageSwitcher } from './components/LanguageSwitcher';
-export type { LanguageSwitcherProps } from './components/LanguageSwitcher';
+export type { LanguageSwitcherProps, LanguageOption, LanguageSwitcherSize } from './components/LanguageSwitcher';
 
 export { Navbar } from './components/Navbar';
 export type { NavbarProps, NavbarLink } from './components/Navbar';
 
 export { Footer } from './components/Footer';
-export * from './components/HeroCreativeLayout';
-export * from './components/Carousel';
-export * from './components/LanguageSwitcher';
 export type { FooterProps, SocialLink, SocialPlatform } from './components/Footer';
+
+export { HeroCreativeLayout } from './components/HeroCreativeLayout';
+export type { HeroCreativeLayoutProps } from './components/HeroCreativeLayout';
+
+export { Carousel } from './components/Carousel';
+export type { CarouselProps } from './components/Carousel';

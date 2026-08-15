@@ -1,7 +1,27 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useGlobals } from 'storybook/preview-api';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+
+const StoryWrapper = ({ children }: { children: React.ReactNode }) => {
+  const { themeName, token } = useBstTheme();
+  return (
+    <div 
+      data-theme={themeName} 
+      style={{ 
+        padding: '24px', 
+        background: token.colorBgContainer,
+        '--bst-primary': token.colorPrimary,
+        '--bst-bg': token.colorBgContainer,
+        '--bst-text': token.colorText,
+        '--bst-border': token.colorBorder,
+      } as React.CSSProperties}
+    >
+      {children}
+    </div>
+  );
+};
 
 const meta = {
   title: 'Components/LanguageSwitcher',
@@ -30,10 +50,13 @@ export const Default: Story = {
   render: (args) => {
     const [globals] = useGlobals();
     const activeTheme = (globals['bstTheme'] || 'light') as ThemeName;
+    
     return (
-      <div data-theme={activeTheme} style={{ padding: '24px', background: 'var(--bst-bg, #fff)' }}>
-        <LanguageSwitcher {...args} onLocaleChange={(locale) => console.log('Changed locale to:', locale)} />
-      </div>
+      <BstThemeProvider theme={activeTheme}>
+        <StoryWrapper>
+          <LanguageSwitcher {...args} onLocaleChange={(locale) => console.log('Changed locale to:', locale)} />
+        </StoryWrapper>
+      </BstThemeProvider>
     );
   },
 };

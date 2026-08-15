@@ -2,6 +2,7 @@ import React from 'react';
 import { Dropdown, Button } from 'antd';
 import type { MenuProps } from 'antd';
 import { useBstTheme } from '../../theme';
+import { CONTRAST_DARK } from '../../utils/colors';
 import './LanguageSwitcher.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -132,7 +133,7 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
 
           // Override active color for black-metal
           if (isActive && themeName === 'black-metal') {
-            btnStyle.color = '#0A0A0A';
+            btnStyle.color = CONTRAST_DARK;
           }
 
           return (
