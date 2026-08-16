@@ -21,19 +21,42 @@ export interface BstThemeProviderProps {
   children: React.ReactNode;
 }
 
+// ─── Internal Theme Root ────────────────────────────────────────
+
+function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, safeThemeName: string }) {
+  const { token } = theme.useToken();
+
+  const containerStyle: React.CSSProperties = {
+    fontFamily: token.fontFamily,
+    color: token.colorTextBase,
+    backgroundColor: token.colorBgBase,
+    minHeight: '100%',
+    transition: 'color 200ms ease, background-color 200ms ease',
+    // Inject all resolved CSS variables required by Bastet UI components
+    '--bst-primary': token.colorPrimary,
+    '--bst-primary-rgb': '99, 102, 241', // fallback
+    '--bst-bg-container': token.colorBgContainer,
+    '--bst-bg-elevated': token.colorBgElevated,
+    '--bst-text': token.colorText,
+    '--bst-text-secondary': token.colorTextSecondary,
+    '--bst-border': token.colorBorder,
+    '--bst-radius': `${token.borderRadius}px`,
+    '--bst-font-family': token.fontFamily,
+  } as React.CSSProperties;
+
+  return (
+    <div className="bst-theme-root" data-theme={safeThemeName} style={containerStyle}>
+      {children}
+    </div>
+  );
+}
+
 /**
  * BstThemeProvider
  *
  * Wraps Ant Design's ConfigProvider to apply one of Bastet UI's
  * 5 theme presets. All child components — both Ant Design and
  * Bastet custom components — will inherit the active theme tokens.
- *
- * @example
- * ```tsx
- * <BstThemeProvider theme="dark">
- *   <App />
- * </BstThemeProvider>
- * ```
  */
 export function BstThemeProvider({
   theme: themeName = 'light',
@@ -48,20 +71,12 @@ export function BstThemeProvider({
     [safeThemeName],
   );
 
-  const containerStyle: React.CSSProperties = {
-    fontFamily: themeConfig.token?.fontFamily,
-    color: themeConfig.token?.colorTextBase,
-    backgroundColor: themeConfig.token?.colorBgBase,
-    minHeight: '100%',
-    transition: 'color 200ms ease, background-color 200ms ease',
-  };
-
   return (
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
-        <div className="bst-theme-root" data-theme={safeThemeName} style={containerStyle}>
+        <BstThemeRoot safeThemeName={safeThemeName}>
           {children}
-        </div>
+        </BstThemeRoot>
       </ConfigProvider>
     </BstThemeContext.Provider>
   );
