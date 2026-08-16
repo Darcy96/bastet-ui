@@ -95,9 +95,9 @@ export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalE
 
               <div className="bst-exp-modal-desc">
                 {Array.isArray(selectedItem.detailedDescription) ? (
-                  <ul>
+                  <ul className="bst-exp-modal-list">
                     {selectedItem.detailedDescription.map((desc, idx) => (
-                      <li key={idx} style={{ marginBottom: '8px' }}>
+                      <li key={idx} className="bst-exp-modal-list-item">
                         {desc}
                       </li>
                     ))}
