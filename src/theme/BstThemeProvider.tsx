@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { themes, type ThemeName } from './tokens';
+import { buildBstCssVars } from '../utils/buildBstCssVars';
 
 // ─── Context ──────────────────────────────────────────────────
 
@@ -26,24 +27,14 @@ export interface BstThemeProviderProps {
 function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, safeThemeName: string }) {
   const { token } = theme.useToken();
 
-  const containerStyle: React.CSSProperties = {
+  const containerStyle = useMemo<React.CSSProperties>(() => ({
     fontFamily: token.fontFamily,
     color: token.colorTextBase,
     backgroundColor: token.colorBgBase,
     minHeight: '100%',
     transition: 'color 200ms ease, background-color 200ms ease',
-    // Inject all resolved CSS variables required by Bastet UI components
-    '--bst-primary': token.colorPrimary,
-    '--bst-primary-rgb': '99, 102, 241', // fallback
-    '--bst-bg-container': token.colorBgContainer,
-    '--bst-bg-elevated': token.colorBgElevated,
-    '--bst-text': token.colorText,
-    '--bst-text-secondary': token.colorTextSecondary,
-    '--bst-border': token.colorBorder,
-    '--bst-radius': `${token.borderRadius}px`,
-    '--bst-font-family': token.fontFamily,
-    '--bst-error': token.colorError,
-  } as React.CSSProperties;
+    ...buildBstCssVars(token),
+  } as React.CSSProperties), [token]);
 
   return (
     <div className="bst-theme-root" data-theme={safeThemeName} style={containerStyle}>

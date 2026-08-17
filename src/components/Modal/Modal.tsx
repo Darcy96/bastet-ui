@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useBstTheme } from '../../theme';
+import { buildBstCssVars } from '../../utils/buildBstCssVars';
 import './Modal.css';
 
 export interface ModalProps {
@@ -48,16 +49,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNa
     className
   ].filter(Boolean).join(' ');
 
-  const portalStyle = {
-    '--bst-primary': token.colorPrimary,
-    '--bst-bg-container': token.colorBgContainer,
-    '--bst-bg-elevated': token.colorBgElevated,
-    '--bst-text': token.colorText,
-    '--bst-text-secondary': token.colorTextSecondary,
-    '--bst-border': token.colorBorder,
-    '--bst-radius': `${token.borderRadius}px`,
-    '--bst-font-family': token.fontFamily,
-  } as React.CSSProperties;
+  // Use the same CSS variable builder as BstThemeRoot to stay in sync
+  const portalStyle = buildBstCssVars(token) as React.CSSProperties;
 
   return createPortal(
     <div className="bst-theme-root" data-theme={themeName} style={portalStyle}>
