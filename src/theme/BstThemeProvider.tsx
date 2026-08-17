@@ -42,6 +42,7 @@ function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, 
     '--bst-border': token.colorBorder,
     '--bst-radius': `${token.borderRadius}px`,
     '--bst-font-family': token.fontFamily,
+    '--bst-error': token.colorError,
   } as React.CSSProperties;
 
   return (

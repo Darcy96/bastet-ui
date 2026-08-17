@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Form Field Base Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Field Wrapper ────────────────────────────────────────── */
+.bst-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* ─── Label ────────────────────────────────────────────────── */
+.bst-field__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bst-text);
+  font-family: var(--bst-font-family);
+  line-height: 1.4;
+}
+
+/* ─── Shared Input / Textarea / Select Base ────────────────── */
+.bst-field__control {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.9375rem;
+  font-family: var(--bst-font-family);
+  line-height: 1.5;
+  color: var(--bst-text);
+  background-color: var(--bst-bg-container);
+  border: 1px solid var(--bst-border);
+  border-radius: var(--bst-radius);
+  outline: none;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease;
+}
+
+.bst-field__control::placeholder {
+  color: var(--bst-text-secondary);
+  opacity: 0.6;
+}
+
+/* ─── Focus Ring ───────────────────────────────────────────── */
+.bst-field__control:focus {
+  border-color: var(--bst-primary);
+  box-shadow: 0 0 0 3px rgba(var(--bst-primary-rgb, 99, 102, 241), 0.15);
+}
+
+/* ─── Error State ──────────────────────────────────────────── */
+.bst-field__control--error {
+  border-color: var(--bst-error);
+}
+
+.bst-field__control--error:focus {
+  border-color: var(--bst-error);
+  box-shadow: 0 0 0 3px rgba(245, 34, 45, 0.15);
+}
+
+/* ─── Error Message ────────────────────────────────────────── */
+.bst-field__error {
+  font-size: 0.8125rem;
+  font-family: var(--bst-font-family);
+  color: var(--bst-error);
+  line-height: 1.4;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Disabled ─────────────────────────────────────────────── */
+.bst-field__control:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--bst-bg-elevated);
+}
+
+/* ─── Textarea Specific ────────────────────────────────────── */
+.bst-field__control--textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ─── Select Specific ──────────────────────────────────────── */
+.bst-field__control--select {
+  cursor: pointer;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+/* ─── Theme Micro-Interactions ─────────────────────────────── */
+
+/* 🤘 Black Metal — Sharp corners */
+.bst-theme-root[data-theme='black-metal'] .bst-field__control {
+  border-radius: 0;
+  border-width: 2px;
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+}
+
+.bst-theme-root[data-theme='black-metal'] .bst-field__label {
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+/* 🏯 Oriental — Subtle ink wash effect */
+.bst-theme-root[data-theme='oriental'] .bst-field__control:focus {
+  box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15);
+}
+
+/* 💖 Pink — Playful glow */
+.bst-theme-root[data-theme='pink'] .bst-field__control:focus {
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25);
+}
