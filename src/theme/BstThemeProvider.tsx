@@ -43,6 +43,8 @@ function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, 
   );
 }
 
+import { ToastProvider } from '../components/Toast';
+
 /**
  * BstThemeProvider
  *
@@ -67,7 +69,9 @@ export function BstThemeProvider({
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
         <BstThemeRoot safeThemeName={safeThemeName}>
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </BstThemeRoot>
       </ConfigProvider>
     </BstThemeContext.Provider>
