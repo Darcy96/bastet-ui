@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Tooltip Component
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.bst-tooltip-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  
+  padding: 6px 12px;
+  background-color: var(--bst-bg-elevated, #ffffff);
+  color: var(--bst-text, #111827);
+  border: 1px solid var(--bst-border, #e5e7eb);
+  border-radius: var(--bst-radius, 6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  
+  font-family: var(--bst-font-family, sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  
+  /* Smooth transition, with delay when hovering */
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transition-delay: 0s; /* No delay when un-hovering */
+}
+
+/* ─── Outer Triangle (Border) ─── */
+.bst-tooltip-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--bst-border, #e5e7eb) transparent transparent transparent;
+}
+
+/* ─── Inner Triangle (Background) ─── */
+.bst-tooltip-bubble::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--bst-bg-elevated, #ffffff) transparent transparent transparent;
+  z-index: 1;
+  margin-top: -1px; /* Pull it slightly up to cover the outer border */
+}
+
+/* ─── Hover & Focus States ─── */
+.bst-tooltip-wrapper:hover .bst-tooltip-bubble,
+.bst-tooltip-wrapper:focus-within .bst-tooltip-bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 200ms; /* Delay before showing */
+}
+
+/* ─── Theme-specific adjustments ─── */
+[data-theme="black-metal"] .bst-tooltip-bubble {
+  border-radius: 0;
+}

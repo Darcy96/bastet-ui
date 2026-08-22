@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { Tooltip } from '../Tooltip';
 import './CopyPill.css';
 
 export interface CopyPillProps {
@@ -30,16 +31,16 @@ export function CopyPill({ value, label, onCopy, className = '' }: CopyPillProps
   }, [value, onCopy]);
 
   return (
-    <button
-      className={`bst-copy-pill ${copied ? 'bst-copy-pill--copied' : ''} ${className}`}
-      onClick={handleCopy}
-      title={label ? `Copiar: ${value}` : 'Copiar al portapapeles'}
-      type="button"
-    >
-      <span className="bst-copy-pill__text">
-        {label || value}
-      </span>
-      <span className="bst-copy-pill__icon">
+    <Tooltip content={label ? `Copiar: ${value}` : 'Copiar al portapapeles'}>
+      <button
+        className={`bst-copy-pill ${copied ? 'bst-copy-pill--copied' : ''} ${className}`}
+        onClick={handleCopy}
+        type="button"
+      >
+        <span className="bst-copy-pill__text">
+          {label || value}
+        </span>
+        <span className="bst-copy-pill__icon">
         {copied ? (
           // Check icon (✓)
           <svg
@@ -74,7 +75,8 @@ export function CopyPill({ value, label, onCopy, className = '' }: CopyPillProps
         )}
       </span>
     </button>
-  );
+  </Tooltip>
+);
 }
 
 CopyPill.displayName = 'CopyPill';

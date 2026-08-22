@@ -53,3 +53,6 @@ export type { ToastProviderProps, ToastType, ToastPosition, ToastItem, ToastOpti
 
 export { CopyPill } from './components/CopyPill';
 export type { CopyPillProps } from './components/CopyPill';
+
+export { Tooltip } from './components/Tooltip';
+export type { TooltipProps } from './components/Tooltip';
