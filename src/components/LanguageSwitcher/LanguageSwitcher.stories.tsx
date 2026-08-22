@@ -60,3 +60,11 @@ export const Default: Story = {
     );
   },
 };
+
+export const DropdownVariant: Story = {
+  args: {
+    ...Default.args,
+    variant: 'dropdown',
+  },
+  render: Default.render,
+};

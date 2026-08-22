@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Select as AntSelect } from 'antd';
 import './FormField.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -29,33 +30,36 @@ export interface SelectProps
 /**
  * Select
  *
- * A themed dropdown select that extends native `<select>` attributes.
- * Built with `React.forwardRef` for seamless react-hook-form integration.
- *
- * @example
- * ```tsx
- * <Select
- *   label="Country"
- *   placeholder="Choose a country"
- *   options={[
- *     { value: 'mx', label: 'Mexico' },
- *     { value: 'us', label: 'United States' },
- *   ]}
- * />
- * ```
+ * A themed dropdown select powered by Ant Design to support multi-theme popups.
+ * Built with `React.forwardRef` and a hidden native select for seamless react-hook-form integration.
  */
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ label, error, options, placeholder, className, id, ...rest }, ref) => {
+  ({ label, error, options, placeholder, className, id, value, defaultValue, onChange, ...rest }, ref) => {
     const fieldId = id || (label ? `bst-select-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
 
-    const controlClasses = [
-      'bst-field__control',
-      'bst-field__control--select',
-      error && 'bst-field__control--error',
-      className,
-    ]
-      .filter(Boolean)
-      .join(' ');
+    // Internal state to sync AntSelect with the native select
+    const [internalValue, setInternalValue] = useState<string | number | readonly string[] | undefined>(
+      value !== undefined ? value : (defaultValue !== undefined ? defaultValue : undefined)
+    );
+
+    useEffect(() => {
+      if (value !== undefined) {
+        setInternalValue(value);
+      }
+    }, [value]);
+
+    const handleAntChange = (val: any) => {
+      if (value === undefined) {
+        setInternalValue(val);
+      }
+      if (onChange) {
+        // Simulate native event for react-hook-form register
+        onChange({
+          target: { name: rest.name, value: val },
+          type: 'change'
+        } as React.ChangeEvent<HTMLSelectElement>);
+      }
+    };
 
     return (
       <div className="bst-field">
@@ -64,26 +68,36 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             {label}
           </label>
         )}
+        
+        {/* Hidden native select to maintain 100% compatibility with react-hook-form register() and refs */}
         <select
           ref={ref}
-          id={fieldId}
-          className={controlClasses}
-          aria-invalid={!!error}
-          aria-describedby={error ? `${fieldId}-error` : undefined}
-          defaultValue=""
-          {...rest}
+          name={rest.name}
+          value={internalValue || ''}
+          style={{ display: 'none' }}
+          onChange={() => {}} // React warning prevention
         >
-          {placeholder && (
-            <option value="" disabled>
-              {placeholder}
-            </option>
-          )}
+          {placeholder && <option value="" disabled>{placeholder}</option>}
           {options.map((opt) => (
             <option key={opt.value} value={opt.value} disabled={opt.disabled}>
               {opt.label}
             </option>
           ))}
         </select>
+
+        <AntSelect
+          id={fieldId}
+          value={internalValue || undefined}
+          onChange={handleAntChange}
+          onBlur={rest.onBlur as any}
+          options={options}
+          placeholder={placeholder}
+          status={error ? 'error' : undefined}
+          disabled={rest.disabled}
+          className={`bst-custom-ant-select ${className || ''}`}
+          style={{ width: '100%' }}
+        />
+        
         {error && (
           <p className="bst-field__error" id={`${fieldId}-error`} role="alert">
             {error}
