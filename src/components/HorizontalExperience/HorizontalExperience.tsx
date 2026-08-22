@@ -15,7 +15,7 @@ export interface ExperienceItem {
   detailedDescription?: React.ReactNode | string[];
 }
 
-export interface HorizontalExperienceProps {
+export interface HorizontalExperienceProps extends React.HTMLAttributes<HTMLDivElement> {
   /** List of experiences */
   items: ExperienceItem[];
   /** Additional CSS classes */
@@ -31,7 +31,7 @@ export interface HorizontalExperienceProps {
  * Clicking a card opens a centered Modal with detailed architectural achievements.
  */
 export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalExperienceProps>(
-  ({ items, className }, ref) => {
+  ({ items, className, ...rest }, ref) => {
     const { themeName } = useBstTheme();
     const [selectedItem, setSelectedItem] = useState<ExperienceItem | null>(null);
 
@@ -40,7 +40,7 @@ export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalE
     const wrapperClasses = ['bst-horizontal-experience', className].filter(Boolean).join(' ');
 
     return (
-      <div ref={ref} className={wrapperClasses} data-theme={themeName}>
+      <div ref={ref} className={wrapperClasses} data-theme={themeName} {...rest}>
         {/* The Track with Horizontal Scroll */}
         <div className="bst-horizontal-track">
           {items.map((item, index) => (
