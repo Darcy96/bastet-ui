@@ -1,0 +1,75 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — CopyPill Component
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-copy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 9999px; /* Pill shape */
+  background: var(--bst-bg-elevated, #ffffff);
+  border: 1px solid var(--bst-border, #d9d9d9);
+  color: var(--bst-text, #000000);
+  font-family: var(--bst-font-family, sans-serif);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  user-select: none;
+}
+
+/* Hover & Focus state consuming primary color */
+.bst-copy-pill:hover,
+.bst-copy-pill:focus-visible {
+  border-color: var(--bst-primary, #1677ff);
+  color: var(--bst-primary, #1677ff);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bst-copy-pill:active {
+  transform: translateY(0);
+}
+
+.bst-copy-pill__text {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px;
+}
+
+.bst-copy-pill__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bst-text-secondary, #8c8c8c);
+  transition: color 0.2s ease;
+}
+
+.bst-copy-pill:hover .bst-copy-pill__icon,
+.bst-copy-pill:focus-visible .bst-copy-pill__icon {
+  color: var(--bst-primary, #1677ff);
+}
+
+/* Copied State */
+.bst-copy-pill.bst-copy-pill--copied {
+  border-color: var(--bst-success, #52c41a);
+  color: var(--bst-success, #52c41a);
+  background: transparent;
+}
+
+.bst-copy-pill.bst-copy-pill--copied .bst-copy-pill__icon {
+  color: var(--bst-success, #52c41a);
+}
+
+.bst-copy-pill.bst-copy-pill--copied:hover {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Theme-specific overrides if needed */
+[data-theme="black-metal"] .bst-copy-pill {
+  border-radius: 0; /* Match sharp corners of the theme */
+}

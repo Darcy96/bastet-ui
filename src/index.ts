@@ -50,3 +50,6 @@ export type { SelectProps, SelectOption } from './components/FormField';
 
 export { ToastProvider, useToast } from './components/Toast';
 export type { ToastProviderProps, ToastType, ToastPosition, ToastItem, ToastOptions } from './components/Toast';
+
+export { CopyPill } from './components/CopyPill';
+export type { CopyPillProps } from './components/CopyPill';
