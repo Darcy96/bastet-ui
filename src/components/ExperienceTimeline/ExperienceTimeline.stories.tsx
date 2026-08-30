@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useGlobals } from 'storybook/preview-api';
-import { HorizontalExperience, type ExperienceItem } from './HorizontalExperience';
+import { ExperienceTimeline, type ExperienceItem } from './ExperienceTimeline';
 import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
 
@@ -18,7 +18,6 @@ const InnerWrapper = ({ children, theme }: { children: React.ReactNode, theme?: 
         color: token.colorText,
         minHeight: '100vh',
         fontFamily: token.fontFamily,
-        // Map Ant Design tokens to our custom CSS variables
         '--bst-primary': token.colorPrimary,
         '--bst-bg-container': token.colorBgContainer,
         '--bst-bg-elevated': token.colorBgElevated,
@@ -34,17 +33,24 @@ const InnerWrapper = ({ children, theme }: { children: React.ReactNode, theme?: 
   );
 };
 
-const meta: Meta<typeof HorizontalExperience> = {
-  title: 'Components/HorizontalExperience',
-  component: HorizontalExperience,
+const meta: Meta<typeof ExperienceTimeline> = {
+  title: 'Components/ExperienceTimeline',
+  component: ExperienceTimeline,
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
+  argTypes: {
+    layout: {
+      control: 'radio',
+      options: ['horizontal', 'vertical', 'auto'],
+      description: 'Layout mode: horizontal (zigzag), vertical (mobile), or auto (responsive at 768px)',
+    },
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof HorizontalExperience>;
+type Story = StoryObj<typeof ExperienceTimeline>;
 
 const mockItems: ExperienceItem[] = [
   {
@@ -98,9 +104,33 @@ const mockItems: ExperienceItem[] = [
   }
 ];
 
+const sharedRender = (args: any) => {
+  const [globals] = useGlobals();
+  const activeTheme = (globals['bstTheme'] || 'light') as ThemeName;
+
+  return (
+    <BstThemeProvider theme={activeTheme}>
+      <InnerWrapper theme={activeTheme}>
+        <div style={{ maxWidth: '100%', overflow: 'hidden' }}>
+          <ExperienceTimeline {...args} />
+        </div>
+      </InnerWrapper>
+    </BstThemeProvider>
+  );
+};
+
 export const Default: Story = {
   args: {
     items: mockItems,
+    layout: 'horizontal',
+  },
+  render: sharedRender,
+};
+
+export const Vertical: Story = {
+  args: {
+    items: mockItems,
+    layout: 'vertical',
   },
   render: (args) => {
     const [globals] = useGlobals();
@@ -109,12 +139,19 @@ export const Default: Story = {
     return (
       <BstThemeProvider theme={activeTheme}>
         <InnerWrapper theme={activeTheme}>
-          {/* We add a container to constrain the width nicely for Storybook but allow horizontal scroll */}
-          <div style={{ maxWidth: '100%', overflow: 'hidden' }}>
-            <HorizontalExperience {...args} />
+          <div style={{ maxWidth: '600px', margin: '0 auto', padding: '24px' }}>
+            <ExperienceTimeline {...args} />
           </div>
         </InnerWrapper>
       </BstThemeProvider>
     );
   },
+};
+
+export const Auto: Story = {
+  args: {
+    items: mockItems,
+    layout: 'auto',
+  },
+  render: sharedRender,
 };

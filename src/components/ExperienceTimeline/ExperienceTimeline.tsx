@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useBstTheme } from '../../theme';
 import { Modal } from '../Modal';
-import './HorizontalExperience.css';
+import './ExperienceTimeline.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -15,9 +15,13 @@ export interface ExperienceItem {
   detailedDescription?: React.ReactNode | string[];
 }
 
-export interface HorizontalExperienceProps extends React.HTMLAttributes<HTMLDivElement> {
+export type ExperienceLayout = 'horizontal' | 'vertical' | 'auto';
+
+export interface ExperienceTimelineProps extends React.HTMLAttributes<HTMLDivElement> {
   /** List of experiences */
   items: ExperienceItem[];
+  /** Layout mode: 'horizontal' (zigzag), 'vertical' (mobile), or 'auto' (responsive) */
+  layout?: ExperienceLayout;
   /** Additional CSS classes */
   className?: string;
 }
@@ -25,34 +29,35 @@ export interface HorizontalExperienceProps extends React.HTMLAttributes<HTMLDivE
 // ─── Component ────────────────────────────────────────────────
 
 /**
- * HorizontalExperience
+ * ExperienceTimeline
  *
- * A modern, app-like horizontal timeline that renders cards in a zigzag pattern.
- * Clicking a card opens a centered Modal with detailed architectural achievements.
+ * A modern, app-like timeline that renders cards in a zigzag pattern (horizontal)
+ * or a vertical timeline (vertical). Use `layout="auto"` (default) for automatic
+ * responsive switching at 768px.
  */
-export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalExperienceProps>(
-  ({ items, className, ...rest }, ref) => {
+export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTimelineProps>(
+  ({ items, layout = 'auto', className, ...rest }, ref) => {
     const { themeName } = useBstTheme();
     const [selectedItem, setSelectedItem] = useState<ExperienceItem | null>(null);
 
     if (!items || items.length === 0) return null;
 
-    const wrapperClasses = ['bst-horizontal-experience', className].filter(Boolean).join(' ');
+    const wrapperClasses = ['bst-exp-timeline', className].filter(Boolean).join(' ');
 
     return (
-      <div ref={ref} className={wrapperClasses} data-theme={themeName} {...rest}>
-        {/* The Track with Horizontal Scroll */}
-        <div className="bst-horizontal-track">
+      <div ref={ref} className={wrapperClasses} data-theme={themeName} data-layout={layout} {...rest}>
+        {/* The Track */}
+        <div className="bst-exp-timeline__track">
           {items.map((item, index) => (
             <div 
               key={item.id} 
-              className="bst-horizontal-item"
+              className="bst-exp-timeline__item"
               style={{ gridColumn: index + 1 }}
             >
-              <div className="bst-horizontal-dot" aria-hidden="true" />
+              <div className="bst-exp-timeline__dot" aria-hidden="true" />
 
               <div
-                className="bst-horizontal-card"
+                className="bst-exp-timeline__card"
                 role="button"
                 tabIndex={0}
                 onClick={() => setSelectedItem(item)}
@@ -63,15 +68,15 @@ export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalE
                   }
                 }}
               >
-                <span className="bst-horizontal-date">{item.date}</span>
-                <h3 className="bst-horizontal-role">{item.role}</h3>
-                <h4 className="bst-horizontal-company">{item.company}</h4>
-                <p className="bst-horizontal-location">{item.location}</p>
+                <span className="bst-exp-timeline__date">{item.date}</span>
+                <h3 className="bst-exp-timeline__role">{item.role}</h3>
+                <h4 className="bst-exp-timeline__company">{item.company}</h4>
+                <p className="bst-exp-timeline__location">{item.location}</p>
 
                 {item.stack && item.stack.length > 0 && (
-                  <div className="bst-horizontal-stack">
+                  <div className="bst-exp-timeline__stack">
                     {item.stack.map((tech) => (
-                      <span key={tech} className="bst-horizontal-badge">
+                      <span key={tech} className="bst-exp-timeline__badge">
                         {tech}
                       </span>
                     ))}
@@ -114,4 +119,4 @@ export const HorizontalExperience = React.forwardRef<HTMLDivElement, HorizontalE
   }
 );
 
-HorizontalExperience.displayName = 'HorizontalExperience';
+ExperienceTimeline.displayName = 'ExperienceTimeline';
