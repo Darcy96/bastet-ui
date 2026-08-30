@@ -73,6 +73,11 @@
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
+.bst-footer[data-theme='pink'],
+.bst-theme-root[data-theme='pink'] .bst-footer {
+  border-top-color: #FFC1D0 !important;
+}
+
 .bst-footer[data-theme='pink'] .bst-footer__social-link:hover,
 .bst-theme-root[data-theme='pink'] .bst-footer .bst-footer__social-link:hover {
   background-color: rgba(255, 105, 180, 0.12);
