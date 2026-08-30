@@ -68,7 +68,7 @@
   width: 2px;
   background-color: var(--bst-border);
   z-index: 0;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, height 0.3s ease;
 }
 
 .bst-exp-timeline__item:nth-child(odd)::after {
@@ -81,8 +81,16 @@
   height: 40px;
 }
 
-.bst-exp-timeline__item:hover::after {
+.bst-exp-timeline__item:has(.bst-exp-timeline__card:hover)::after {
   background-color: var(--bst-primary);
+}
+
+.bst-exp-timeline__item:nth-child(odd):has(.bst-exp-timeline__card:hover)::after {
+  height: 44px;
+}
+
+.bst-exp-timeline__item:nth-child(even):has(.bst-exp-timeline__card:hover)::after {
+  height: 36px;
 }
 
 /* ─── The Node (Dot) ─── */
@@ -233,11 +241,12 @@
   height: 2px;
   background-color: var(--bst-border);
   z-index: 0;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, width 0.3s ease;
 }
 
-.bst-exp-timeline[data-layout="vertical"] .bst-exp-timeline__item:hover::after {
+.bst-exp-timeline[data-layout="vertical"] .bst-exp-timeline__item:has(.bst-exp-timeline__card:hover)::after {
   background-color: var(--bst-primary);
+  width: 32px;
 }
 
 .bst-exp-timeline[data-layout="vertical"] .bst-exp-timeline__dot {
@@ -322,11 +331,12 @@
     height: 2px;
     background-color: var(--bst-border);
     z-index: 0;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, width 0.3s ease;
   }
 
-  .bst-exp-timeline[data-layout="auto"] .bst-exp-timeline__item:hover::after {
+  .bst-exp-timeline[data-layout="auto"] .bst-exp-timeline__item:has(.bst-exp-timeline__card:hover)::after {
     background-color: var(--bst-primary);
+    width: 32px;
   }
 
   .bst-exp-timeline[data-layout="auto"] .bst-exp-timeline__dot {
