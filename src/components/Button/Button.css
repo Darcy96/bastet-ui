@@ -30,15 +30,17 @@
 
 /* ─── Default Hover & Active (Light & Dark) ──────────────────── */
 .bst-button:hover:not(:disabled) {
-  background-color: var(--bst-btn-hover-bg);
-  border-color: var(--bst-btn-hover-border);
-  color: var(--bst-btn-hover-color, inherit);
+  background-color: var(--bst-btn-hover-bg) !important;
+  border-color: var(--bst-btn-hover-border) !important;
+  color: var(--bst-btn-hover-color, inherit) !important;
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
 .bst-button:active:not(:disabled) {
-  background-color: var(--bst-btn-active-bg, var(--bst-btn-hover-bg));
+  background-color: var(--bst-btn-active-bg, var(--bst-btn-hover-bg)) !important;
+  color: var(--bst-btn-active-color, inherit) !important;
+  border-color: var(--bst-btn-active-bg, var(--bst-btn-hover-border)) !important;
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
@@ -48,7 +50,7 @@
 .bst-button[data-theme='pink']:hover:not(:disabled),
 .bst-theme-root[data-theme='pink'] .bst-button:hover:not(:disabled) {
   transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 105, 180, 0.45), 0 0 12px rgba(255, 20, 147, 0.3);
+  box-shadow: 0 8px 24px rgba(var(--bst-primary-rgb), 0.45), 0 0 12px rgba(var(--bst-primary-rgb), 0.3);
   letter-spacing: 0.5px;
 }
 
@@ -56,7 +58,7 @@
 .bst-button[data-theme='pink']:active:not(:disabled),
 .bst-theme-root[data-theme='pink'] .bst-button:active:not(:disabled) {
   transform: scale(0.94) translateY(1px);
-  box-shadow: 0 2px 8px rgba(255, 105, 180, 0.6);
+  box-shadow: 0 2px 8px rgba(var(--bst-primary-rgb), 0.6);
   transition-duration: 50ms;
 }
 
@@ -72,46 +74,23 @@
   transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Primary Variant: Solid Bone White CTA */
-.bst-button[data-theme='black-metal'].bst-button--primary,
-.bst-theme-root[data-theme='black-metal'] .bst-button--primary {
-  background-color: #F0EAD6;
-  color: #0A0A0A;
-  border-color: #F0EAD6;
-}
-
+/* Primary Variant */
 .bst-button[data-theme='black-metal'].bst-button--primary:hover:not(:disabled),
 .bst-theme-root[data-theme='black-metal'] .bst-button--primary:hover:not(:disabled) {
-  background-color: #FFFFFF !important;
-  color: #000000 !important;
-  border-color: #FFFFFF !important;
   transform: translateY(-2px);
-  box-shadow: 0 0 22px rgba(240, 234, 214, 0.5);
+  box-shadow: 0 0 22px rgba(var(--bst-primary-rgb), 0.5);
 }
 
-/* Secondary Variant: Outlined Bone White (Inverts on Hover) */
-.bst-button[data-theme='black-metal'].bst-button--secondary,
-.bst-theme-root[data-theme='black-metal'] .bst-button--secondary {
-  background-color: transparent;
-  color: #F0EAD6;
-  border-color: #F0EAD6;
-}
-
+/* Secondary Variant */
 .bst-button[data-theme='black-metal'].bst-button--secondary:hover:not(:disabled),
 .bst-theme-root[data-theme='black-metal'] .bst-button--secondary:hover:not(:disabled) {
-  background-color: #F0EAD6 !important;
-  color: #0A0A0A !important;
-  border-color: #F0EAD6 !important;
   transform: none;
-  box-shadow: 0 0 18px rgba(240, 234, 214, 0.35);
+  box-shadow: 0 0 18px rgba(var(--bst-primary-rgb), 0.35);
 }
 
-/* Active (Click): Vintage Bone Fill + Press Down */
+/* Active (Click) */
 .bst-button[data-theme='black-metal']:active:not(:disabled),
 .bst-theme-root[data-theme='black-metal'] .bst-button:active:not(:disabled) {
-  background-color: #D9D3C3 !important;
-  color: #000000 !important;
-  border-color: #D9D3C3 !important;
   transform: scale(0.98);
   box-shadow: none;
   transition-duration: 50ms;
@@ -122,15 +101,14 @@
 .bst-button[data-theme='oriental']:hover:not(:disabled),
 .bst-theme-root[data-theme='oriental'] .bst-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(250, 84, 28, 0.3);
-  border-color: #D4380D;
+  box-shadow: 0 6px 18px rgba(var(--bst-primary-rgb), 0.3);
 }
 
 /* Active (Click): Ink Press */
 .bst-button[data-theme='oriental']:active:not(:disabled),
 .bst-theme-root[data-theme='oriental'] .bst-button:active:not(:disabled) {
   transform: scale(0.97) translateY(0);
-  box-shadow: 0 2px 6px rgba(250, 84, 28, 0.15);
+  box-shadow: 0 2px 6px rgba(var(--bst-primary-rgb), 0.15);
   transition-duration: 75ms;
 }
 

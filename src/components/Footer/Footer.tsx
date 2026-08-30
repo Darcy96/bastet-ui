@@ -79,7 +79,6 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
 
     const footerStyle: React.CSSProperties = {
       fontFamily: token.fontFamily,
-      borderTopColor: token.colorBorderSecondary,
       color: token.colorTextSecondary,
       ...style,
     };

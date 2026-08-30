@@ -80,19 +80,19 @@
 /* ─── Accent colors by type ────────────────────────────────── */
 
 .bst-toast--success {
-  border-left-color: #52c41a;
+  border-left-color: var(--bst-success);
 }
 
 .bst-toast--error {
-  border-left-color: var(--bst-error, #f5222d);
+  border-left-color: var(--bst-error);
 }
 
 .bst-toast--info {
-  border-left-color: var(--bst-primary, #1677ff);
+  border-left-color: var(--bst-info);
 }
 
 .bst-toast--warning {
-  border-left-color: #faad14;
+  border-left-color: var(--bst-warning);
 }
 
 /* ─── Icon ─────────────────────────────────────────────────── */
@@ -108,10 +108,10 @@
   line-height: 1;
 }
 
-.bst-toast--success .bst-toast__icon { color: #52c41a; }
-.bst-toast--error   .bst-toast__icon { color: var(--bst-error, #f5222d); }
-.bst-toast--info    .bst-toast__icon { color: var(--bst-primary, #1677ff); }
-.bst-toast--warning .bst-toast__icon { color: #faad14; }
+.bst-toast--success .bst-toast__icon { color: var(--bst-success); }
+.bst-toast--error   .bst-toast__icon { color: var(--bst-error); }
+.bst-toast--info    .bst-toast__icon { color: var(--bst-info); }
+.bst-toast--warning .bst-toast__icon { color: var(--bst-warning); }
 
 /* ─── Content ──────────────────────────────────────────────── */
 
@@ -162,10 +162,10 @@
   opacity: 0.35;
 }
 
-.bst-toast--success .bst-toast__progress { background: #52c41a; }
-.bst-toast--error   .bst-toast__progress { background: var(--bst-error, #f5222d); }
-.bst-toast--info    .bst-toast__progress { background: var(--bst-primary, #1677ff); }
-.bst-toast--warning .bst-toast__progress { background: #faad14; }
+.bst-toast--success .bst-toast__progress { background: var(--bst-success); }
+.bst-toast--error   .bst-toast__progress { background: var(--bst-error); }
+.bst-toast--info    .bst-toast__progress { background: var(--bst-info); }
+.bst-toast--warning .bst-toast__progress { background: var(--bst-warning); }
 
 /* ═══════════════════════════════════════════════════════════════
    Animations & Directional Variables
@@ -252,9 +252,9 @@
 
 [data-theme="black-metal"] .bst-toast {
   border-left-width: 3px;
-  border-left-color: #F0EAD6;
+  border-left-color: var(--bst-primary);
   box-shadow:
-    0 0 12px rgba(240, 234, 214, 0.08),
+    0 0 12px rgba(var(--bst-primary-rgb), 0.08),
     0 4px 12px rgba(0, 0, 0, 0.5);
 }
 

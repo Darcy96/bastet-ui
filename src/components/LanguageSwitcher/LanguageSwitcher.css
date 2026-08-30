@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════════════════════════
+   Language Switcher Styles
+   ═══════════════════════════════════════════════════════════════ */
+
 .bst-lang-switcher {
   display: inline-flex;
   align-items: center;
@@ -41,4 +45,8 @@
   margin-right: 6px;
   display: inline-flex;
   align-items: center;
+}
+
+.bst-lang-switcher-dropdown {
+  display: inline-block;
 }

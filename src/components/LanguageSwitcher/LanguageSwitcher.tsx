@@ -86,21 +86,23 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
       }));
 
       return (
-        <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-          <Button 
-            style={{ 
-              fontFamily: token.fontFamily, 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 8,
-              height: sizeValues.height,
-              borderRadius: token.borderRadius,
-            }}
-          >
-            {activeOption?.icon && <span>{activeOption.icon}</span>}
-            <span>{activeOption?.label}</span>
-          </Button>
-        </Dropdown>
+        <div ref={ref} className={`bst-lang-switcher-dropdown ${className || ''}`} data-theme={themeName}>
+          <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
+            <Button 
+              style={{ 
+                fontFamily: token.fontFamily, 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: 8,
+                height: sizeValues.height,
+                borderRadius: token.borderRadius,
+              }}
+            >
+              {activeOption?.icon && <span>{activeOption.icon}</span>}
+              <span>{activeOption?.label}</span>
+            </Button>
+          </Dropdown>
+        </div>
       );
     }
 

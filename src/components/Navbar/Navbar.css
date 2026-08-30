@@ -4,7 +4,7 @@
 
 .bst-navbar {
   width: 100%;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid var(--bst-border);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 100;
@@ -90,19 +90,18 @@
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
 .bst-navbar[data-theme='pink'],
 .bst-theme-root[data-theme='pink'] .bst-navbar {
-  box-shadow: 0 2px 16px rgba(255, 105, 180, 0.15);
+  box-shadow: 0 2px 16px rgba(var(--bst-primary-rgb), 0.15);
 }
 
 .bst-navbar[data-theme='pink'] .bst-navbar__link:hover,
 .bst-theme-root[data-theme='pink'] .bst-navbar__link:hover {
-  background-color: rgba(255, 105, 180, 0.1);
+  background-color: rgba(var(--bst-primary-rgb), 0.1);
 }
 
 /* ─── 🤘 Black Metal Theme ────────────────────────────────── */
 .bst-navbar[data-theme='black-metal'],
 .bst-theme-root[data-theme='black-metal'] .bst-navbar {
   border-bottom-width: 2px;
-  border-bottom-color: #F0EAD6 !important;
   backdrop-filter: none;
 }
 
@@ -124,19 +123,14 @@
 
 .bst-navbar[data-theme='black-metal'] .bst-navbar__link:hover,
 .bst-theme-root[data-theme='black-metal'] .bst-navbar__link:hover {
-  background-color: rgba(240, 234, 214, 0.1);
-  box-shadow: 0 0 10px rgba(240, 234, 214, 0.2);
+  background-color: rgba(var(--bst-primary-rgb), 0.1);
+  box-shadow: 0 0 10px rgba(var(--bst-primary-rgb), 0.2);
 }
 
 /* ─── 🏯 Oriental Theme ───────────────────────────────────── */
-.bst-navbar[data-theme='oriental'],
-.bst-theme-root[data-theme='oriental'] .bst-navbar {
-  border-bottom-color: #D4B896 !important;
-}
-
 .bst-navbar[data-theme='oriental'] .bst-navbar__link:hover,
 .bst-theme-root[data-theme='oriental'] .bst-navbar__link:hover {
-  background-color: rgba(250, 84, 28, 0.08);
+  background-color: rgba(var(--bst-primary-rgb), 0.08);
 }
 
 /* ─── Responsive ───────────────────────────────────────────── */

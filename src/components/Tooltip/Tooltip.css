@@ -14,13 +14,13 @@
   transform: translateX(-50%) translateY(4px);
   
   padding: 6px 12px;
-  background-color: var(--bst-bg-elevated, #ffffff);
-  color: var(--bst-text, #111827);
-  border: 1px solid var(--bst-border, #e5e7eb);
-  border-radius: var(--bst-radius, 6px);
+  background-color: var(--bst-bg-elevated);
+  color: var(--bst-text);
+  border: 1px solid var(--bst-border);
+  border-radius: var(--bst-radius);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   
-  font-family: var(--bst-font-family, sans-serif);
+  font-family: var(--bst-font-family);
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
@@ -44,7 +44,7 @@
   transform: translateX(-50%);
   border-width: 5px;
   border-style: solid;
-  border-color: var(--bst-border, #e5e7eb) transparent transparent transparent;
+  border-color: var(--bst-border) transparent transparent transparent;
 }
 
 /* ─── Inner Triangle (Background) ─── */
@@ -56,7 +56,7 @@
   transform: translateX(-50%);
   border-width: 4px;
   border-style: solid;
-  border-color: var(--bst-bg-elevated, #ffffff) transparent transparent transparent;
+  border-color: var(--bst-bg-elevated) transparent transparent transparent;
   z-index: 1;
   margin-top: -1px; /* Pull it slightly up to cover the outer border */
 }

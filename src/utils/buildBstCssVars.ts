@@ -23,5 +23,8 @@ export function buildBstCssVars(token: GlobalToken): Record<string, string> {
     '--bst-radius': `${token.borderRadius}px`,
     '--bst-font-family': token.fontFamily,
     '--bst-error': token.colorError,
+    '--bst-success': token.colorSuccess,
+    '--bst-warning': token.colorWarning,
+    '--bst-info': token.colorInfo,
   };
 }

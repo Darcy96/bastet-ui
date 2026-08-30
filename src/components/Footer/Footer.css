@@ -4,7 +4,7 @@
 
 .bst-footer {
   width: 100%;
-  border-top: 1px solid;
+  border-top: 1px solid var(--bst-border);
   padding: 32px 24px;
 
   transition:
@@ -73,23 +73,18 @@
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
-.bst-footer[data-theme='pink'],
-.bst-theme-root[data-theme='pink'] .bst-footer {
-  border-top-color: #FFC1D0 !important;
-}
 
 .bst-footer[data-theme='pink'] .bst-footer__social-link:hover,
 .bst-theme-root[data-theme='pink'] .bst-footer .bst-footer__social-link:hover {
-  background-color: rgba(255, 105, 180, 0.12);
+  background-color: rgba(var(--bst-primary-rgb), 0.12);
   transform: scale(1.1) translateY(-2px);
-  box-shadow: 0 4px 14px rgba(255, 105, 180, 0.3);
+  box-shadow: 0 4px 14px rgba(var(--bst-primary-rgb), 0.3);
 }
 
 /* ─── 🤘 Black Metal Theme ────────────────────────────────── */
 .bst-footer[data-theme='black-metal'],
 .bst-theme-root[data-theme='black-metal'] .bst-footer {
   border-top-width: 2px;
-  border-top-color: #F0EAD6 !important;
 }
 
 .bst-footer[data-theme='black-metal'] .bst-footer__social-link,
@@ -99,8 +94,8 @@
 
 .bst-footer[data-theme='black-metal'] .bst-footer__social-link:hover,
 .bst-theme-root[data-theme='black-metal'] .bst-footer .bst-footer__social-link:hover {
-  background-color: rgba(240, 234, 214, 0.1);
-  box-shadow: 0 0 12px rgba(240, 234, 214, 0.25);
+  background-color: rgba(var(--bst-primary-rgb), 0.1);
+  box-shadow: 0 0 12px rgba(var(--bst-primary-rgb), 0.25);
   transform: none;
 }
 
@@ -112,13 +107,9 @@
 }
 
 /* ─── 🏯 Oriental Theme ───────────────────────────────────── */
-.bst-footer[data-theme='oriental'],
-.bst-theme-root[data-theme='oriental'] .bst-footer {
-  border-top-color: #D4B896 !important;
-}
 
 .bst-footer[data-theme='oriental'] .bst-footer__social-link:hover,
 .bst-theme-root[data-theme='oriental'] .bst-footer .bst-footer__social-link:hover {
-  background-color: rgba(250, 84, 28, 0.08);
-  box-shadow: 0 3px 10px rgba(250, 84, 28, 0.2);
+  background-color: rgba(var(--bst-primary-rgb), 0.08);
+  box-shadow: 0 3px 10px rgba(var(--bst-primary-rgb), 0.2);
 }
