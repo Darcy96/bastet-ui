@@ -70,12 +70,8 @@ const blackMetalTheme: ThemeConfig = {
     colorBorder: '#F0EAD6',        // Bone white border
     borderRadius: 0,              // Sharp 0px corners
     fontFamily: "'UnifrakturMaguntia', 'Cinzel Decorative', serif",
-  },
-  components: {
-    Button: {
-      colorPrimaryHover: '#F0EAD6',
-      colorPrimaryActive: '#D9D3C3',
-    },
+    colorPrimaryHover: '#F0EAD6',
+    colorPrimaryActive: '#D9D3C3',
   },
 };
 
@@ -108,11 +104,11 @@ const whiteCityTheme: ThemeConfig = {
     colorBorder: '#E8E5E1',        // Piedra sutil
     borderRadius: 4,              // Bordes ligeramente suavizados (simula la imperfección de la arquitectura colonial)
     fontFamily: "'Cinzel', 'Playfair Display', 'Georgia', serif", // Tipografía elegante y con serifa histórica
+    colorPrimaryHover: '#D94941', // Lighter and more vibrant for hover
+    colorPrimaryActive: '#A1322E', // Darker variant for active click
   },
   components: {
     Button: {
-      colorPrimaryHover: '#BA5333', // Variante más oscura de la teja al hacer hover
-      colorPrimaryActive: '#A84628', // Variante intensa al hacer clic
       colorTextLightSolid: '#FFFFFF', // Texto blanco puro dentro de botones sólidos
     },
     Card: {

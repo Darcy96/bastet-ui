@@ -156,6 +156,7 @@ function getVariantStyles(
           borderColor: t.colorError,
           ['--bst-btn-hover-bg' as string]: DANGER_HOVER,
           ['--bst-btn-hover-border' as string]: DANGER_HOVER,
+          ['--bst-btn-hover-color' as string]: CONTRAST_LIGHT,
           ['--bst-btn-active-bg' as string]: DANGER_ACTIVE,
         };
     }
@@ -166,11 +167,12 @@ function getVariantStyles(
       case 'primary':
         return {
           backgroundColor: t.colorPrimary,
-          color: '#FAF9F6', // whiteCityTheme.components.Button.colorTextLightSolid
+          color: t.colorTextLightSolid || '#FAF9F6',
           borderColor: t.colorPrimary,
-          ['--bst-btn-hover-bg' as string]: '#A1322E',
-          ['--bst-btn-hover-border' as string]: '#A1322E',
-          ['--bst-btn-active-bg' as string]: '#6B1D1A',
+          ['--bst-btn-hover-bg' as string]: t.colorPrimaryHover,
+          ['--bst-btn-hover-border' as string]: t.colorPrimaryHover,
+          ['--bst-btn-hover-color' as string]: t.colorTextLightSolid || '#FAF9F6',
+          ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
         };
 
       case 'secondary':
@@ -199,6 +201,7 @@ function getVariantStyles(
           borderColor: t.colorError,
           ['--bst-btn-hover-bg' as string]: t.colorErrorHover,
           ['--bst-btn-hover-border' as string]: t.colorErrorHover,
+          ['--bst-btn-hover-color' as string]: '#FAF9F6',
           ['--bst-btn-active-bg' as string]: t.colorErrorActive,
         };
     }
@@ -210,8 +213,9 @@ function getVariantStyles(
         backgroundColor: t.colorPrimary,
         color: CONTRAST_LIGHT,
         borderColor: t.colorPrimary,
-        ['--bst-btn-hover-bg' as string]: t.colorPrimaryHover,
-        ['--bst-btn-hover-border' as string]: t.colorPrimaryHover,
+        ['--bst-btn-hover-bg' as string]: t.colorPrimary,
+        ['--bst-btn-hover-border' as string]: t.colorPrimary,
+        ['--bst-btn-hover-color' as string]: CONTRAST_LIGHT,
         ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
       };
 
@@ -241,6 +245,7 @@ function getVariantStyles(
         borderColor: t.colorError,
         ['--bst-btn-hover-bg' as string]: t.colorErrorHover,
         ['--bst-btn-hover-border' as string]: t.colorErrorHover,
+        ['--bst-btn-hover-color' as string]: CONTRAST_LIGHT,
         ['--bst-btn-active-bg' as string]: t.colorErrorActive,
       };
   }
