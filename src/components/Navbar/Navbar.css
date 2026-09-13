@@ -133,6 +133,19 @@
   background-color: rgba(var(--bst-primary-rgb), 0.08);
 }
 
+/* ─── 🏛️ White City Theme ───────────────────────────────────── */
+.bst-navbar[data-theme='white-city'] .bst-navbar__brand-text,
+.bst-theme-root[data-theme='white-city'] .bst-navbar__brand-text {
+  font-family: 'Cinzel', 'Playfair Display', 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.bst-navbar[data-theme='white-city'] .bst-navbar__link:hover,
+.bst-theme-root[data-theme='white-city'] .bst-navbar__link:hover {
+  background-color: rgba(var(--bst-primary-rgb), 0.06);
+}
+
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
   .bst-navbar__inner {

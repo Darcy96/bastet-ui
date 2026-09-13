@@ -247,6 +247,7 @@
 .bst-exp-timeline[data-layout="vertical"] .bst-exp-timeline__item:has(.bst-exp-timeline__card:hover)::after {
   background-color: var(--bst-primary);
   width: 32px;
+  height: 2px;
 }
 
 .bst-exp-timeline[data-layout="vertical"] .bst-exp-timeline__dot {
@@ -337,6 +338,7 @@
   .bst-exp-timeline[data-layout="auto"] .bst-exp-timeline__item:has(.bst-exp-timeline__card:hover)::after {
     background-color: var(--bst-primary);
     width: 32px;
+    height: 2px;
   }
 
   .bst-exp-timeline[data-layout="auto"] .bst-exp-timeline__dot {

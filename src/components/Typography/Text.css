@@ -1,0 +1,62 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Text Typography
+   ═══════════════════════════════════════════════════════════════ */
+
+.bst-text {
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.6;
+  color: var(--bst-text);
+  transition: color 0.3s ease;
+}
+
+.bst-text--inline {
+  margin-bottom: 0;
+}
+
+/* ─── Variants ───────────────────────────────────────────────── */
+
+.bst-text--default { color: var(--bst-text); }
+.bst-text--secondary { color: var(--bst-text-secondary); }
+.bst-text--primary { color: var(--bst-primary); }
+.bst-text--success { color: var(--bst-success); }
+.bst-text--warning { color: var(--bst-warning); }
+.bst-text--error { color: var(--bst-error); }
+
+/* ─── Sizes ──────────────────────────────────────────────────── */
+
+.bst-text--sm { font-size: 0.875rem; }
+.bst-text--md { font-size: 1rem; }
+.bst-text--lg { font-size: 1.125rem; }
+
+/* ─── Weights ────────────────────────────────────────────────── */
+
+.bst-text--weight-normal { font-weight: 400; }
+.bst-text--weight-medium { font-weight: 500; }
+.bst-text--weight-bold { font-weight: 700; }
+
+/* ─── Alignments ─────────────────────────────────────────────── */
+
+.bst-text--align-left { text-align: left; }
+.bst-text--align-center { text-align: center; }
+.bst-text--align-right { text-align: right; }
+.bst-text--align-justify { text-align: justify; }
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME SPECIFIC STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 🤘 Black Metal ─────────────────────────────────────────── */
+.bst-text[data-theme="black-metal"],
+.bst-theme-root[data-theme="black-metal"] .bst-text {
+  /* Slightly tighter line-height for the gothic feel */
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ─── 🏛️ White City (Colonial) ───────────────────────────────── */
+.bst-text[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .bst-text {
+  line-height: 1.7; /* Extra readable for serif fonts */
+  letter-spacing: 0.01em;
+}

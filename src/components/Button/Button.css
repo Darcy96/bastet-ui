@@ -112,6 +112,14 @@
   transition-duration: 75ms;
 }
 
+/* ─── 🏛️ White City Theme Micro-Interactions ──────────────────── */
+/* Hover: Elegant subtle lift */
+.bst-button[data-theme='white-city']:hover:not(:disabled),
+.bst-theme-root[data-theme='white-city'] .bst-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--bst-primary-rgb), 0.2);
+}
+
 /* ─── Focus Visible ────────────────────────────────────────── */
 .bst-button:focus-visible {
   outline: 2px solid currentColor;

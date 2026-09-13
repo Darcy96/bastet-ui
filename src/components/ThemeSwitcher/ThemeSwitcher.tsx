@@ -31,6 +31,7 @@ const themeLabels: Record<ThemeName, { emoji: string; label: string }> = {
   oriental:     { emoji: '🏯', label: 'Oriental' },
   'black-metal': { emoji: '🤘', label: 'Black Metal' },
   pink:         { emoji: '💖', label: 'Pink' },
+  'white-city': { emoji: '🏛️', label: 'Ciudad Blanca' },
 };
 
 // ─── Size Map ─────────────────────────────────────────────────

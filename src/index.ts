@@ -18,6 +18,9 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button
 export { ThemeSwitcher } from './components/ThemeSwitcher';
 export type { ThemeSwitcherProps, ThemeSwitcherSize } from './components/ThemeSwitcher';
 
+// Typography
+export * from './components/Typography';
+
 export { LanguageSwitcher } from './components/LanguageSwitcher';
 export type { LanguageSwitcherProps, LanguageOption, LanguageSwitcherSize } from './components/LanguageSwitcher';
 

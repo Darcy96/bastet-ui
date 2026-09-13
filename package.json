@@ -12,7 +12,7 @@
       "import": "./dist/bastet-ui.es.js",
       "require": "./dist/bastet-ui.cjs.js"
     },
-    "./styles": "./dist/bastet-ui.css"
+    "./styles.css": "./dist/bastet-ui.css"
   },
   "files": [
     "dist"

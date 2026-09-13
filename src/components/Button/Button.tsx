@@ -161,6 +161,49 @@ function getVariantStyles(
     }
   }
 
+  if (themeName === 'white-city') {
+    switch (variant) {
+      case 'primary':
+        return {
+          backgroundColor: t.colorPrimary,
+          color: '#FAF9F6', // whiteCityTheme.components.Button.colorTextLightSolid
+          borderColor: t.colorPrimary,
+          ['--bst-btn-hover-bg' as string]: '#A1322E',
+          ['--bst-btn-hover-border' as string]: '#A1322E',
+          ['--bst-btn-active-bg' as string]: '#6B1D1A',
+        };
+
+      case 'secondary':
+        return {
+          backgroundColor: t.colorBgContainer,
+          color: t.colorText,
+          borderColor: t.colorBorder,
+          ['--bst-btn-hover-bg' as string]: t.colorBgContainer,
+          ['--bst-btn-hover-border' as string]: t.colorPrimary,
+          ['--bst-btn-hover-color' as string]: t.colorPrimary,
+        };
+
+      case 'ghost':
+        return {
+          backgroundColor: 'transparent',
+          color: t.colorPrimary,
+          borderColor: 'transparent',
+          ['--bst-btn-hover-bg' as string]: `${t.colorPrimary}12`,
+          ['--bst-btn-hover-border' as string]: 'transparent',
+        };
+
+      case 'danger':
+        return {
+          backgroundColor: t.colorError,
+          color: '#FAF9F6',
+          borderColor: t.colorError,
+          ['--bst-btn-hover-bg' as string]: t.colorErrorHover,
+          ['--bst-btn-hover-border' as string]: t.colorErrorHover,
+          ['--bst-btn-active-bg' as string]: t.colorErrorActive,
+        };
+    }
+  }
+
   switch (variant) {
     case 'primary':
       return {

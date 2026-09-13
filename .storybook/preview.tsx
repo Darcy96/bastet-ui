@@ -12,6 +12,7 @@ const THEME_OPTIONS: Record<ThemeName, string> = {
   oriental: '🏯 Oriental',
   'black-metal': '🤘 Black Metal',
   pink: '💖 Pink',
+  'white-city': '🏛️ Ciudad Blanca',
 };
 
 const preview: Preview = {

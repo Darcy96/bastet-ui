@@ -95,6 +95,32 @@ const pinkTheme: ThemeConfig = {
   },
 };
 
+// ─── Popayán Ciudad Blanca (Estilo Colonial Tradicional) ─────────────────────
+const whiteCityTheme: ThemeConfig = {
+  algorithm: theme.defaultAlgorithm, // Algoritmo claro para hacer honor a la "Ciudad Blanca"
+  token: {
+    colorPrimary: '#C25E3E',      // Teja Colonial (Terracota)
+    colorSuccess: '#3B6B35',      // Verde Montaña
+    colorWarning: '#ECA62A',      // Oro Catedral
+    colorError: '#A22325',        // Rojo Colonial Intenso
+    colorBgBase: '#FFFFFF',        // Blanco Óptico (Fachadas limpias)
+    colorTextBase: '#1F2326',      // Hierro Forjado (Gris muy oscuro)
+    colorBorder: '#E8E5E1',        // Piedra sutil
+    borderRadius: 4,              // Bordes ligeramente suavizados (simula la imperfección de la arquitectura colonial)
+    fontFamily: "'Cinzel', 'Playfair Display', 'Georgia', serif", // Tipografía elegante y con serifa histórica
+  },
+  components: {
+    Button: {
+      colorPrimaryHover: '#BA5333', // Variante más oscura de la teja al hacer hover
+      colorPrimaryActive: '#A84628', // Variante intensa al hacer clic
+      colorTextLightSolid: '#FFFFFF', // Texto blanco puro dentro de botones sólidos
+    },
+    Card: {
+      colorBgContainer: '#FFFFFF', // Blanco puro para los contenedores principales para contrastar con el fondo cal
+    },
+  },
+};
+
 // ─── Theme Registry ───────────────────────────────────────────
 
 export const themes = {
@@ -103,6 +129,7 @@ export const themes = {
   oriental: orientalTheme,
   'black-metal': blackMetalTheme,
   pink: pinkTheme,
+  'white-city': whiteCityTheme,
 } as const;
 
 export type ThemeName = keyof typeof themes;

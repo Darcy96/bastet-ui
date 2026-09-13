@@ -113,3 +113,11 @@
   background-color: rgba(var(--bst-primary-rgb), 0.08);
   box-shadow: 0 3px 10px rgba(var(--bst-primary-rgb), 0.2);
 }
+
+/* ─── 🏛️ White City Theme ───────────────────────────────────── */
+
+.bst-footer[data-theme='white-city'] .bst-footer__social-link:hover,
+.bst-theme-root[data-theme='white-city'] .bst-footer .bst-footer__social-link:hover {
+  background-color: rgba(var(--bst-primary-rgb), 0.06);
+  box-shadow: 0 4px 12px rgba(var(--bst-primary-rgb), 0.15);
+}
