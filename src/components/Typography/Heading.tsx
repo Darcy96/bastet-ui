@@ -43,7 +43,7 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
 
     return (
       <Component
-        ref={ref as any}
+        ref={ref as React.Ref<HTMLHeadingElement>}
         className={classNames}
         data-theme={themeName}
         style={{

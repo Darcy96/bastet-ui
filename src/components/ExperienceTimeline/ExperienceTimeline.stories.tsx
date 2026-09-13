@@ -104,7 +104,7 @@ const mockItems: ExperienceItem[] = [
   }
 ];
 
-const sharedRender = (args: any) => {
+const sharedRender = (args: React.ComponentProps<typeof ExperienceTimeline>) => {
   const [globals] = useGlobals();
   const activeTheme = (globals['bstTheme'] || 'light') as ThemeName;
 

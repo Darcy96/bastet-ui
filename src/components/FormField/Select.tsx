@@ -38,17 +38,17 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const fieldId = id || (label ? `bst-select-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
 
     // Internal state to sync AntSelect with the native select
-    const [internalValue, setInternalValue] = useState<string | number | readonly string[] | undefined>(
-      value !== undefined ? value : (defaultValue !== undefined ? defaultValue : undefined)
+    const [internalValue, setInternalValue] = useState<string | undefined>(
+      (value as string) !== undefined ? (value as string) : ((defaultValue as string) !== undefined ? (defaultValue as string) : undefined)
     );
 
     useEffect(() => {
       if (value !== undefined) {
-        setInternalValue(value);
+        setInternalValue(value as string);
       }
     }, [value]);
 
-    const handleAntChange = (val: any) => {
+    const handleAntChange = (val: string) => {
       if (value === undefined) {
         setInternalValue(val);
       }
@@ -89,7 +89,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           id={fieldId}
           value={internalValue || undefined}
           onChange={handleAntChange}
-          onBlur={rest.onBlur as any}
+          onBlur={rest.onBlur as React.FocusEventHandler<HTMLElement> | undefined}
           options={options}
           placeholder={placeholder}
           status={error ? 'error' : undefined}
