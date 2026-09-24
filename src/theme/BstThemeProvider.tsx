@@ -8,10 +8,13 @@ import { buildBstCssVars } from '../utils/buildBstCssVars';
 interface BstThemeContextValue {
   /** Current active theme name */
   themeName: ThemeName;
+  /** Current performance mode */
+  performanceMode: 'auto' | 'always' | 'never';
 }
 
 const BstThemeContext = createContext<BstThemeContextValue>({
   themeName: 'light',
+  performanceMode: 'auto',
 });
 
 // ─── Provider ─────────────────────────────────────────────────
@@ -19,12 +22,14 @@ const BstThemeContext = createContext<BstThemeContextValue>({
 export interface BstThemeProviderProps {
   /** Theme preset to apply. Defaults to 'light'. */
   theme?: ThemeName;
+  /** Efficiency mode to disable heavy animations. Defaults to 'auto' (respects OS). */
+  performanceMode?: 'auto' | 'always' | 'never';
   children: React.ReactNode;
 }
 
 // ─── Internal Theme Root ────────────────────────────────────────
 
-function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, safeThemeName: string }) {
+function BstThemeRoot({ children, safeThemeName, performanceMode }: { children: React.ReactNode, safeThemeName: string, performanceMode: string }) {
   const { token } = theme.useToken();
 
   const containerStyle = useMemo<React.CSSProperties>(() => ({
@@ -37,7 +42,7 @@ function BstThemeRoot({ children, safeThemeName }: { children: React.ReactNode, 
   } as React.CSSProperties), [token]);
 
   return (
-    <div className="bst-theme-root" data-theme={safeThemeName} style={containerStyle}>
+    <div className="bst-theme-root" data-theme={safeThemeName} data-bst-reduce-motion={performanceMode} style={containerStyle}>
       {children}
     </div>
   );
@@ -54,6 +59,7 @@ import { ToastProvider } from '../components/Toast';
  */
 export function BstThemeProvider({
   theme: themeName = 'light',
+  performanceMode = 'auto',
   children,
 }: BstThemeProviderProps) {
   // Fallback to light if an invalid or old cached theme name is passed
@@ -61,14 +67,14 @@ export function BstThemeProvider({
   const safeThemeName = themes[themeName] ? themeName : 'light';
 
   const contextValue = useMemo<BstThemeContextValue>(
-    () => ({ themeName: safeThemeName }),
-    [safeThemeName],
+    () => ({ themeName: safeThemeName, performanceMode }),
+    [safeThemeName, performanceMode],
   );
 
   return (
     <BstThemeContext.Provider value={contextValue}>
       <ConfigProvider theme={themeConfig}>
-        <BstThemeRoot safeThemeName={safeThemeName}>
+        <BstThemeRoot safeThemeName={safeThemeName} performanceMode={performanceMode}>
           <ToastProvider>
             {children}
           </ToastProvider>
@@ -93,11 +99,12 @@ export function BstThemeProvider({
  * ```
  */
 export function useBstTheme() {
-  const { themeName } = useContext(BstThemeContext);
+  const { themeName, performanceMode } = useContext(BstThemeContext);
   const { token } = theme.useToken();
 
   return {
     themeName,
+    performanceMode,
     token,
   };
 }

@@ -41,13 +41,25 @@ body {
   outline-offset: 2px;
 }
 
-/* ─── Media Preference: Reduced Motion ─────────────────────── */
+/* ─── Media Preference & Data Attribute: Reduced Motion ────── */
+/* 1. Explicit 'always' mode */
+[data-bst-reduce-motion="always"] *,
+[data-bst-reduce-motion="always"] *::before,
+[data-bst-reduce-motion="always"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* 2. 'auto' mode respecting OS preference */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  [data-bst-reduce-motion="auto"] *,
+  [data-bst-reduce-motion="auto"] *::before,
+  [data-bst-reduce-motion="auto"] *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

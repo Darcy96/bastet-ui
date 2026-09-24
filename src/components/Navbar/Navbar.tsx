@@ -28,6 +28,8 @@ export interface NavbarProps {
   renderLink?: (link: NavbarLink, className: string, style: React.CSSProperties) => React.ReactNode;
   /** Slot for injecting the LanguageSwitcher component */
   languageSwitcherSlot?: React.ReactNode;
+  /** Slot for injecting a Performance/Eco mode toggle */
+  performanceToggleSlot?: React.ReactNode;
   /** If true, the navbar sticks to the top of the viewport */
   sticky?: boolean;
   /** Additional CSS class */
@@ -69,6 +71,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       themeSwitcherVariant = 'dropdown',
       renderLink,
       languageSwitcherSlot,
+      performanceToggleSlot,
       sticky = false,
       className,
       style,
@@ -149,6 +152,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
 
           {/* Actions */}
           <div className="bst-navbar__actions">
+            {performanceToggleSlot}
             {languageSwitcherSlot}
             {onThemeChange && (
               <ThemeSwitcher

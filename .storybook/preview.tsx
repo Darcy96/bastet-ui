@@ -30,18 +30,34 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    performanceMode: {
+      name: 'Performance Mode',
+      description: 'Toggle ECO/GFX performance mode',
+      toolbar: {
+        title: 'Performance',
+        icon: 'lightning',
+        items: [
+          { value: 'auto', title: '⚙️ Auto (OS/Network)' },
+          { value: 'never', title: '✨ GFX (Animations ON)' },
+          { value: 'always', title: '⚡ ECO (Animations OFF)' },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
 
   initialGlobals: {
     bstTheme: 'light' as ThemeName,
+    performanceMode: 'auto',
   },
 
   decorators: [
     (Story, context) => {
       const selectedTheme = (context.globals.bstTheme || 'light') as ThemeName;
+      const perfMode = (context.globals.performanceMode || 'auto') as 'auto' | 'always' | 'never';
 
       return (
-        <BstThemeProvider theme={selectedTheme}>
+        <BstThemeProvider theme={selectedTheme} performanceMode={perfMode}>
           <div
             style={{
               padding: 24,
