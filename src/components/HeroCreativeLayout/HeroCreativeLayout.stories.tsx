@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useGlobals } from 'storybook/preview-api';
 import type { ThemeName } from '../../theme/tokens';
 import { Button } from '../Button';
+import { Card, CardBody } from '../Card';
+import { Heading, Text } from '../Typography';
 import { Navbar } from '../Navbar';
 import { HeroCreativeLayout } from './HeroCreativeLayout';
 
@@ -36,17 +38,17 @@ const SampleNavbar = ({ activeTheme, onThemeChange }: { activeTheme: ThemeName; 
 );
 
 const TitleBlock = () => (
-  <h1>
+  <Heading level={1}>
     Construye tu <span className="bst-highlight">Visión</span>
-  </h1>
+  </Heading>
 );
 
 const DescriptionBlock = () => (
-  <p>
+  <Text size="lg">
     Bienvenido a un lienzo en blanco. Este layout flexible permite 
     diseñar interfaces fluidas donde el fondo, la navegación y las 
     tarjetas orgánicas conviven armónicamente consumiendo las variables CSS globales.
-  </p>
+  </Text>
 );
 
 const ActionsBlock = () => (
@@ -72,25 +74,29 @@ const VisualBlockSandbox = () => (
       }}
     />
     
-    <div 
-      className="bst-floating-card"
+    <Card
+      hoverable
       style={{ position: 'absolute', top: '20%', left: '10%', width: '240px', zIndex: 2 }}
     >
-      <h3 style={{ marginTop: 0, color: 'var(--bst-primary)' }}>Integración Perfecta</h3>
-      <p style={{ fontSize: '0.875rem', opacity: 0.8, marginBottom: 0 }}>
-        Esta tarjeta lee --bst-bg y --bst-border.
-      </p>
-    </div>
+      <CardBody>
+        <Heading level={3} highlight noMargin>Integración Perfecta</Heading>
+        <Text size="sm" variant="secondary" noMargin>
+          Esta tarjeta lee --bst-bg y --bst-border.
+        </Text>
+      </CardBody>
+    </Card>
 
-    <div 
-      className="bst-floating-card"
+    <Card
+      hoverable
       style={{ position: 'absolute', bottom: '15%', right: '5%', width: '260px', zIndex: 3, borderRadius: 'calc(var(--bst-radius) * 2)' }}
     >
-      <h3 style={{ marginTop: 0 }}>Diseño Líquido</h3>
-      <p style={{ fontSize: '0.875rem', opacity: 0.8, marginBottom: 0 }}>
-        Observa cómo se adaptan las formas.
-      </p>
-    </div>
+      <CardBody>
+        <Heading level={3} noMargin>Diseño Líquido</Heading>
+        <Text size="sm" variant="secondary" noMargin>
+          Observa cómo se adaptan las formas.
+        </Text>
+      </CardBody>
+    </Card>
   </div>
 );
 
@@ -120,17 +126,25 @@ export const Default: Story = {
           <div key="desc" style={{ padding: '0 24px', textAlign: 'center' }}>
             <DescriptionBlock />
           </div>,
-          <div key="card1" className="bst-floating-card" style={{ width: '260px', margin: '0 auto' }}>
-            <h3 style={{ marginTop: 0, color: 'var(--bst-primary)' }}>Integración Perfecta</h3>
-            <p style={{ fontSize: '0.875rem', opacity: 0.8, marginBottom: 0 }}>
-              Esta tarjeta lee --bst-bg y --bst-border.
-            </p>
+          <div key="card1" style={{ width: '260px', margin: '0 auto' }}>
+            <Card hoverable>
+              <CardBody>
+                <Heading level={3} highlight noMargin>Integración Perfecta</Heading>
+                <Text size="sm" variant="secondary" noMargin>
+                  Esta tarjeta lee --bst-bg y --bst-border.
+                </Text>
+              </CardBody>
+            </Card>
           </div>,
-          <div key="card2" className="bst-floating-card" style={{ width: '260px', margin: '0 auto', borderRadius: 'calc(var(--bst-radius) * 2)' }}>
-            <h3 style={{ marginTop: 0 }}>Diseño Líquido</h3>
-            <p style={{ fontSize: '0.875rem', opacity: 0.8, marginBottom: 0 }}>
-              Observa cómo se adaptan las formas.
-            </p>
+          <div key="card2" style={{ width: '260px', margin: '0 auto' }}>
+            <Card hoverable style={{ borderRadius: 'calc(var(--bst-radius) * 2)' }}>
+              <CardBody>
+                <Heading level={3} noMargin>Diseño Líquido</Heading>
+                <Text size="sm" variant="secondary" noMargin>
+                  Observa cómo se adaptan las formas.
+                </Text>
+              </CardBody>
+            </Card>
           </div>
         ]}
       />

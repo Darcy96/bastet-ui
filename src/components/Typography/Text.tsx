@@ -17,6 +17,8 @@ export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement | H
   align?: 'left' | 'center' | 'right' | 'justify';
   /** If true, renders a <span> instead of a <p> */
   inline?: boolean;
+  /** Removes default margin */
+  noMargin?: boolean;
 }
 
 export const Text = React.forwardRef<HTMLElement, TextProps>(
@@ -27,6 +29,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
       weight = 'normal',
       align,
       inline = false,
+      noMargin = false,
       className,
       style,
       children,
@@ -44,6 +47,7 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
       styles[`weight${weight.charAt(0).toUpperCase() + weight.slice(1)}`],
       align && styles[`align${align.charAt(0).toUpperCase() + align.slice(1)}`],
       inline && styles.inline,
+      noMargin && styles.noMargin,
       className,
     ]
       .filter(Boolean)

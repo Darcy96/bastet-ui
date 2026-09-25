@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useBstTheme } from '../../theme';
 import { Modal } from '../Modal';
-import { Card } from '../Card';
+import { Card, CardBody } from '../Card';
 import { Badge } from '../Badge';
 import { Heading, Text } from '../Typography';
 import styles from './ExperienceTimeline.module.css';
@@ -72,20 +72,22 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
                   }
                 }}
               >
-                <Text size="sm" variant="secondary" weight="bold" className={styles.date}>{item.date}</Text>
-                <Heading level={3} noMargin className={styles.role}>{item.role}</Heading>
-                <Heading level={4} noMargin className={styles.company}>{item.company}</Heading>
-                <Text size="sm" variant="secondary" className={styles.location}>{item.location}</Text>
+                <CardBody>
+                  <Text size="sm" variant="secondary" weight="bold" className={styles.date}>{item.date}</Text>
+                  <Heading level={3} noMargin className={styles.role}>{item.role}</Heading>
+                  <Heading level={4} noMargin className={styles.company}>{item.company}</Heading>
+                  <Text size="sm" variant="secondary" className={styles.location}>{item.location}</Text>
 
-                {item.stack && item.stack.length > 0 && (
-                  <div className={styles.stack}>
-                    {item.stack.map((tech) => (
-                      <Badge key={tech} variant="outline" size="sm" className={styles.badge}>
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
+                  {item.stack && item.stack.length > 0 && (
+                    <div className={styles.stack}>
+                      {item.stack.map((tech) => (
+                        <Badge key={tech} variant="outline" size="sm" className={styles.badge}>
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </CardBody>
               </Card>
             </div>
           ))}
