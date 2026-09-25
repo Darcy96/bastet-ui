@@ -28,7 +28,8 @@
     "lint": "tsc --noEmit",
     "test": "vitest",
     "test:run": "vitest run",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "chromatic": "chromatic"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -46,6 +47,7 @@
     "@typescript/typescript6": "^6.0.2",
     "@vitejs/plugin-react": "^6.0.5",
     "antd": "^6.5.4",
+    "chromatic": "^18.9.5",
     "jsdom": "^30.0.1",
     "react": "18",
     "react-dom": "18",
@@ -54,5 +56,6 @@
     "vite": "^8.2.1",
     "vite-plugin-dts": "^5.0.3",
     "vitest": "^4.1.10"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
