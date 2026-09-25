@@ -7,7 +7,7 @@
  * - ¿No renderiza nada si no hay items?
  */
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { Carousel } from './Carousel';
 
 // El Carousel no usa useBstTheme(), así que no necesita ThemeProvider 🎉

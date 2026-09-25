@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './Carousel.module.css';
 
 export interface CarouselProps {

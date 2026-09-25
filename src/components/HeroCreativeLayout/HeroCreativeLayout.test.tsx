@@ -5,9 +5,9 @@
  * que los slots se rendericen correctamente, no la lógica interna.
  */
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import { HeroCreativeLayout } from './HeroCreativeLayout';
+import { describe, expect, it } from 'vitest';
 import { BstThemeProvider } from '../../theme';
+import { HeroCreativeLayout } from './HeroCreativeLayout';
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<BstThemeProvider>{ui}</BstThemeProvider>);

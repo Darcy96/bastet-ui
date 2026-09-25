@@ -2,9 +2,9 @@
  * 🧪 Navbar — Tests Unitarios
  */
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import { Navbar } from './Navbar';
+import { describe, expect, it, vi } from 'vitest';
 import { BstThemeProvider } from '../../theme';
+import { Navbar } from './Navbar';
 import styles from './Navbar.module.css';
 
 const renderWithTheme = (ui: React.ReactElement) => {

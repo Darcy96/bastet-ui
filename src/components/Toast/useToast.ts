@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { ToastContext } from './ToastContext';
 import type { ToastOptions } from './ToastContext';
+import { ToastContext } from './ToastContext';
 
 /**
  * useToast

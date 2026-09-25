@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React, { useState } from 'react';
 import { useGlobals } from 'storybook/preview-api';
-import { Modal } from './Modal';
 import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+import { Modal } from './Modal';
 
 // Inner wrapper to map tokens to CSS variables
 const InnerWrapper = ({ children, theme }: { children: React.ReactNode, theme?: ThemeName }) => {

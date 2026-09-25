@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { ToastContainer } from './ToastContainer';
+import type { ToastContextValue, ToastItem, ToastOptions, ToastPosition, ToastType } from './ToastContext';
 import { ToastContext } from './ToastContext';
-import type { ToastItem, ToastPosition, ToastOptions, ToastType, ToastContextValue } from './ToastContext';
 
 // ─── Provider ─────────────────────────────────────────────────
 

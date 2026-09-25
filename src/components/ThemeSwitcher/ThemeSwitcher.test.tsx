@@ -6,10 +6,10 @@
  * - Marca el tema activo correctamente
  * - Llama al callback cuando se selecciona un tema
  */
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import { ThemeSwitcher } from './ThemeSwitcher';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { BstThemeProvider } from '../../theme';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<BstThemeProvider>{ui}</BstThemeProvider>);

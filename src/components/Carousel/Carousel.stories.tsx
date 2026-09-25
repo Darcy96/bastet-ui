@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useGlobals } from 'storybook/preview-api';
-import { Carousel } from './Carousel';
 import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+import { Carousel } from './Carousel';
 
 const StoryWrapper = ({ children }: { children: React.ReactNode }) => {
   const { themeName, token } = useBstTheme();

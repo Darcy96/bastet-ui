@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ToastProvider, useToast } from './index';
 import { Button } from '../Button';
+import { ToastProvider, useToast } from './index';
 
 // ═══════════════════════════════════════════════════════════════
 // Toast Stories

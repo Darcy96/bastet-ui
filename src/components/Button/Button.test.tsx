@@ -8,10 +8,10 @@
  * 💡 TIP: Lee cada test como una oración en inglés:
  *    "it renders children text" → "renderiza el texto de los hijos"
  */
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import { Button } from './Button';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import { BstThemeProvider } from '../../theme';
+import { Button } from './Button';
 
 /**
  * Función helper para envolver componentes en el ThemeProvider.

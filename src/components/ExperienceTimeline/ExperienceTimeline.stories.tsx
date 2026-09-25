@@ -1,9 +1,9 @@
-import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 import { useGlobals } from 'storybook/preview-api';
-import { ExperienceTimeline, type ExperienceItem } from './ExperienceTimeline';
 import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+import { ExperienceTimeline, type ExperienceItem } from './ExperienceTimeline';
 
 // Inner wrapper to map tokens to CSS variables
 const InnerWrapper = ({ children, theme }: { children: React.ReactNode, theme?: ThemeName }) => {

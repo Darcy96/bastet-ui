@@ -1,8 +1,8 @@
-import { useGlobals } from 'storybook/preview-api';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Navbar } from './Navbar';
-import type { NavbarLink } from './Navbar';
+import { useGlobals } from 'storybook/preview-api';
 import type { ThemeName } from '../../theme/tokens';
+import type { NavbarLink } from './Navbar';
+import { Navbar } from './Navbar';
 
 // ─── Sample Data ──────────────────────────────────────────────
 

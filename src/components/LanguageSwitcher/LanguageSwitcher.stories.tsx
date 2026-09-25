@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useGlobals } from 'storybook/preview-api';
-import { LanguageSwitcher } from './LanguageSwitcher';
 import { BstThemeProvider, useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 const StoryWrapper = ({ children }: { children: React.ReactNode }) => {
   const { themeName, token } = useBstTheme();

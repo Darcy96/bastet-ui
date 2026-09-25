@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Tooltip } from '../Tooltip';
 import styles from './CopyPill.module.css';
 

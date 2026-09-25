@@ -4,8 +4,6 @@ export type { ToastProviderProps } from './ToastProvider';
 export { useToast } from './useToast';
 
 export type {
-  ToastType,
-  ToastPosition,
   ToastItem,
-  ToastOptions,
+  ToastOptions, ToastPosition, ToastType
 } from './ToastContext';

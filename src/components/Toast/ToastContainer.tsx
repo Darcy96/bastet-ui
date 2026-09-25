@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { ToastItem, ToastPosition } from './ToastContext';
 import styles from './Toast.module.css';
+import type { ToastItem, ToastPosition } from './ToastContext';
 
 // ─── Icons ────────────────────────────────────────────────────
 

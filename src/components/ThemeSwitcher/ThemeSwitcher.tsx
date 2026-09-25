@@ -1,9 +1,9 @@
-import React from 'react';
-import { Dropdown, Button } from 'antd';
 import type { MenuProps } from 'antd';
+import { Button, Dropdown } from 'antd';
+import React from 'react';
 import { useBstTheme } from '../../theme';
-import { CONTRAST_DARK } from '../../utils/colors';
 import { themeNames, type ThemeName } from '../../theme/tokens';
+import { CONTRAST_DARK } from '../../utils/colors';
 import styles from './ThemeSwitcher.module.css';
 
 // ─── Types ────────────────────────────────────────────────────

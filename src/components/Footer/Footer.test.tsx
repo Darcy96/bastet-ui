@@ -2,9 +2,9 @@
  * 🧪 Footer — Tests Unitarios
  */
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
-import { Footer } from './Footer';
+import { describe, expect, it } from 'vitest';
 import { BstThemeProvider } from '../../theme';
+import { Footer } from './Footer';
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<BstThemeProvider>{ui}</BstThemeProvider>);
