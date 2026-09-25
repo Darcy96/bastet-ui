@@ -160,6 +160,20 @@
   border-radius: 0 0 var(--bst-radius, 8px) 0;
   transform-origin: left;
   opacity: 0.35;
+  animation-name: bst-toast-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+/* Change origin based on toast position (shrink towards the screen edge) */
+.toastContainer--top-right .progress,
+.toastContainer--bottom-right .progress {
+  transform-origin: right;
+}
+
+.toastContainer--top-left .progress,
+.toastContainer--bottom-left .progress {
+  transform-origin: left;
 }
 
 .success .progress { background: var(--bst-success); }

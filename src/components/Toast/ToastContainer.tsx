@@ -88,7 +88,7 @@ function ToastItemComponent({ toast, onRemove }: ToastItemProps) {
       <div
         className={styles.progress}
         style={{
-          animation: `bst-toast-progress ${toast.duration ?? 4000}ms linear forwards`,
+          animationDuration: `${toast.duration ?? 4000}ms`,
         }}
       />
     </div>
