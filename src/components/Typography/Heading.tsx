@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBstTheme } from '../../theme';
-import './Heading.css';
+import styles from './Heading.module.css';
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   /** Heading level: 1 to 6 */
@@ -31,11 +31,11 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     const Component = `h${level}` as React.ElementType;
 
     const classNames = [
-      'bst-heading',
-      `bst-heading--h${level}`,
-      highlight && 'bst-heading--highlight',
-      align && `bst-heading--align-${align}`,
-      noMargin && 'bst-heading--no-margin',
+      styles.heading,
+      styles[`h${level}`],
+      highlight && styles.highlight,
+      align && styles[`align${align.charAt(0).toUpperCase() + align.slice(1)}`],
+      noMargin && styles.noMargin,
       className,
     ]
       .filter(Boolean)

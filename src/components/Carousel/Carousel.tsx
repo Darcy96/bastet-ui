@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './Carousel.css';
+import styles from './Carousel.module.css';
 
 export interface CarouselProps {
   /** The list of React nodes to render as slides */
@@ -46,31 +46,31 @@ export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>(
     if (!items || items.length === 0) return null;
 
     const wrapperClasses = [
-      'bst-carousel-wrapper',
+      styles.carouselWrapper,
       className,
     ].filter(Boolean).join(' ');
 
     return (
       <div ref={ref} className={wrapperClasses} style={style}>
         <div 
-          className="bst-carousel" 
+          className={styles.carousel} 
           ref={carouselRef} 
           onScroll={handleScroll}
         >
           {items.map((item, idx) => (
-            <div key={idx} className="bst-carousel__slide">
+            <div key={idx} className={styles.slide}>
               {item}
             </div>
           ))}
         </div>
         
-        <div className="bst-carousel__dots" role="tablist">
+        <div className={styles.dots} role="tablist">
           {items.map((_, idx) => (
             <button
               key={idx}
               role="tab"
               aria-selected={idx === activeSlide}
-              className={`bst-carousel__dot ${idx === activeSlide ? 'bst-carousel__dot--active' : ''}`}
+              className={`${styles.dot} ${idx === activeSlide ? styles.dotActive : ''}`}
               onClick={() => scrollToSlide(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />

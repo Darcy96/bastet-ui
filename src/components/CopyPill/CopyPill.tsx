@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Tooltip } from '../Tooltip';
-import './CopyPill.css';
+import styles from './CopyPill.module.css';
 
 export interface CopyPillProps {
   /** El texto que se va a copiar y mostrar (o copiar silenciosamente si hay label) */
@@ -33,14 +33,14 @@ export function CopyPill({ value, label, onCopy, className = '' }: CopyPillProps
   return (
     <Tooltip content={label ? `Copiar: ${value}` : 'Copiar al portapapeles'}>
       <button
-        className={`bst-copy-pill ${copied ? 'bst-copy-pill--copied' : ''} ${className}`}
+        className={`${styles.copyPill} ${copied ? styles.copied : ''} ${className}`}
         onClick={handleCopy}
         type="button"
       >
-        <span className="bst-copy-pill__text">
+        <span className={styles.text}>
           {label || value}
         </span>
-        <span className="bst-copy-pill__icon">
+        <span className={styles.icon}>
         {copied ? (
           // Check icon (✓)
           <svg

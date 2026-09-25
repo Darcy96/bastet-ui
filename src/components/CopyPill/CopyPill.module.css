@@ -2,7 +2,7 @@
    Bastet UI — CopyPill Component
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-copy-pill {
+.copyPill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -20,19 +20,19 @@
 }
 
 /* Hover & Focus state consuming primary color */
-.bst-copy-pill:hover,
-.bst-copy-pill:focus-visible {
+.copyPill:hover,
+.copyPill:focus-visible {
   border-color: var(--bst-primary);
   color: var(--bst-primary);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.bst-copy-pill:active {
+.copyPill:active {
   transform: translateY(0);
 }
 
-.bst-copy-pill__text {
+.text {
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -40,7 +40,7 @@
   max-width: 250px;
 }
 
-.bst-copy-pill__icon {
+.icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,28 +48,28 @@
   transition: color 0.2s ease;
 }
 
-.bst-copy-pill:hover .bst-copy-pill__icon,
-.bst-copy-pill:focus-visible .bst-copy-pill__icon {
+.copyPill:hover .icon,
+.copyPill:focus-visible .icon {
   color: var(--bst-primary);
 }
 
 /* Copied State */
-.bst-copy-pill.bst-copy-pill--copied {
+.copyPill.copied {
   border-color: var(--bst-success);
   color: var(--bst-success);
   background: transparent;
 }
 
-.bst-copy-pill.bst-copy-pill--copied .bst-copy-pill__icon {
+.copyPill.copied .icon {
   color: var(--bst-success);
 }
 
-.bst-copy-pill.bst-copy-pill--copied:hover {
+.copyPill.copied:hover {
   transform: translateY(0);
   box-shadow: none;
 }
 
 /* Theme-specific overrides if needed */
-[data-theme="black-metal"] .bst-copy-pill {
+[data-theme="black-metal"] .copyPill {
   border-radius: 0; /* Match sharp corners of the theme */
 }

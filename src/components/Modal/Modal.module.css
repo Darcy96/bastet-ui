@@ -1,4 +1,4 @@
-.bst-modal-overlay {
+.overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -16,12 +16,12 @@
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.bst-modal-overlay--open {
+.open {
   opacity: 1;
   visibility: visible;
 }
 
-.bst-modal-content {
+.content {
   position: relative;
   width: 100%;
   max-width: 600px;
@@ -38,11 +38,11 @@
   padding: 32px;
 }
 
-.bst-modal-overlay--open .bst-modal-content {
+.open .content {
   transform: translateY(0) scale(1);
 }
 
-.bst-modal-close-btn {
+.closeBtn {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -62,19 +62,19 @@
   line-height: 1;
 }
 
-.bst-modal-close-btn:hover {
+.closeBtn:hover {
   background-color: var(--bst-primary);
   color: #fff;
 }
 
 /* Scrollbar styling for modal content */
-.bst-modal-content::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   width: 6px;
 }
-.bst-modal-content::-webkit-scrollbar-track {
+.content::-webkit-scrollbar-track {
   background: transparent;
 }
-.bst-modal-content::-webkit-scrollbar-thumb {
+.content::-webkit-scrollbar-thumb {
   background-color: var(--bst-border);
   border-radius: 10px;
 }

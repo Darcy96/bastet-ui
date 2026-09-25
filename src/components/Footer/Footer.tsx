@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBstTheme } from '../../theme';
-import './Footer.css';
+import styles from './Footer.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -75,7 +75,7 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
   ({ socials = [], copyright, children, className, style }, ref) => {
     const { themeName, token } = useBstTheme();
 
-    const footerClasses = ['bst-footer', className].filter(Boolean).join(' ');
+    const footerClasses = [styles.footer, className].filter(Boolean).join(' ');
 
     const footerStyle: React.CSSProperties = {
       fontFamily: token.fontFamily,
@@ -85,17 +85,17 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
 
     return (
       <footer ref={ref} className={footerClasses} data-theme={themeName} style={footerStyle}>
-        <div className="bst-footer__inner">
+        <div className={styles.inner}>
           {/* Social Links */}
           {socials.length > 0 && (
-            <div className="bst-footer__socials">
+            <div className={styles.socials}>
               {socials.map(({ platform, url }) => (
                 <a
                   key={platform}
                   href={url}
                   target={platform !== 'email' ? '_blank' : undefined}
                   rel={platform !== 'email' ? 'noopener noreferrer' : undefined}
-                  className="bst-footer__social-link"
+                  className={styles.socialLink}
                   aria-label={platform}
                   style={{
                     color: token.colorTextSecondary,
@@ -109,12 +109,12 @@ export const Footer = React.forwardRef<HTMLElement, FooterProps>(
           )}
 
           {/* Extra Content */}
-          {children && <div className="bst-footer__content">{children}</div>}
+          {children && <div className={styles.content}>{children}</div>}
 
           {/* Copyright */}
           {copyright && (
             <p
-              className="bst-footer__copyright"
+              className={styles.copyright}
               style={{ color: token.colorTextTertiary }}
             >
               {copyright}

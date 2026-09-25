@@ -3,7 +3,7 @@ import { Dropdown, Button } from 'antd';
 import type { MenuProps } from 'antd';
 import { useBstTheme } from '../../theme';
 import { CONTRAST_DARK } from '../../utils/colors';
-import './LanguageSwitcher.css';
+import styles from './LanguageSwitcher.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -64,8 +64,8 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
     const sizeValues = sizeMap[size];
 
     const groupClasses = [
-      'bst-lang-switcher',
-      `bst-lang-switcher--${size}`,
+      styles.langSwitcher,
+      styles[size],
       className,
     ]
       .filter(Boolean)
@@ -86,7 +86,7 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
       }));
 
       return (
-        <div ref={ref} className={`bst-lang-switcher-dropdown ${className || ''}`} data-theme={themeName}>
+        <div ref={ref} className={`${styles.langSwitcherDropdown} ${className || ''}`} data-theme={themeName}>
           <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
             <Button 
               style={{ 
@@ -146,8 +146,8 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
               aria-checked={isActive}
               aria-label={locale.label}
               className={[
-                'bst-lang-switcher__btn',
-                isActive && 'bst-lang-switcher__btn--active',
+                styles.btn,
+                isActive && styles.btnActive,
               ]
                 .filter(Boolean)
                 .join(' ')}
@@ -155,11 +155,11 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
               onClick={() => onLocaleChange(locale.value)}
             >
               {locale.icon && (
-                <span className="bst-lang-switcher__icon" aria-hidden="true">
+                <span className={styles.icon} aria-hidden="true">
                   {locale.icon}
                 </span>
               )}
-              <span className="bst-lang-switcher__label">{locale.label}</span>
+              <span className={styles.label}>{locale.label}</span>
             </button>
           );
         })}

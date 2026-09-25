@@ -2,7 +2,7 @@
    Bastet UI — Navbar Styles & Theme Micro-Interactions
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-navbar {
+.navbar {
   width: 100%;
   border-bottom: 1px solid var(--bst-border);
   backdrop-filter: blur(12px);
@@ -15,13 +15,13 @@
     box-shadow 200ms ease;
 }
 
-.bst-navbar--sticky {
+.navbar--sticky {
   position: sticky;
   top: 0;
 }
 
 /* ─── Inner Container ──────────────────────────────────────── */
-.bst-navbar__inner {
+.inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,13 +32,13 @@
 }
 
 /* ─── Brand ────────────────────────────────────────────────── */
-.bst-navbar__brand {
+.brand {
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 
-.bst-navbar__brand-text {
+.brandText {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -46,7 +46,7 @@
 }
 
 /* ─── Links ────────────────────────────────────────────────── */
-.bst-navbar__links {
+.links {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -55,7 +55,7 @@
   padding: 0;
 }
 
-.bst-navbar__link {
+.link {
   display: inline-block;
   padding: 6px 12px;
   font-size: 0.875rem;
@@ -69,18 +69,18 @@
     transform 150ms ease;
 }
 
-.bst-navbar__link:hover {
+.link:hover {
   color: var(--bst-nav-link-hover) !important;
   background-color: rgba(128, 128, 128, 0.08);
   transform: translateY(-1px);
 }
 
-.bst-navbar__link:active {
+.link:active {
   transform: translateY(0);
 }
 
 /* ─── Actions (ThemeSwitcher slot) ─────────────────────────── */
-.bst-navbar__actions {
+.actions {
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -88,73 +88,73 @@
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
-.bst-navbar[data-theme='pink'],
-.bst-theme-root[data-theme='pink'] .bst-navbar {
+.navbar[data-theme='pink'],
+:global(.bst-theme-root)[data-theme='pink'] .navbar {
   box-shadow: 0 2px 16px rgba(var(--bst-primary-rgb), 0.15);
 }
 
-.bst-navbar[data-theme='pink'] .bst-navbar__link:hover,
-.bst-theme-root[data-theme='pink'] .bst-navbar__link:hover {
+.navbar[data-theme='pink'] .link:hover,
+:global(.bst-theme-root)[data-theme='pink'] .link:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.1);
 }
 
 /* ─── 🤘 Black Metal Theme ────────────────────────────────── */
-.bst-navbar[data-theme='black-metal'],
-.bst-theme-root[data-theme='black-metal'] .bst-navbar {
+.navbar[data-theme='black-metal'],
+:global(.bst-theme-root)[data-theme='black-metal'] .navbar {
   border-bottom-width: 2px;
   backdrop-filter: none;
 }
 
-.bst-navbar[data-theme='black-metal'] .bst-navbar__brand-text,
-.bst-theme-root[data-theme='black-metal'] .bst-navbar__brand-text {
+.navbar[data-theme='black-metal'] .brandText,
+:global(.bst-theme-root)[data-theme='black-metal'] .brandText {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   font-size: 1.5rem;
   text-transform: lowercase;
   letter-spacing: 1px;
 }
 
-.bst-navbar[data-theme='black-metal'] .bst-navbar__link,
-.bst-theme-root[data-theme='black-metal'] .bst-navbar__link {
+.navbar[data-theme='black-metal'] .link,
+:global(.bst-theme-root)[data-theme='black-metal'] .link {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   text-transform: lowercase;
   letter-spacing: 0.5px;
   border-radius: 0;
 }
 
-.bst-navbar[data-theme='black-metal'] .bst-navbar__link:hover,
-.bst-theme-root[data-theme='black-metal'] .bst-navbar__link:hover {
+.navbar[data-theme='black-metal'] .link:hover,
+:global(.bst-theme-root)[data-theme='black-metal'] .link:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.1);
   box-shadow: 0 0 10px rgba(var(--bst-primary-rgb), 0.2);
 }
 
 /* ─── 🏯 Oriental Theme ───────────────────────────────────── */
-.bst-navbar[data-theme='oriental'] .bst-navbar__link:hover,
-.bst-theme-root[data-theme='oriental'] .bst-navbar__link:hover {
+.navbar[data-theme='oriental'] .link:hover,
+:global(.bst-theme-root)[data-theme='oriental'] .link:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.08);
 }
 
 /* ─── 🏛️ White City Theme ───────────────────────────────────── */
-.bst-navbar[data-theme='white-city'] .bst-navbar__brand-text,
-.bst-theme-root[data-theme='white-city'] .bst-navbar__brand-text {
+.navbar[data-theme='white-city'] .brandText,
+:global(.bst-theme-root)[data-theme='white-city'] .brandText {
   font-family: 'Cinzel', 'Playfair Display', 'Georgia', serif;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-.bst-navbar[data-theme='white-city'] .bst-navbar__link:hover,
-.bst-theme-root[data-theme='white-city'] .bst-navbar__link:hover {
+.navbar[data-theme='white-city'] .link:hover,
+:global(.bst-theme-root)[data-theme='white-city'] .link:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.06);
 }
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .bst-navbar__inner {
+  .inner {
     flex-wrap: wrap;
     padding: 12px 16px;
     gap: 12px;
   }
 
-  .bst-navbar__links {
+  .links {
     order: 3;
     width: 100%;
     justify-content: center;
@@ -163,7 +163,7 @@
     margin-top: 4px;
   }
 
-  .bst-navbar__actions {
+  .actions {
     order: 2;
     gap: 8px;
   }

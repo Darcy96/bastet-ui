@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Select as AntSelect } from 'antd';
-import './FormField.css';
+import styles from './FormField.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -62,9 +62,9 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     };
 
     return (
-      <div className="bst-field">
+      <div className={styles.field}>
         {label && (
-          <label className="bst-field__label" htmlFor={fieldId}>
+          <label className={styles.label} htmlFor={fieldId}>
             {label}
           </label>
         )}
@@ -94,12 +94,12 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           placeholder={placeholder}
           status={error ? 'error' : undefined}
           disabled={rest.disabled}
-          className={`bst-custom-ant-select ${className || ''}`}
+          className={`${styles.customAntSelect} ${className || ''}`}
           style={{ width: '100%' }}
         />
         
         {error && (
-          <p className="bst-field__error" id={`${fieldId}-error`} role="alert">
+          <p className={styles.error} id={`${fieldId}-error`} role="alert">
             {error}
           </p>
         )}

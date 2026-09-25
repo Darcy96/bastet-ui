@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { ToastItem, ToastPosition } from './ToastContext';
-import './Toast.css';
+import styles from './Toast.module.css';
 
 // ─── Icons ────────────────────────────────────────────────────
 
@@ -51,30 +51,30 @@ function ToastItemComponent({ toast, onRemove }: ToastItemProps) {
 
   const animClass =
     state === 'entering'
-      ? 'bst-toast--entering'
+      ? styles.entering
       : state === 'exiting'
-        ? 'bst-toast--exiting'
+        ? styles.exiting
         : '';
 
   return (
     <div
-      className={`bst-toast bst-toast--${toast.type} ${animClass}`}
+      className={`${styles.toast} ${styles[toast.type]} ${animClass}`}
       onClick={handleClick}
       role="alert"
       aria-live="polite"
       style={{ position: 'relative', overflow: 'hidden' }}
     >
-      <span className="bst-toast__icon" aria-hidden="true">
+      <span className={styles.icon} aria-hidden="true">
         {ICONS[toast.type]}
       </span>
 
-      <div className="bst-toast__content">
-        {toast.title && <div className="bst-toast__title">{toast.title}</div>}
-        <div className="bst-toast__message">{toast.message}</div>
+      <div className={styles.content}>
+        {toast.title && <div className={styles.title}>{toast.title}</div>}
+        <div className={styles.message}>{toast.message}</div>
       </div>
 
       <button
-        className="bst-toast__close"
+        className={styles.close}
         onClick={(e) => {
           e.stopPropagation();
           setState('exiting');
@@ -86,7 +86,7 @@ function ToastItemComponent({ toast, onRemove }: ToastItemProps) {
 
       {/* Progress bar */}
       <div
-        className="bst-toast__progress"
+        className={styles.progress}
         style={{
           animation: `bst-toast-progress ${toast.duration ?? 4000}ms linear forwards`,
         }}
@@ -107,7 +107,7 @@ export function ToastContainer({ toasts, position, onRemove }: ToastContainerPro
   if (toasts.length === 0) return null;
 
   return (
-    <div className={`bst-toast-container bst-toast-container--${position}`}>
+    <div className={`${styles.toastContainer} ${styles['toastContainer--' + position]}`}>
       {toasts.map((toast) => (
         <ToastItemComponent key={toast.id} toast={toast} onRemove={onRemove} />
       ))}

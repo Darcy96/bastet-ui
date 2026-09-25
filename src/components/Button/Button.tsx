@@ -2,7 +2,7 @@ import React from 'react';
 import { theme } from 'antd';
 import { useBstTheme } from '../../theme';
 import { CONTRAST_LIGHT, CONTRAST_DARK, DANGER_HOVER, DANGER_ACTIVE } from '../../utils/colors';
-import './Button.css';
+import styles from './Button.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -78,11 +78,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const classNames = [
-      'bst-button',
-      `bst-button--${variant}`,
-      `bst-button--${size}`,
-      fullWidth && 'bst-button--full-width',
-      disabled && 'bst-button--disabled',
+      styles.button,
+      styles[variant],
+      styles[size],
+      fullWidth && styles['full-width'],
+      disabled && styles.disabled,
       className,
     ]
       .filter(Boolean)

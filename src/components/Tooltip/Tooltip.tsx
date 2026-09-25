@@ -1,5 +1,5 @@
 import React from 'react';
-import './Tooltip.css';
+import styles from './Tooltip.module.css';
 
 export interface TooltipProps {
   /** The element that triggers the tooltip */
@@ -12,9 +12,9 @@ export interface TooltipProps {
 
 export function Tooltip({ children, content, className = '' }: TooltipProps) {
   return (
-    <div className={`bst-tooltip-wrapper ${className}`}>
+    <div className={`${styles.wrapper} ${className}`}>
       {children}
-      <div className="bst-tooltip-bubble" role="tooltip">
+      <div className={styles.tooltipBubble} role="tooltip">
         {content}
       </div>
     </div>

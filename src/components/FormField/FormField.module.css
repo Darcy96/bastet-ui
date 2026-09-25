@@ -3,7 +3,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Field Wrapper ────────────────────────────────────────── */
-.bst-field {
+.field {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -11,7 +11,7 @@
 }
 
 /* ─── Label ────────────────────────────────────────────────── */
-.bst-field__label {
+.label {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--bst-text);
@@ -20,7 +20,7 @@
 }
 
 /* ─── Shared Input / Textarea / Select Base ────────────────── */
-.bst-field__control {
+.control {
   appearance: none;
   display: block;
   width: 100%;
@@ -39,29 +39,29 @@
     background-color 200ms ease;
 }
 
-.bst-field__control::placeholder {
+.control::placeholder {
   color: var(--bst-text-secondary);
   opacity: 0.6;
 }
 
 /* ─── Focus Ring ───────────────────────────────────────────── */
-.bst-field__control:focus {
+.control:focus {
   border-color: var(--bst-primary);
   box-shadow: 0 0 0 3px rgba(var(--bst-primary-rgb, 99, 102, 241), 0.15);
 }
 
 /* ─── Error State ──────────────────────────────────────────── */
-.bst-field__control--error {
+.controlError {
   border-color: var(--bst-error);
 }
 
-.bst-field__control--error:focus {
+.controlError:focus {
   border-color: var(--bst-error);
   box-shadow: 0 0 0 3px rgba(245, 34, 45, 0.15);
 }
 
 /* ─── Error Message ────────────────────────────────────────── */
-.bst-field__error {
+.error {
   font-size: 0.8125rem;
   font-family: var(--bst-font-family);
   color: var(--bst-error);
@@ -73,20 +73,20 @@
 }
 
 /* ─── Disabled ─────────────────────────────────────────────── */
-.bst-field__control:disabled {
+.control:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background-color: var(--bst-bg-elevated);
 }
 
 /* ─── Textarea Specific ────────────────────────────────────── */
-.bst-field__control--textarea {
+.controlTextarea {
   min-height: 100px;
   resize: vertical;
 }
 
 /* ─── Ant Select Custom Styles ───────────────────────────────── */
-.bst-custom-ant-select .ant-select-selector {
+.customAntSelect .ant-select-selector {
   height: 44px !important;
   padding: 0 14px !important;
   font-size: 0.9375rem !important;
@@ -101,46 +101,46 @@
   box-shadow: none !important;
 }
 
-.bst-custom-ant-select .ant-select-arrow {
+.customAntSelect .ant-select-arrow {
   color: var(--bst-text-secondary);
 }
 
-.bst-custom-ant-select.ant-select-status-error .ant-select-selector {
+.customAntSelect.ant-select-status-error .ant-select-selector {
   border-color: var(--bst-error) !important;
 }
 
-.bst-custom-ant-select.ant-select-focused .ant-select-selector,
-.bst-custom-ant-select.ant-select-open .ant-select-selector {
+.customAntSelect.ant-select-focused .ant-select-selector,
+.customAntSelect.ant-select-open .ant-select-selector {
   border-color: var(--bst-primary) !important;
 }
 
 /* Apply box-shadow to the wrapper to prevent clipping by Ant Design's internal overflow rules */
-.bst-custom-ant-select.ant-select-focused,
-.bst-custom-ant-select.ant-select-open {
+.customAntSelect.ant-select-focused,
+.customAntSelect.ant-select-open {
   box-shadow: 0 0 0 3px rgba(var(--bst-primary-rgb, 99, 102, 241), 0.15) !important;
   border-radius: var(--bst-radius) !important;
 }
 
-.bst-custom-ant-select.ant-select-status-error.ant-select-focused .ant-select-selector,
-.bst-custom-ant-select.ant-select-status-error.ant-select-open .ant-select-selector {
+.customAntSelect.ant-select-status-error.ant-select-focused .ant-select-selector,
+.customAntSelect.ant-select-status-error.ant-select-open .ant-select-selector {
   border-color: var(--bst-error) !important;
 }
 
-.bst-custom-ant-select.ant-select-status-error.ant-select-focused,
-.bst-custom-ant-select.ant-select-status-error.ant-select-open {
+.customAntSelect.ant-select-status-error.ant-select-focused,
+.customAntSelect.ant-select-status-error.ant-select-open {
   box-shadow: 0 0 0 3px rgba(245, 34, 45, 0.15) !important;
   border-radius: var(--bst-radius) !important;
 }
 
 /* Ensure placeholder and selected text match colors */
-.bst-custom-ant-select .ant-select-selection-placeholder {
+.customAntSelect .ant-select-selection-placeholder {
   color: var(--bst-text-secondary) !important;
   opacity: 0.6 !important;
   line-height: normal !important;
   display: flex !important;
   align-items: center !important;
 }
-.bst-custom-ant-select .ant-select-selection-item {
+.customAntSelect .ant-select-selection-item {
   color: var(--bst-text) !important;
   line-height: normal !important;
   display: flex !important;
@@ -150,34 +150,34 @@
 /* ─── Theme Micro-Interactions ─────────────────────────────── */
 
 /* 🤘 Black Metal — Sharp corners */
-.bst-theme-root[data-theme='black-metal'] .bst-field__control,
-.bst-theme-root[data-theme='black-metal'] .bst-custom-ant-select .ant-select-selector,
-.bst-theme-root[data-theme='black-metal'] .bst-custom-ant-select {
+:global(.bst-theme-root)[data-theme='black-metal'] .control,
+:global(.bst-theme-root)[data-theme='black-metal'] .customAntSelect .ant-select-selector,
+:global(.bst-theme-root)[data-theme='black-metal'] .customAntSelect {
   border-radius: 0 !important;
   border-width: 2px !important;
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif !important;
 }
 
-.bst-theme-root[data-theme='black-metal'] .bst-field__label {
+:global(.bst-theme-root)[data-theme='black-metal'] .label {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   text-transform: lowercase;
   letter-spacing: 1px;
 }
 
 /* 🏯 Oriental — Subtle ink wash effect */
-.bst-theme-root[data-theme='oriental'] .bst-field__control:focus {
+:global(.bst-theme-root)[data-theme='oriental'] .control:focus {
   box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15);
 }
-.bst-theme-root[data-theme='oriental'] .bst-custom-ant-select.ant-select-focused,
-.bst-theme-root[data-theme='oriental'] .bst-custom-ant-select.ant-select-open {
+:global(.bst-theme-root)[data-theme='oriental'] .customAntSelect.ant-select-focused,
+:global(.bst-theme-root)[data-theme='oriental'] .customAntSelect.ant-select-open {
   box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15) !important;
 }
 
 /* 💖 Pink — Playful glow */
-.bst-theme-root[data-theme='pink'] .bst-field__control:focus {
+:global(.bst-theme-root)[data-theme='pink'] .control:focus {
   box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25);
 }
-.bst-theme-root[data-theme='pink'] .bst-custom-ant-select.ant-select-focused,
-.bst-theme-root[data-theme='pink'] .bst-custom-ant-select.ant-select-open {
+:global(.bst-theme-root)[data-theme='pink'] .customAntSelect.ant-select-focused,
+:global(.bst-theme-root)[data-theme='pink'] .customAntSelect.ant-select-open {
   box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25) !important;
 }

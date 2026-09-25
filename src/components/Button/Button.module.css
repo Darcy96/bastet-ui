@@ -2,7 +2,7 @@
    Bastet UI — Button Styles & Theme Micro-Interactions
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-button {
+.button {
   /* Reset */
   appearance: none;
   border: 1px solid;
@@ -29,7 +29,7 @@
 }
 
 /* ─── Default Hover & Active (Light & Dark) ──────────────────── */
-.bst-button:hover:not(:disabled) {
+.button:hover:not(:disabled) {
   background-color: var(--bst-btn-hover-bg) !important;
   border-color: var(--bst-btn-hover-border) !important;
   color: var(--bst-btn-hover-color, inherit) !important;
@@ -37,7 +37,7 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.bst-button:active:not(:disabled) {
+.button:active:not(:disabled) {
   background-color: var(--bst-btn-active-bg, var(--bst-btn-hover-bg)) !important;
   color: var(--bst-btn-active-color, inherit) !important;
   border-color: var(--bst-btn-active-bg, var(--bst-btn-hover-border)) !important;
@@ -47,24 +47,24 @@
 
 /* ─── 💖 Barbie Theme Micro-Interactions ────────────────────── */
 /* Hover: Pop/Bounce + Hot Pink Glow */
-.bst-button[data-theme='pink']:hover:not(:disabled),
-.bst-theme-root[data-theme='pink'] .bst-button:hover:not(:disabled) {
+.button[data-theme='pink']:hover:not(:disabled),
+:global(.bst-theme-root)[data-theme='pink'] .button:hover:not(:disabled) {
   transform: scale(1.05) translateY(-2px);
   box-shadow: 0 8px 24px rgba(var(--bst-primary-rgb), 0.45), 0 0 12px rgba(var(--bst-primary-rgb), 0.3);
   letter-spacing: 0.5px;
 }
 
 /* Active (Click): Bouncy Squeeze/Press Down */
-.bst-button[data-theme='pink']:active:not(:disabled),
-.bst-theme-root[data-theme='pink'] .bst-button:active:not(:disabled) {
+.button[data-theme='pink']:active:not(:disabled),
+:global(.bst-theme-root)[data-theme='pink'] .button:active:not(:disabled) {
   transform: scale(0.94) translateY(1px);
   box-shadow: 0 2px 8px rgba(var(--bst-primary-rgb), 0.6);
   transition-duration: 50ms;
 }
 
 /* ─── 🤘 Black Metal Theme Micro-Interactions (Bone White Style) ─── */
-.bst-button[data-theme='black-metal'],
-.bst-theme-root[data-theme='black-metal'] .bst-button {
+.button[data-theme='black-metal'],
+:global(.bst-theme-root)[data-theme='black-metal'] .button {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   font-size: 1.15rem;
   letter-spacing: 1.5px;
@@ -75,22 +75,22 @@
 }
 
 /* Primary Variant */
-.bst-button[data-theme='black-metal'].bst-button--primary:hover:not(:disabled),
-.bst-theme-root[data-theme='black-metal'] .bst-button--primary:hover:not(:disabled) {
+.button[data-theme='black-metal'].primary:hover:not(:disabled),
+:global(.bst-theme-root)[data-theme='black-metal'] .primary:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 0 22px rgba(var(--bst-primary-rgb), 0.5);
 }
 
 /* Secondary Variant */
-.bst-button[data-theme='black-metal'].bst-button--secondary:hover:not(:disabled),
-.bst-theme-root[data-theme='black-metal'] .bst-button--secondary:hover:not(:disabled) {
+.button[data-theme='black-metal'].secondary:hover:not(:disabled),
+:global(.bst-theme-root)[data-theme='black-metal'] .secondary:hover:not(:disabled) {
   transform: none;
   box-shadow: 0 0 18px rgba(var(--bst-primary-rgb), 0.35);
 }
 
 /* Active (Click) */
-.bst-button[data-theme='black-metal']:active:not(:disabled),
-.bst-theme-root[data-theme='black-metal'] .bst-button:active:not(:disabled) {
+.button[data-theme='black-metal']:active:not(:disabled),
+:global(.bst-theme-root)[data-theme='black-metal'] .button:active:not(:disabled) {
   transform: scale(0.98);
   box-shadow: none;
   transition-duration: 50ms;
@@ -98,15 +98,15 @@
 
 /* ─── 🏯 Oriental Theme Micro-Interactions ──────────────────── */
 /* Hover: Serene Float + Terracotta Ink Glow */
-.bst-button[data-theme='oriental']:hover:not(:disabled),
-.bst-theme-root[data-theme='oriental'] .bst-button:hover:not(:disabled) {
+.button[data-theme='oriental']:hover:not(:disabled),
+:global(.bst-theme-root)[data-theme='oriental'] .button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(var(--bst-primary-rgb), 0.3);
 }
 
 /* Active (Click): Ink Press */
-.bst-button[data-theme='oriental']:active:not(:disabled),
-.bst-theme-root[data-theme='oriental'] .bst-button:active:not(:disabled) {
+.button[data-theme='oriental']:active:not(:disabled),
+:global(.bst-theme-root)[data-theme='oriental'] .button:active:not(:disabled) {
   transform: scale(0.97) translateY(0);
   box-shadow: 0 2px 6px rgba(var(--bst-primary-rgb), 0.15);
   transition-duration: 75ms;
@@ -114,27 +114,27 @@
 
 /* ─── 🏛️ White City Theme Micro-Interactions ──────────────────── */
 /* Hover: Elegant subtle lift */
-.bst-button[data-theme='white-city']:hover:not(:disabled),
-.bst-theme-root[data-theme='white-city'] .bst-button:hover:not(:disabled) {
+.button[data-theme='white-city']:hover:not(:disabled),
+:global(.bst-theme-root)[data-theme='white-city'] .button:hover:not(:disabled) {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(var(--bst-primary-rgb), 0.2);
 }
 
 /* ─── Focus Visible ────────────────────────────────────────── */
-.bst-button:focus-visible {
+.button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
 }
 
 /* ─── Disabled ─────────────────────────────────────────────── */
-.bst-button--disabled,
-.bst-button:disabled {
+.disabled,
+.button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
 /* ─── Full Width ───────────────────────────────────────────── */
-.bst-button--full-width {
+.fullWidth {
   width: 100%;
 }

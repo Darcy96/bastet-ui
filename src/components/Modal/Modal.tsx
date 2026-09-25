@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useBstTheme } from '../../theme';
 import { buildBstCssVars } from '../../utils/buildBstCssVars';
-import './Modal.css';
+import styles from './Modal.module.css';
 
 export interface ModalProps {
   isOpen: boolean;
@@ -44,8 +44,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNa
   };
 
   const modalClasses = [
-    'bst-modal-overlay',
-    isOpen ? 'bst-modal-overlay--open' : '',
+    styles.overlay,
+    isOpen ? styles.open : '',
     className
   ].filter(Boolean).join(' ');
 
@@ -55,8 +55,8 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, classNa
   return createPortal(
     <div className="bst-theme-root" data-theme={themeName} style={portalStyle}>
       <div className={modalClasses} onClick={handleOverlayClick} aria-modal="true" role="dialog">
-        <div className="bst-modal-content">
-          <button className="bst-modal-close-btn" onClick={onClose} aria-label="Close modal">
+        <div className={styles.content}>
+          <button className={styles.closeBtn} onClick={onClose} aria-label="Close modal">
             &times;
           </button>
           {children}

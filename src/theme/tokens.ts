@@ -62,7 +62,7 @@ const blackMetalTheme: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: '#F0EAD6',      // Bone white primary accent
-    colorSuccess: '#555548',
+    colorSuccess: '#49AA19',
     colorWarning: '#D89614',
     colorError: '#991A1A',
     colorBgBase: '#0A0A0A',        // Deep black

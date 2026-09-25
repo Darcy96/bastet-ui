@@ -2,7 +2,7 @@
    Bastet UI — Footer Styles & Theme Micro-Interactions
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-footer {
+.footer {
   width: 100%;
   border-top: 1px solid var(--bst-border);
   padding: 32px 24px;
@@ -13,7 +13,7 @@
     color 200ms ease;
 }
 
-.bst-footer__inner {
+.inner {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -23,13 +23,13 @@
 }
 
 /* ─── Social Links ─────────────────────────────────────────── */
-.bst-footer__socials {
+.socials {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.bst-footer__social-link {
+.socialLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,26 +46,26 @@
     box-shadow 200ms ease;
 }
 
-.bst-footer__social-link:hover {
+.socialLink:hover {
   color: var(--bst-footer-icon-hover) !important;
   background-color: rgba(128, 128, 128, 0.08);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.bst-footer__social-link:active {
+.socialLink:active {
   transform: translateY(0) scale(0.95);
   box-shadow: none;
 }
 
 /* ─── Content ──────────────────────────────────────────────── */
-.bst-footer__content {
+.content {
   text-align: center;
   font-size: 0.875rem;
 }
 
 /* ─── Copyright ────────────────────────────────────────────── */
-.bst-footer__copyright {
+.copyright {
   font-size: 0.8rem;
   text-align: center;
   opacity: 0.7;
@@ -74,33 +74,33 @@
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
 
-.bst-footer[data-theme='pink'] .bst-footer__social-link:hover,
-.bst-theme-root[data-theme='pink'] .bst-footer .bst-footer__social-link:hover {
+.footer[data-theme='pink'] .socialLink:hover,
+:global(.bst-theme-root)[data-theme='pink'] .footer .socialLink:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.12);
   transform: scale(1.1) translateY(-2px);
   box-shadow: 0 4px 14px rgba(var(--bst-primary-rgb), 0.3);
 }
 
 /* ─── 🤘 Black Metal Theme ────────────────────────────────── */
-.bst-footer[data-theme='black-metal'],
-.bst-theme-root[data-theme='black-metal'] .bst-footer {
+.footer[data-theme='black-metal'],
+:global(.bst-theme-root)[data-theme='black-metal'] .footer {
   border-top-width: 2px;
 }
 
-.bst-footer[data-theme='black-metal'] .bst-footer__social-link,
-.bst-theme-root[data-theme='black-metal'] .bst-footer .bst-footer__social-link {
+.footer[data-theme='black-metal'] .socialLink,
+:global(.bst-theme-root)[data-theme='black-metal'] .footer .socialLink {
   border-radius: 0;
 }
 
-.bst-footer[data-theme='black-metal'] .bst-footer__social-link:hover,
-.bst-theme-root[data-theme='black-metal'] .bst-footer .bst-footer__social-link:hover {
+.footer[data-theme='black-metal'] .socialLink:hover,
+:global(.bst-theme-root)[data-theme='black-metal'] .footer .socialLink:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.1);
   box-shadow: 0 0 12px rgba(var(--bst-primary-rgb), 0.25);
   transform: none;
 }
 
-.bst-footer[data-theme='black-metal'] .bst-footer__copyright,
-.bst-theme-root[data-theme='black-metal'] .bst-footer .bst-footer__copyright {
+.footer[data-theme='black-metal'] .copyright,
+:global(.bst-theme-root)[data-theme='black-metal'] .footer .copyright {
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif;
   text-transform: lowercase;
   letter-spacing: 0.5px;
@@ -108,16 +108,16 @@
 
 /* ─── 🏯 Oriental Theme ───────────────────────────────────── */
 
-.bst-footer[data-theme='oriental'] .bst-footer__social-link:hover,
-.bst-theme-root[data-theme='oriental'] .bst-footer .bst-footer__social-link:hover {
+.footer[data-theme='oriental'] .socialLink:hover,
+:global(.bst-theme-root)[data-theme='oriental'] .footer .socialLink:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.08);
   box-shadow: 0 3px 10px rgba(var(--bst-primary-rgb), 0.2);
 }
 
 /* ─── 🏛️ White City Theme ───────────────────────────────────── */
 
-.bst-footer[data-theme='white-city'] .bst-footer__social-link:hover,
-.bst-theme-root[data-theme='white-city'] .bst-footer .bst-footer__social-link:hover {
+.footer[data-theme='white-city'] .socialLink:hover,
+:global(.bst-theme-root)[data-theme='white-city'] .footer .socialLink:hover {
   background-color: rgba(var(--bst-primary-rgb), 0.06);
   box-shadow: 0 4px 12px rgba(var(--bst-primary-rgb), 0.15);
 }

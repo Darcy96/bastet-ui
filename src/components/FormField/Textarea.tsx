@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormField.css';
+import styles from './FormField.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -30,18 +30,18 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const fieldId = id || (label ? `bst-textarea-${label.toLowerCase().replace(/\s+/g, '-')}` : undefined);
 
     const controlClasses = [
-      'bst-field__control',
-      'bst-field__control--textarea',
-      error && 'bst-field__control--error',
+      styles.control,
+      styles.controlTextarea,
+      error && styles.controlError,
       className,
     ]
       .filter(Boolean)
       .join(' ');
 
     return (
-      <div className="bst-field">
+      <div className={styles.field}>
         {label && (
-          <label className="bst-field__label" htmlFor={fieldId}>
+          <label className={styles.label} htmlFor={fieldId}>
             {label}
           </label>
         )}
@@ -54,7 +54,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...rest}
         />
         {error && (
-          <p className="bst-field__error" id={`${fieldId}-error`} role="alert">
+          <p className={styles.error} id={`${fieldId}-error`} role="alert">
             {error}
           </p>
         )}

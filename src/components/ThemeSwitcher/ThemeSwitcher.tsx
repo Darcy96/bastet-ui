@@ -4,7 +4,7 @@ import type { MenuProps } from 'antd';
 import { useBstTheme } from '../../theme';
 import { CONTRAST_DARK } from '../../utils/colors';
 import { themeNames, type ThemeName } from '../../theme/tokens';
-import './ThemeSwitcher.css';
+import styles from './ThemeSwitcher.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -80,8 +80,8 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
     const sizeValues = sizeMap[size];
 
     const groupClasses = [
-      'bst-theme-switcher',
-      `bst-theme-switcher--${size}`,
+      styles.themeSwitcher,
+      styles[size],
       className,
     ]
       .filter(Boolean)
@@ -164,18 +164,18 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
               aria-checked={isActive}
               aria-label={label}
               className={[
-                'bst-theme-switcher__btn',
-                isActive && 'bst-theme-switcher__btn--active',
+                styles.btn,
+                isActive && styles.btnActive,
               ]
                 .filter(Boolean)
                 .join(' ')}
               style={btnStyle}
               onClick={() => onThemeChange(name)}
             >
-              <span className="bst-theme-switcher__emoji" aria-hidden="true">
+              <span className={styles.emoji} aria-hidden="true">
                 {emoji}
               </span>
-              <span className="bst-theme-switcher__label">{label}</span>
+              <span className={styles.label}>{label}</span>
             </button>
           );
         })}

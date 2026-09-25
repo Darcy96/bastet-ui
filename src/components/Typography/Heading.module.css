@@ -2,7 +2,7 @@
    Bastet UI — Heading Typography
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-heading {
+.heading {
   margin-top: 0;
   margin-bottom: 0.5em;
   color: var(--bst-text);
@@ -10,52 +10,52 @@
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.bst-heading--no-margin {
+.noMargin {
   margin-bottom: 0;
 }
 
 /* ─── Levels ─────────────────────────────────────────────────── */
 
-.bst-heading--h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
-.bst-heading--h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
-.bst-heading--h3 { font-size: 1.75rem; font-weight: 700; }
-.bst-heading--h4 { font-size: 1.5rem; font-weight: 600; }
-.bst-heading--h5 { font-size: 1.25rem; font-weight: 600; }
-.bst-heading--h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
+.h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+.h3 { font-size: 1.75rem; font-weight: 700; }
+.h4 { font-size: 1.5rem; font-weight: 600; }
+.h5 { font-size: 1.25rem; font-weight: 600; }
+.h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
 /* ─── Alignments ─────────────────────────────────────────────── */
 
-.bst-heading--align-left { text-align: left; }
-.bst-heading--align-center { text-align: center; }
-.bst-heading--align-right { text-align: right; }
-.bst-heading--align-justify { text-align: justify; }
+.alignLeft { text-align: left; }
+.alignCenter { text-align: center; }
+.alignRight { text-align: right; }
+.alignJustify { text-align: justify; }
 
 /* ═══════════════════════════════════════════════════════════════
    THEME SPECIFIC STYLES
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Highlight Base ─── */
-.bst-heading--highlight {
+.highlight {
   color: var(--bst-primary);
 }
 
 /* ─── 🤘 Black Metal ─────────────────────────────────────────── */
-.bst-heading[data-theme="black-metal"],
-.bst-theme-root[data-theme="black-metal"] .bst-heading {
+.heading[data-theme="black-metal"],
+.bst-theme-root[data-theme="black-metal"] .heading {
   letter-spacing: 0.02em;
   font-weight: normal; /* UnifrakturMaguntia works best at normal weight */
 }
 
-.bst-heading--highlight[data-theme="black-metal"],
-.bst-theme-root[data-theme="black-metal"] .bst-heading--highlight {
+.highlight[data-theme="black-metal"],
+.bst-theme-root[data-theme="black-metal"] .highlight {
   text-shadow: 2px 2px 0px rgba(var(--bst-error-rgb, 153, 26, 26), 0.8),
                -1px -1px 4px rgba(var(--bst-primary-rgb), 0.2);
   color: var(--bst-primary);
 }
 
 /* ─── 💖 Barbie / Pink ───────────────────────────────────────── */
-.bst-heading--highlight[data-theme="pink"],
-.bst-theme-root[data-theme="pink"] .bst-heading--highlight {
+.highlight[data-theme="pink"],
+.bst-theme-root[data-theme="pink"] .highlight {
   background: linear-gradient(45deg, var(--bst-primary), #FF9A8B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -65,22 +65,22 @@
 }
 
 /* ─── 🏛️ White City (Colonial) ───────────────────────────────── */
-.bst-heading[data-theme="white-city"],
-.bst-theme-root[data-theme="white-city"] .bst-heading {
+.heading[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .heading {
   letter-spacing: 0.05em;
   line-height: 1.3;
 }
 
-.bst-heading--h1[data-theme="white-city"],
-.bst-theme-root[data-theme="white-city"] .bst-heading--h1,
-.bst-heading--h2[data-theme="white-city"],
-.bst-theme-root[data-theme="white-city"] .bst-heading--h2 {
+.h1[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .h1,
+.h2[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .h2 {
   font-weight: 500; /* Cinzel/Playfair are elegant at lower weights */
   text-transform: uppercase;
 }
 
-.bst-heading--highlight[data-theme="white-city"],
-.bst-theme-root[data-theme="white-city"] .bst-heading--highlight {
+.highlight[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .highlight {
   color: var(--bst-primary);
   /* Sutil sombra como grabado en piedra o estuco iluminado por el sol andino */
   text-shadow: 1px 1px 0px rgba(var(--bst-text-rgb, 31, 35, 38), 0.1),
@@ -88,16 +88,16 @@
 }
 
 /* ─── 🏯 Oriental ────────────────────────────────────────────── */
-.bst-heading--highlight[data-theme="oriental"],
-.bst-theme-root[data-theme="oriental"] .bst-heading--highlight {
+.highlight[data-theme="oriental"],
+.bst-theme-root[data-theme="oriental"] .highlight {
   color: var(--bst-primary);
   text-shadow: 1px 1px 0px rgba(var(--bst-text-rgb, 26, 15, 5), 0.1);
 }
 
 /* ─── Responsive Adjustments ─────────────────────────────────── */
 @media (max-width: 768px) {
-  .bst-heading--h1 { font-size: 2rem; }
-  .bst-heading--h2 { font-size: 1.75rem; }
-  .bst-heading--h3 { font-size: 1.5rem; }
-  .bst-heading--h4 { font-size: 1.25rem; }
+  .h1 { font-size: 2rem; }
+  .h2 { font-size: 1.75rem; }
+  .h3 { font-size: 1.5rem; }
+  .h4 { font-size: 1.25rem; }
 }

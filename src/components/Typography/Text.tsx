@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBstTheme } from '../../theme';
-import './Text.css';
+import styles from './Text.module.css';
 
 export type TextVariant = 'default' | 'secondary' | 'primary' | 'success' | 'warning' | 'error';
 export type TextSize = 'sm' | 'md' | 'lg';
@@ -38,12 +38,12 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(
     const Component = inline ? 'span' : 'p';
 
     const classNames = [
-      'bst-text',
-      `bst-text--${variant}`,
-      `bst-text--${size}`,
-      `bst-text--weight-${weight}`,
-      align && `bst-text--align-${align}`,
-      inline && 'bst-text--inline',
+      styles.text,
+      styles[variant],
+      styles[size],
+      styles[`weight${weight.charAt(0).toUpperCase() + weight.slice(1)}`],
+      align && styles[`align${align.charAt(0).toUpperCase() + align.slice(1)}`],
+      inline && styles.inline,
       className,
     ]
       .filter(Boolean)

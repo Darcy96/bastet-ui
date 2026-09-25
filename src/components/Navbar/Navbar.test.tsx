@@ -5,6 +5,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { Navbar } from './Navbar';
 import { BstThemeProvider } from '../../theme';
+import styles from './Navbar.module.css';
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<BstThemeProvider>{ui}</BstThemeProvider>);
@@ -49,7 +50,7 @@ describe('Navbar', () => {
     );
 
     const nav = container.querySelector('nav');
-    expect(nav).toHaveClass('bst-navbar--sticky');
+    expect(nav).toHaveClass(styles.sticky);
   });
 
   // Test 5: No aplica sticky por defecto
@@ -59,7 +60,7 @@ describe('Navbar', () => {
     );
 
     const nav = container.querySelector('nav');
-    expect(nav).not.toHaveClass('bst-navbar--sticky');
+    expect(nav).not.toHaveClass(styles.sticky);
   });
 
   // Test 6: Renderiza el slot de LanguageSwitcher

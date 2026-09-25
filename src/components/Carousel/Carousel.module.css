@@ -1,11 +1,11 @@
-.bst-carousel-wrapper {
+.carouselWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.bst-carousel {
+.carousel {
   display: flex;
   width: 100%;
   overflow-x: auto;
@@ -17,11 +17,11 @@
   gap: 16px;
 }
 
-.bst-carousel::-webkit-scrollbar {
+.carousel::-webkit-scrollbar {
   display: none;
 }
 
-.bst-carousel__slide {
+.slide {
   flex: 0 0 100%;
   width: 100%;
   scroll-snap-align: center;
@@ -31,7 +31,7 @@
 }
 
 /* Base Dots */
-.bst-carousel__dots {
+.dots {
   display: flex;
   gap: 8px;
   margin-top: 16px;
@@ -39,7 +39,7 @@
   align-items: center;
 }
 
-.bst-carousel__dot {
+.dot {
   appearance: none;
   border: none;
   padding: 0;
@@ -57,51 +57,51 @@
   line-height: 1;
 }
 
-.bst-carousel__dot--active {
+.dotActive {
   background: var(--bst-primary);
   width: 24px;
 }
 
 /* Theme: Pink (Barbie) */
-[data-theme="pink"] .bst-carousel__dot {
+[data-theme="pink"] .dot {
   background: transparent;
   width: 16px;
   height: 16px;
   color: rgba(255, 105, 180, 0.4);
 }
-[data-theme="pink"] .bst-carousel__dot::before {
+[data-theme="pink"] .dot::before {
   content: '❤';
 }
-[data-theme="pink"] .bst-carousel__dot--active {
+[data-theme="pink"] .dotActive {
   color: var(--bst-primary);
   transform: scale(1.2);
 }
 
 /* Theme: Black Metal */
-[data-theme="black-metal"] .bst-carousel__dot {
+[data-theme="black-metal"] .dot {
   background: transparent;
   width: 16px;
   height: 16px;
   color: rgba(120, 120, 120, 0.5);
   font-family: serif;
 }
-[data-theme="black-metal"] .bst-carousel__dot::before {
+[data-theme="black-metal"] .dot::before {
   content: '✦';
 }
-[data-theme="black-metal"] .bst-carousel__dot--active {
+[data-theme="black-metal"] .dotActive {
   color: var(--bst-primary);
   transform: scale(1.3);
 }
 
 /* Theme: Oriental */
-[data-theme="oriental"] .bst-carousel__dot {
+[data-theme="oriental"] .dot {
   background: transparent;
   width: 14px;
   height: 14px;
   border: 1px solid rgba(212, 184, 150, 0.5);
   border-radius: 2px;
 }
-[data-theme="oriental"] .bst-carousel__dot--active {
+[data-theme="oriental"] .dotActive {
   border-color: var(--bst-primary);
   background: var(--bst-primary);
   transform: rotate(45deg) scale(1.2);

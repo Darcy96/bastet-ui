@@ -2,7 +2,7 @@ import React from 'react';
 import { useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
 import { ThemeSwitcher } from '../ThemeSwitcher';
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -82,8 +82,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     const currentTheme = activeTheme ?? themeName;
 
     const navClasses = [
-      'bst-navbar',
-      sticky && 'bst-navbar--sticky',
+      styles.navbar,
+      sticky && styles['navbar--sticky'],
       className,
     ]
       .filter(Boolean)
@@ -103,12 +103,12 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         data-theme={currentTheme}
         style={navStyle}
       >
-        <div className="bst-navbar__inner">
+        <div className={styles.inner}>
           {/* Brand */}
-          <div className="bst-navbar__brand">
+          <div className={styles.brand}>
             {typeof brand === 'string' ? (
               <span
-                className="bst-navbar__brand-text"
+                className={styles.brandText}
                 style={{
                   color: token.colorText,
                   fontFamily: token.fontFamily,
@@ -123,7 +123,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
 
           {/* Links */}
           {links.length > 0 && (
-            <ul className="bst-navbar__links" role="navigation">
+            <ul className={styles.links} role="navigation">
               {links.map((link) => {
                 const linkStyle: React.CSSProperties = {
                   color: token.colorTextSecondary,
@@ -132,13 +132,13 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                 };
                 
                 return (
-                  <li key={link.href} className="bst-navbar__link-item">
+                  <li key={link.href} className={styles.linkItem}>
                     {renderLink ? (
-                      renderLink(link, 'bst-navbar__link', linkStyle)
+                      renderLink(link, styles.link, linkStyle)
                     ) : (
                       <a
                         href={link.href}
-                        className="bst-navbar__link"
+                        className={styles.link}
                         style={linkStyle}
                       >
                         {link.label}
@@ -151,7 +151,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
           )}
 
           {/* Actions */}
-          <div className="bst-navbar__actions">
+          <div className={styles.actions}>
             {performanceToggleSlot}
             {languageSwitcherSlot}
             {onThemeChange && (

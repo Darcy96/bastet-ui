@@ -2,12 +2,12 @@
    Bastet UI — Tooltip Component
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-tooltip-wrapper {
+.wrapper {
   position: relative;
   display: inline-block;
 }
 
-.bst-tooltip-bubble {
+.tooltipBubble {
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;
@@ -36,7 +36,7 @@
 }
 
 /* ─── Outer Triangle (Border) ─── */
-.bst-tooltip-bubble::after {
+.tooltipBubble::after {
   content: '';
   position: absolute;
   top: 100%;
@@ -48,7 +48,7 @@
 }
 
 /* ─── Inner Triangle (Background) ─── */
-.bst-tooltip-bubble::before {
+.tooltipBubble::before {
   content: '';
   position: absolute;
   top: 100%;
@@ -62,8 +62,8 @@
 }
 
 /* ─── Hover & Focus States ─── */
-.bst-tooltip-wrapper:hover .bst-tooltip-bubble,
-.bst-tooltip-wrapper:focus-within .bst-tooltip-bubble {
+.wrapper:hover .tooltipBubble,
+.wrapper:focus-within .tooltipBubble {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
@@ -71,6 +71,6 @@
 }
 
 /* ─── Theme-specific adjustments ─── */
-[data-theme="black-metal"] .bst-tooltip-bubble {
+[data-theme="black-metal"] .tooltipBubble {
   border-radius: 0;
 }

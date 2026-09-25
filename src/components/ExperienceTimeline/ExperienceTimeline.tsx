@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useBstTheme } from '../../theme';
 import { Modal } from '../Modal';
-import './ExperienceTimeline.css';
+import styles from './ExperienceTimeline.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
 
@@ -42,22 +42,22 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
 
     if (!items || items.length === 0) return null;
 
-    const wrapperClasses = ['bst-exp-timeline', className].filter(Boolean).join(' ');
+    const wrapperClasses = [styles.timeline, className].filter(Boolean).join(' ');
 
     return (
       <div ref={ref} className={wrapperClasses} data-theme={themeName} data-layout={layout} {...rest}>
         {/* The Track */}
-        <div className="bst-exp-timeline__track">
+        <div className={styles.track}>
           {items.map((item, index) => (
             <div 
               key={item.id} 
-              className="bst-exp-timeline__item"
+              className={styles.item}
               style={{ gridColumn: index + 1 }}
             >
-              <div className="bst-exp-timeline__dot" aria-hidden="true" />
+              <div className={styles.dot} aria-hidden="true" />
 
               <div
-                className="bst-exp-timeline__card"
+                className={styles.card}
                 role="button"
                 tabIndex={0}
                 onClick={() => setSelectedItem(item)}
@@ -68,15 +68,15 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
                   }
                 }}
               >
-                <span className="bst-exp-timeline__date">{item.date}</span>
-                <h3 className="bst-exp-timeline__role">{item.role}</h3>
-                <h4 className="bst-exp-timeline__company">{item.company}</h4>
-                <p className="bst-exp-timeline__location">{item.location}</p>
+                <span className={styles.date}>{item.date}</span>
+                <h3 className={styles.role}>{item.role}</h3>
+                <h4 className={styles.company}>{item.company}</h4>
+                <p className={styles.location}>{item.location}</p>
 
                 {item.stack && item.stack.length > 0 && (
-                  <div className="bst-exp-timeline__stack">
+                  <div className={styles.stack}>
                     {item.stack.map((tech) => (
-                      <span key={tech} className="bst-exp-timeline__badge">
+                      <span key={tech} className={styles.badge}>
                         {tech}
                       </span>
                     ))}
@@ -90,19 +90,19 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
         {/* The Detailed Modal */}
         <Modal isOpen={!!selectedItem} onClose={() => setSelectedItem(null)}>
           {selectedItem && (
-            <div className="bst-exp-modal-body">
-              <div className="bst-exp-modal-header">
-                <h2 className="bst-exp-modal-role">{selectedItem.role}</h2>
-                <p className="bst-exp-modal-meta">
+            <div className={styles.body}>
+              <div className={styles.header}>
+                <h2 className={styles.role}>{selectedItem.role}</h2>
+                <p className={styles.meta}>
                   <strong>{selectedItem.company}</strong> &bull; {selectedItem.date} &bull; {selectedItem.location}
                 </p>
               </div>
 
-              <div className="bst-exp-modal-desc">
+              <div className={styles.desc}>
                 {Array.isArray(selectedItem.detailedDescription) ? (
-                  <ul className="bst-exp-modal-list">
+                  <ul className={styles.list}>
                     {selectedItem.detailedDescription.map((desc, idx) => (
-                      <li key={idx} className="bst-exp-modal-list-item">
+                      <li key={idx} className={styles.listItem}>
                         {desc}
                       </li>
                     ))}

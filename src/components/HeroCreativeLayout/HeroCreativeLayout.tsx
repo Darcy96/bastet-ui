@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBstTheme } from '../../theme';
 import { Carousel } from '../Carousel';
-import './HeroCreativeLayout.css';
+import styles from './HeroCreativeLayout.module.css';
 
 export interface HeroCreativeLayoutProps {
   /** Slot for the top navigation bar (e.g., Navbar component) */
@@ -55,7 +55,7 @@ export const HeroCreativeLayout = React.forwardRef<HTMLDivElement, HeroCreativeL
     const { themeName, token } = useBstTheme();
 
     const wrapperClasses = [
-      'bst-hero-creative',
+      styles.heroCreative,
       className,
     ]
       .filter(Boolean)
@@ -82,38 +82,38 @@ export const HeroCreativeLayout = React.forwardRef<HTMLDivElement, HeroCreativeL
       >
         {/* Navbar Slot (Top) */}
         {navbarSlot && (
-          <div className="bst-hero-creative__nav">
+          <div className={styles.nav}>
             {navbarSlot}
           </div>
         )}
 
         {/* Main Content Area */}
-        <div className="bst-hero-creative__main">
+        <div className={styles.main}>
           {/* Title */}
-          <div className="bst-hero-creative__title">
+          <div className={styles.title}>
             {titleSlot}
           </div>
 
           {/* Desktop Description */}
           {descriptionSlot && (
-            <div className="bst-hero-creative__description-desktop">
+            <div className={styles.descriptionDesktop}>
               {descriptionSlot}
             </div>
           )}
 
           {/* Visual Content (Creative Sandbox / Carousel) */}
           {(visualContentSlot || mobileCarouselItems) && (
-            <div className="bst-hero-creative__visual-block">
+            <div className={styles.visualBlock}>
               {/* Desktop view (static sandbox) */}
               {visualContentSlot && (
-                <div className="bst-hero-creative__visual-desktop">
+                <div className={styles.visualDesktop}>
                   {visualContentSlot}
                 </div>
               )}
               
               {/* Mobile Carousel View */}
               {mobileCarouselItems && mobileCarouselItems.length > 0 && (
-                <div className="bst-hero-creative__visual-mobile">
+                <div className={styles.visualMobile}>
                   <Carousel items={mobileCarouselItems} />
                 </div>
               )}
@@ -122,7 +122,7 @@ export const HeroCreativeLayout = React.forwardRef<HTMLDivElement, HeroCreativeL
 
           {/* Actions */}
           {actionsSlot && (
-            <div className="bst-hero-creative__actions-block">
+            <div className={styles.actionsBlock}>
               {actionsSlot}
             </div>
           )}

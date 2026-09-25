@@ -2,7 +2,7 @@
    Bastet UI — HeroCreativeLayout Styles
    ═══════════════════════════════════════════════════════════════ */
 
-.bst-hero-creative {
+.heroCreative {
   position: relative;
   width: 100%;
   min-height: 80vh;
@@ -14,7 +14,7 @@
 }
 
 /* Optional: a subtle background glow based on the primary color */
-.bst-hero-creative::before {
+.heroCreative::before {
   content: '';
   position: absolute;
   top: -20%;
@@ -30,7 +30,7 @@
 
 /* ─── Navbar Slot ────────────────────────────────────────────── */
 
-.bst-hero-creative__nav {
+.nav {
   position: relative;
   z-index: 10;
   width: 100%;
@@ -38,7 +38,7 @@
 
 /* ─── Main Content ───────────────────────────────────────────── */
 
-.bst-hero-creative__main {
+.main {
   position: relative;
   z-index: 5;
   flex: 1;
@@ -55,13 +55,13 @@
 
 /* ─── Typography & Actions ───────────────────────────────────── */
 
-.bst-hero-creative__title {
+.title {
   grid-column: 1;
   grid-row: 1;
   align-self: end;
 }
 
-.bst-hero-creative__title h1 {
+.title h1 {
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
   font-weight: 800;
@@ -69,17 +69,17 @@
   letter-spacing: -0.02em;
 }
 
-.bst-hero-creative__title h1 .bst-highlight {
+.title h1 :global(.bst-highlight) {
   color: var(--bst-primary);
 }
 
-.bst-hero-creative__description-desktop {
+.descriptionDesktop {
   grid-column: 1;
   grid-row: 2;
   align-self: center;
 }
 
-.bst-hero-creative__description-desktop p {
+.descriptionDesktop p {
   font-size: 1.125rem;
   line-height: 1.6;
   color: var(--bst-text-secondary);
@@ -87,13 +87,13 @@
   max-width: 90%;
 }
 
-.bst-hero-creative__actions-block {
+.actionsBlock {
   grid-column: 1;
   grid-row: 3;
   align-self: start;
 }
 
-.bst-hero-creative__actions {
+:global(.bst-hero-creative__actions) {
   display: flex;
   gap: 16px;
   margin-top: 16px;
@@ -102,7 +102,7 @@
 
 /* ─── Visual Block (Sandbox) ─────────────────────────────────── */
 
-.bst-hero-creative__visual-block {
+.visualBlock {
   position: relative;
   width: 100%;
   height: 100%;
@@ -115,7 +115,7 @@
 }
 
 /* Floating organic card utility classes (for consumers to use inside visualContentSlot) */
-.bst-floating-card {
+:global(.bst-floating-card) {
   background-color: var(--bst-bg);
   border: 1px solid var(--bst-border);
   border-radius: var(--bst-radius);
@@ -124,7 +124,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.bst-floating-card:hover {
+:global(.bst-floating-card):hover {
   transform: translateY(-8px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
   border-color: var(--bst-primary);
@@ -132,7 +132,7 @@
 
 /* ─── Responsive ─────────────────────────────────────────────── */
 
-.bst-hero-creative__visual-mobile {
+.visualMobile {
   display: none;
   width: 100%;
   flex-direction: column;
@@ -140,7 +140,7 @@
 }
 
 @media (max-width: 992px) {
-  .bst-hero-creative__main {
+  .main {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto;
     text-align: center;
@@ -148,36 +148,36 @@
     padding-top: 64px;
   }
 
-  .bst-hero-creative__title {
+  .title {
     grid-column: 1;
     grid-row: 1;
   }
-  .bst-hero-creative__description-desktop {
+  .descriptionDesktop {
     grid-column: 1;
     grid-row: 2;
   }
-  .bst-hero-creative__actions-block {
+  .actionsBlock {
     grid-column: 1;
     grid-row: 4;
   }
-  .bst-hero-creative__visual-block {
+  .visualBlock {
     grid-column: 1;
     grid-row: 3;
     min-height: auto;
   }
 
-  .bst-hero-creative__description-desktop p {
+  .descriptionDesktop p {
     max-width: 100%;
     margin: 0 auto;
   }
 
-  .bst-hero-creative__actions {
+  :global(.bst-hero-creative__actions) {
     justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .bst-hero-creative__main {
+  .main {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -185,44 +185,44 @@
     padding-bottom: 48px;
   }
 
-  .bst-hero-creative__title {
+  .title {
     order: 1;
   }
-  .bst-hero-creative__visual-block {
+  .visualBlock {
     order: 2;
   }
-  .bst-hero-creative__actions-block {
+  .actionsBlock {
     order: 3;
     width: 100%;
   }
 
-  .bst-hero-creative__title h1 {
+  .title h1 {
     font-size: clamp(2rem, 8vw, 2.5rem);
   }
 
-  .bst-hero-creative__actions {
+  :global(.bst-hero-creative__actions) {
     flex-direction: column;
     width: 100%;
     margin-top: 0;
   }
 
-  .bst-hero-creative__actions > * {
+  :global(.bst-hero-creative__actions) > * {
     width: 100% !important;
   }
 
-  .bst-hero-creative__description-desktop {
+  .descriptionDesktop {
     display: none;
   }
 
-  .bst-hero-creative__visual-desktop {
+  .visualDesktop {
     display: none;
   }
 
-  .bst-hero-creative__visual-mobile {
+  .visualMobile {
     display: flex;
   }
 
-  .bst-hero-creative__visual-block {
+  .visualBlock {
     min-height: auto;
     transform: none;
   }
