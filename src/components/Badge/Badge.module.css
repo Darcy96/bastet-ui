@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Badge / Tag Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: var(--bst-font-family);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 4px 10px;
+  border-radius: calc(var(--bst-radius) * 2);
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+  user-select: none;
+}
+
+/* ─── Low Performance Fallback ─────────────────────────────── */
+:global(.bst-theme-root)[data-performance='never'] .badge {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    transition: none !important;
+  }
+}
+
+/* ─── Sizes ────────────────────────────────────────────────── */
+.sm {
+  font-size: 0.6875rem;
+  padding: 2px 8px;
+}
+.md {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+.lg {
+  font-size: 0.875rem;
+  padding: 6px 14px;
+}
+
+/* ─── Base variants (handled via inline CSS variables in JS) ─ */
+.solid {
+  background-color: var(--bst-badge-bg);
+  color: var(--bst-badge-color);
+  border-color: var(--bst-badge-bg);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--bst-badge-text-color);
+  border-color: var(--bst-badge-border);
+}
+
+.ghost {
+  background-color: var(--bst-badge-bg-ghost);
+  color: var(--bst-badge-text-color);
+  border-color: transparent;
+}
+
+/* ─── Theme Overrides ──────────────────────────────────────── */
+
+/* Black Metal - sharp corners and borders */
+:global(.bst-theme-root)[data-theme='black-metal'] .badge {
+  border-radius: 0;
+  border-width: 2px;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+/* Oriental - pill shape with subtle ink shadow */
+:global(.bst-theme-root)[data-theme='oriental'] .badge {
+  box-shadow: 0 2px 4px rgba(var(--bst-primary-rgb), 0.1);
+}
+:global(.bst-theme-root)[data-performance='never'][data-theme='oriental'] .badge {
+  box-shadow: none; /* Strip shadow in low perf */
+}
+
+/* Pink - playful and bubbly */
+:global(.bst-theme-root)[data-theme='pink'] .badge {
+  border-radius: 20px;
+}
