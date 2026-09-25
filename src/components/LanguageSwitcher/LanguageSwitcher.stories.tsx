@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useGlobals } from 'storybook/preview-api';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { BstThemeProvider, useBstTheme } from '../../theme';

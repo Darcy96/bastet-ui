@@ -1,5 +1,5 @@
 import { useGlobals } from 'storybook/preview-api';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ThemeSwitcher } from './ThemeSwitcher';
 import type { ThemeName } from '../../theme/tokens';
 

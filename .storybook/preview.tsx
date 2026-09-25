@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Preview } from '@storybook/react';
+import type { Preview } from '@storybook/react-vite';
 import { BstThemeProvider } from '../src/theme';
 import type { ThemeName } from '../src/theme';
 import '../src/styles/globals.css';

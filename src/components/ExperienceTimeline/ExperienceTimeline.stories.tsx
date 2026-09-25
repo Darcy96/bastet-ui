@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useGlobals } from 'storybook/preview-api';
 import { ExperienceTimeline, type ExperienceItem } from './ExperienceTimeline';
 import { BstThemeProvider, useBstTheme } from '../../theme';
