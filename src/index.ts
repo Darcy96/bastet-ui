@@ -18,6 +18,9 @@ export type { ButtonProps, ButtonSize, ButtonVariant } from './components/Button
 export { Badge } from './components/Badge';
 export type { BadgeProps, BadgeColor, BadgeSize, BadgeVariant } from './components/Badge';
 
+export { Card, CardHeader, CardBody, CardFooter } from './components/Card';
+export type { CardProps } from './components/Card';
+
 export { ThemeSwitcher } from './components/ThemeSwitcher';
 export type { ThemeSwitcherProps, ThemeSwitcherSize } from './components/ThemeSwitcher';
 
