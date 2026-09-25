@@ -25,13 +25,19 @@ export interface HeroCreativeLayoutProps {
 /**
  * HeroCreativeLayout
  *
- * A modern, flexible hero section that fuses the header (navbar) and the main content.
- * It provides a grid layout split into a text block and a visual block.
+ * EN: A modern, flexible hero section that seamlessly integrates the navigation bar
+ * and the main content. It provides a robust grid layout divided into text and visual
+ * content slots. It automatically maps design tokens to standard CSS variables, 
+ * ensuring that any custom elements or floating components placed inside can 
+ * easily consume the active theme variables.
  *
- * It automatically maps Ant Design theme tokens to standard CSS variables so that
- * any custom floating elements (like pill cards) placed inside can easily consume them.
+ * ES: Una sección hero moderna y flexible que integra de forma fluida la barra
+ * de navegación y el contenido principal. Proporciona un diseño robusto de cuadrícula 
+ * dividido en bloques de texto y contenido visual. Mapea automáticamente los tokens 
+ * de diseño a variables CSS estándar, garantizando que los elementos personalizados 
+ * consuman las variables del tema activo correctamente.
  *
- * Provided CSS Variables for children:
+ * Provided CSS Variables / Variables CSS provistas:
  * --bst-primary
  * --bst-bg
  * --bst-text

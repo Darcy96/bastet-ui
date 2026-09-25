@@ -14,6 +14,24 @@ const meta = {
   component: HeroCreativeLayout,
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+### EN: HeroCreativeLayout
+A modern, flexible hero section that seamlessly integrates the navigation bar and the main content. It provides a robust grid layout divided into text and visual content slots. It automatically maps design tokens to standard CSS variables, ensuring that any custom elements or floating components placed inside can easily consume the active theme variables.
+
+### ES: HeroCreativeLayout
+Una sección hero moderna y flexible que integra de forma fluida la barra de navegación y el contenido principal. Proporciona un diseño robusto de cuadrícula dividido en bloques de texto y contenido visual. Mapea automáticamente los tokens de diseño a variables CSS estándar, garantizando que los elementos personalizados consuman las variables del tema activo correctamente.
+
+**Variables CSS / CSS Variables:**
+- \`--bst-primary\`
+- \`--bst-bg\`
+- \`--bst-text\`
+- \`--bst-border\`
+- \`--bst-radius\`
+        `,
+      },
+    },
   },
   tags: ['autodocs'],
 } satisfies Meta<typeof HeroCreativeLayout>;
@@ -39,22 +57,23 @@ const SampleNavbar = ({ activeTheme, onThemeChange }: { activeTheme: ThemeName; 
 
 const TitleBlock = () => (
   <Heading level={1}>
-    Construye tu <span className="bst-highlight">Visión</span>
+    Build your Vision <br />
+    <span className="bst-highlight">Construye tu Visión</span>
   </Heading>
 );
 
 const DescriptionBlock = () => (
   <Text size="lg">
-    Bienvenido a un lienzo en blanco. Este layout flexible permite 
-    diseñar interfaces fluidas donde el fondo, la navegación y las 
-    tarjetas orgánicas conviven armónicamente consumiendo las variables CSS globales.
+    <strong>EN:</strong> A robust and flexible layout architecture designed to seamlessly integrate dynamic backgrounds, navigation, and organic components.
+    <br /><br />
+    <strong>ES:</strong> Una arquitectura de diseño robusta y flexible, diseñada para integrar fluidamente fondos dinámicos, navegación y componentes orgánicos.
   </Text>
 );
 
 const ActionsBlock = () => (
   <div className="bst-hero-creative__actions">
-    <Button variant="primary" size="lg">Empezar ahora</Button>
-    <Button variant="secondary" size="lg">Ver portafolio</Button>
+    <Button variant="primary" size="lg">Get Started / Empezar</Button>
+    <Button variant="secondary" size="lg">View Documentation / Ver Documentación</Button>
   </div>
 );
 
@@ -79,9 +98,11 @@ const VisualBlockSandbox = () => (
       style={{ position: 'absolute', top: '20%', left: '10%', width: '240px', zIndex: 2 }}
     >
       <CardBody>
-        <Heading level={3} highlight noMargin>Integración Perfecta</Heading>
+        <Heading level={3} highlight noMargin>Seamless Integration</Heading>
         <Text size="sm" variant="secondary" noMargin>
-          Esta tarjeta lee --bst-bg y --bst-border.
+          EN: This card dynamically inherits --bst-bg and --bst-border.
+          <br />
+          ES: Esta tarjeta hereda dinámicamente --bst-bg y --bst-border.
         </Text>
       </CardBody>
     </Card>
@@ -91,9 +112,11 @@ const VisualBlockSandbox = () => (
       style={{ position: 'absolute', bottom: '15%', right: '5%', width: '260px', zIndex: 3, borderRadius: 'calc(var(--bst-radius) * 2)' }}
     >
       <CardBody>
-        <Heading level={3} noMargin>Diseño Líquido</Heading>
+        <Heading level={3} noMargin>Liquid Design</Heading>
         <Text size="sm" variant="secondary" noMargin>
-          Observa cómo se adaptan las formas.
+          EN: Observe how shapes adapt to theme changes.
+          <br />
+          ES: Observe cómo las formas se adaptan a los cambios de tema.
         </Text>
       </CardBody>
     </Card>
@@ -129,9 +152,11 @@ export const Default: Story = {
           <div key="card1" style={{ width: '260px', margin: '0 auto' }}>
             <Card hoverable>
               <CardBody>
-                <Heading level={3} highlight noMargin>Integración Perfecta</Heading>
+                <Heading level={3} highlight noMargin>Seamless Integration</Heading>
                 <Text size="sm" variant="secondary" noMargin>
-                  Esta tarjeta lee --bst-bg y --bst-border.
+                  EN: This card dynamically inherits --bst-bg and --bst-border.
+                  <br />
+                  ES: Esta tarjeta hereda dinámicamente --bst-bg y --bst-border.
                 </Text>
               </CardBody>
             </Card>
@@ -139,9 +164,11 @@ export const Default: Story = {
           <div key="card2" style={{ width: '260px', margin: '0 auto' }}>
             <Card hoverable style={{ borderRadius: 'calc(var(--bst-radius) * 2)' }}>
               <CardBody>
-                <Heading level={3} noMargin>Diseño Líquido</Heading>
+                <Heading level={3} noMargin>Liquid Design</Heading>
                 <Text size="sm" variant="secondary" noMargin>
-                  Observa cómo se adaptan las formas.
+                  EN: Observe how shapes adapt to theme changes.
+                  <br />
+                  ES: Observe cómo las formas se adaptan a los cambios de tema.
                 </Text>
               </CardBody>
             </Card>
