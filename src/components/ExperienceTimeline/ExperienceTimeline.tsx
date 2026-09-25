@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useBstTheme } from '../../theme';
 import { Modal } from '../Modal';
+import { Card } from '../Card';
+import { Badge } from '../Badge';
+import { Heading, Text } from '../Typography';
 import styles from './ExperienceTimeline.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -56,8 +59,9 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
             >
               <div className={styles.dot} aria-hidden="true" />
 
-              <div
+              <Card
                 className={styles.card}
+                hoverable
                 role="button"
                 tabIndex={0}
                 onClick={() => setSelectedItem(item)}
@@ -68,21 +72,21 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
                   }
                 }}
               >
-                <span className={styles.date}>{item.date}</span>
-                <h3 className={styles.role}>{item.role}</h3>
-                <h4 className={styles.company}>{item.company}</h4>
-                <p className={styles.location}>{item.location}</p>
+                <Text size="sm" variant="secondary" weight="bold" className={styles.date}>{item.date}</Text>
+                <Heading level={3} noMargin className={styles.role}>{item.role}</Heading>
+                <Heading level={4} noMargin className={styles.company}>{item.company}</Heading>
+                <Text size="sm" variant="secondary" className={styles.location}>{item.location}</Text>
 
                 {item.stack && item.stack.length > 0 && (
                   <div className={styles.stack}>
                     {item.stack.map((tech) => (
-                      <span key={tech} className={styles.badge}>
+                      <Badge key={tech} variant="outline" size="sm" className={styles.badge}>
                         {tech}
-                      </span>
+                      </Badge>
                     ))}
                   </div>
                 )}
-              </div>
+              </Card>
             </div>
           ))}
         </div>
@@ -92,10 +96,10 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
           {selectedItem && (
             <div className={styles.body}>
               <div className={styles.header}>
-                <h2 className={styles.role}>{selectedItem.role}</h2>
-                <p className={styles.meta}>
+                <Heading level={2} noMargin className={styles.role}>{selectedItem.role}</Heading>
+                <Text variant="secondary" className={styles.meta}>
                   <strong>{selectedItem.company}</strong> &bull; {selectedItem.date} &bull; {selectedItem.location}
-                </p>
+                </Text>
               </div>
 
               <div className={styles.desc}>
@@ -103,12 +107,12 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
                   <ul className={styles.list}>
                     {selectedItem.detailedDescription.map((desc, idx) => (
                       <li key={idx} className={styles.listItem}>
-                        {desc}
+                        <Text inline>{desc}</Text>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  selectedItem.detailedDescription
+                  <Text>{selectedItem.detailedDescription}</Text>
                 )}
               </div>
             </div>
