@@ -36,6 +36,8 @@ export type { ThemeSwitcherProps, ThemeSwitcherSize } from './components/ThemeSw
 // Typography
 export * from './components/Typography';
 
+export { Dropdown } from './components/Dropdown';
+
 export { LanguageSwitcher } from './components/LanguageSwitcher';
 export type { LanguageOption, LanguageSwitcherProps, LanguageSwitcherSize } from './components/LanguageSwitcher';
 
