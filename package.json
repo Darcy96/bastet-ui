@@ -1,6 +1,6 @@
 {
   "name": "@darcysm/bastet-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bastet UI — A themed React component library powered by Ant Design tokens",
   "type": "module",
   "main": "./dist/bastet-ui.cjs.js",
