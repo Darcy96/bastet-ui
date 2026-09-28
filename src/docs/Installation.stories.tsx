@@ -23,7 +23,7 @@ const InstallationContent = () => (
       Bastet UI is designed to be consumed directly as a local package or distributed via npm. Since the library exports the bundle in ES Modules and CommonJS formats, it is easily integrated into any modern React application (e.g., Next.js or Vite).
     </Text>
 
-    <Heading level={2} style={{ marginTop: '32px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
+    <Heading level={2} accent style={{ marginTop: '32px' }}>
       1. Add to Project
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
@@ -37,7 +37,7 @@ const InstallationContent = () => (
     </Text>
     <CodeBlock code={`bun install`} />
 
-    <Heading level={2} style={{ marginTop: '40px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
+    <Heading level={2} accent style={{ marginTop: '40px' }}>
       2. Configure Provider
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
@@ -45,7 +45,7 @@ const InstallationContent = () => (
       <em>Note for Next.js App Router:</em> The provider must be placed in a Client Component.
     </Text>
 
-    <Heading level={3} style={{ marginTop: '24px', marginBottom: '8px', fontSize: '1.25rem' }}>
+    <Heading level={3} accent style={{ marginTop: '24px', fontSize: '1.25rem' }}>
       Standard Usage
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
@@ -66,7 +66,7 @@ export function ThemeShell({ children }) {
   );
 }`} />
 
-    <Heading level={3} style={{ marginTop: '32px', marginBottom: '8px', fontSize: '1.25rem' }}>
+    <Heading level={3} accent style={{ marginTop: '32px', fontSize: '1.25rem' }}>
       Advanced: Tree Shaking
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
@@ -87,7 +87,7 @@ export function ThemeShell({ children }) {
   );
 }`} />
 
-    <Heading level={2} style={{ marginTop: '40px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
+    <Heading level={2} accent style={{ marginTop: '40px' }}>
       3. Usage
     </Heading>
     <Text style={{ marginBottom: '16px' }}>

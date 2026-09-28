@@ -39,6 +39,12 @@
   color: var(--bst-primary);
 }
 
+/* ─── Accent Base (Subtitles) ─── */
+.accent {
+  color: var(--bst-text);
+  opacity: 0.85; /* Slightly muted by default */
+}
+
 /* ─── 🤘 Black Metal ─────────────────────────────────────────── */
 .heading[data-theme="black-metal"],
 .bst-theme-root[data-theme="black-metal"] .heading {
@@ -53,6 +59,12 @@
   color: var(--bst-primary);
 }
 
+.accent[data-theme="black-metal"],
+.bst-theme-root[data-theme="black-metal"] .accent {
+  color: var(--bst-border); /* Bone white */
+  opacity: 0.7;
+}
+
 /* ─── 💖 Barbie / Pink ───────────────────────────────────────── */
 .highlight[data-theme="pink"],
 .bst-theme-root[data-theme="pink"] .highlight {
@@ -62,6 +74,12 @@
   background-clip: text;
   color: transparent; /* Fallback for browsers that don't support bg-clip text */
   text-shadow: 0px 4px 10px rgba(var(--bst-primary-rgb), 0.3);
+}
+
+.accent[data-theme="pink"],
+.bst-theme-root[data-theme="pink"] .accent {
+  color: var(--bst-primary);
+  opacity: 0.8;
 }
 
 /* ─── 🏛️ White City (Colonial) ───────────────────────────────── */
@@ -87,11 +105,23 @@
                -1px -1px 2px rgba(255, 255, 255, 0.8);
 }
 
+.accent[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .accent {
+  color: var(--bst-primary); /* Teja Colonial (Terracota) for subtitles */
+  opacity: 1; /* Pure solid color for better contrast */
+}
+
 /* ─── 🏯 Oriental ────────────────────────────────────────────── */
 .highlight[data-theme="oriental"],
 .bst-theme-root[data-theme="oriental"] .highlight {
   color: var(--bst-primary);
   text-shadow: 1px 1px 0px rgba(var(--bst-text-rgb, 26, 15, 5), 0.1);
+}
+
+.accent[data-theme="oriental"],
+.bst-theme-root[data-theme="oriental"] .accent {
+  color: var(--bst-error); /* Deep crimson red for subtitles */
+  opacity: 0.9;
 }
 
 /* ─── Responsive Adjustments ─────────────────────────────────── */

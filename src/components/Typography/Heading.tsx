@@ -7,6 +7,8 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
   /** Applies theme-specific highlight styling (e.g., gradients, shadows) */
   highlight?: boolean;
+  /** Applies secondary thematic styling for subtitles/lesser headings */
+  accent?: boolean;
   /** Text alignment */
   align?: 'left' | 'center' | 'right' | 'justify';
   /** Margin bottom reset / control */
@@ -18,6 +20,7 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     {
       level = 1,
       highlight = false,
+      accent = false,
       align,
       noMargin = false,
       className,
@@ -34,6 +37,7 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       styles.heading,
       styles[`h${level}`],
       highlight && styles.highlight,
+      accent && styles.accent,
       align && styles[`align${align.charAt(0).toUpperCase() + align.slice(1)}`],
       noMargin && styles.noMargin,
       className,

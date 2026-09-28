@@ -10,7 +10,7 @@ const IntroductionContent = () => (
       Bastet UI is a React component library built with modern design principles, fluid interfaces, and a powerful theme system powered by Ant Design tokens.
     </Text>
 
-    <Heading level={2} style={{ marginTop: '32px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
+    <Heading level={2} accent style={{ marginTop: '32px' }}>
       Core Features
     </Heading>
     <List variant="shape">
@@ -21,7 +21,7 @@ const IntroductionContent = () => (
       <ListItem><strong>High Performance:</strong> Hardware-accelerated transitions and animations.</ListItem>
     </List>
 
-    <Heading level={2} style={{ marginTop: '40px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
+    <Heading level={2} accent style={{ marginTop: '40px' }}>
       Available Components
     </Heading>
     <Text style={{ marginBottom: '16px' }}>

@@ -21,45 +21,173 @@
   color: var(--bst-text, inherit);
 }
 
-/* ─── Shape Variant (CSS Geometric Markers) ─── */
+/* ─── Shape Variant (Thematic SVGs & Custom Geometry) ─── */
 .hasShape {
-  padding-left: 24px;
+  padding-left: 28px;
 }
 
 .hasShape::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 8px; /* Aligned with first line of text */
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--bst-bg-container, transparent);
-  border: 2px solid var(--bst-border);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  top: 5px; /* Aligned vertically with text */
+  width: 16px;
+  height: 16px;
+  background-color: var(--bst-border);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Oriental & Black Metal get diamonds */
-:global(.bst-theme-root)[data-theme="oriental"] .hasShape::before,
-:global(.bst-theme-root)[data-theme="black-metal"] .hasShape::before,
-.listItem[data-theme="oriental"].hasShape::before,
-.listItem[data-theme="black-metal"].hasShape::before {
-  border-radius: 0;
-  transform: rotate(45deg);
+.hasShape::after {
+  content: none;
 }
 
-/* Hover micro-interaction for shapes */
+/* Base Hover for SVG masks */
 .hasShape:hover::before {
-  border-color: var(--bst-primary);
   background-color: var(--bst-primary);
-  box-shadow: 0 0 6px var(--bst-primary);
+  transform: scale(1.15) translateY(-1px);
 }
 
-:global(.bst-theme-root)[data-theme="oriental"] .hasShape:hover::before,
+/* ☀️ Light Theme: Glowing Dot */
+:global(.bst-theme-root)[data-theme="light"] .hasShape::before,
+.listItem[data-theme="light"].hasShape::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--bst-primary);
+  opacity: 0.5; /* Stronger visibility when unselected */
+  -webkit-mask-image: none;
+  top: 9px;
+  left: 5px;
+}
+:global(.bst-theme-root)[data-theme="light"] .hasShape:hover::before,
+.listItem[data-theme="light"].hasShape:hover::before {
+  background-color: var(--bst-primary);
+  opacity: 1;
+  box-shadow: 0 0 8px var(--bst-primary); /* Glow effect */
+  transform: scale(1.1); /* Minimal size change */
+}
+
+/* 🌙 Dark Theme: Glowing Dot */
+:global(.bst-theme-root)[data-theme="dark"] .hasShape::before,
+.listItem[data-theme="dark"].hasShape::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--bst-primary);
+  opacity: 0.5; /* Stronger visibility when unselected */
+  -webkit-mask-image: none;
+  top: 9px;
+  left: 5px;
+}
+:global(.bst-theme-root)[data-theme="dark"] .hasShape:hover::before,
+.listItem[data-theme="dark"].hasShape:hover::before {
+  background-color: var(--bst-primary);
+  opacity: 1;
+  box-shadow: 0 0 8px var(--bst-primary); /* Glow effect */
+  transform: scale(1.1); /* Minimal size change */
+}
+
+/* 💖 Pink Theme: Pink Flower */
+:global(.bst-theme-root)[data-theme="pink"] .hasShape::before,
+.listItem[data-theme="pink"].hasShape::before {
+  content: 'ꕤ';
+  background-color: transparent;
+  color: var(--bst-border);
+  -webkit-mask-image: none;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:global(.bst-theme-root)[data-theme="pink"] .hasShape:hover::before,
+.listItem[data-theme="pink"].hasShape:hover::before {
+  background-color: transparent;
+  color: var(--bst-primary);
+  transform: scale(1.3) translateY(-1px);
+}
+
+/* 🤘 Black Metal: Inverted Gothic Star */
+:global(.bst-theme-root)[data-theme="black-metal"] .hasShape::before,
+.listItem[data-theme="black-metal"].hasShape::before {
+  content: '⛧';
+  background-color: transparent;
+  color: var(--bst-border);
+  -webkit-mask-image: none;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 :global(.bst-theme-root)[data-theme="black-metal"] .hasShape:hover::before,
-.listItem[data-theme="oriental"].hasShape:hover::before,
-.listItem[data-theme="black-metal"].hasShape:hover::before {
-  transform: rotate(45deg) scale(1.2);
+.listItem[data-theme="black-metal"].hasShape:hover::before { 
+  background-color: transparent;
+  color: var(--bst-error); 
+  text-shadow: 0 0 8px var(--bst-error); /* Glow effect (vinotinto/red) */
+  transform: scale(1.25); /* Scales up, no rotation */
+}
+
+/* 🏯 Oriental: Cherry Blossom (Sakura) */
+:global(.bst-theme-root)[data-theme="oriental"] .hasShape::before,
+.listItem[data-theme="oriental"].hasShape::before {
+  content: '❀';
+  background-color: transparent;
+  color: var(--bst-border);
+  -webkit-mask-image: none;
+  font-size: 16px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+:global(.bst-theme-root)[data-theme="oriental"] .hasShape:hover::before,
+.listItem[data-theme="oriental"].hasShape:hover::before { 
+  background-color: transparent;
+  color: var(--bst-primary);
+  transform: rotate(72deg) scale(1.15); /* Sakura spins in the wind */
+}
+
+/* 🏛️ White City: Nested Hollow Diamonds */
+:global(.bst-theme-root)[data-theme="white-city"] .hasShape::before,
+.listItem[data-theme="white-city"].hasShape::before {
+  width: 10px; 
+  height: 10px; 
+  border: 1px solid var(--bst-warning); /* Oro Catedral (stands out more than the faint border) */
+  background: transparent; 
+  top: 8px; 
+  left: 2px; 
+  transform: rotate(45deg); 
+}
+:global(.bst-theme-root)[data-theme="white-city"] .hasShape::after,
+.listItem[data-theme="white-city"].hasShape::after {
+  content: ''; 
+  position: absolute;
+  width: 2px; 
+  height: 2px; 
+  background: var(--bst-warning); /* Oro Catedral */
+  top: 12px; 
+  left: 6px; 
+  transform: rotate(45deg); 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+:global(.bst-theme-root)[data-theme="white-city"] .hasShape:hover::before,
+.listItem[data-theme="white-city"].hasShape:hover::before {
+  border-color: var(--bst-primary); 
+  transform: rotate(135deg) scale(1.2);
+}
+:global(.bst-theme-root)[data-theme="white-city"] .hasShape:hover::after,
+.listItem[data-theme="white-city"].hasShape:hover::after {
+  background: var(--bst-primary); 
+  transform: rotate(135deg) scale(3);
 }
 
 /* ─── Icon Variant ─── */
