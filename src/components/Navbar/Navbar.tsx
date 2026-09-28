@@ -2,6 +2,7 @@ import React from 'react';
 import { useBstTheme } from '../../theme';
 import type { ThemeName } from '../../theme/tokens';
 import { ThemeSwitcher } from '../ThemeSwitcher';
+import { Dropdown } from '../Dropdown';
 import styles from './Navbar.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -150,8 +151,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             </ul>
           )}
 
-          {/* Actions */}
-          <div className={styles.actions}>
+          {/* Actions - Desktop */}
+          <div className={styles.actionsDesktop}>
             {performanceToggleSlot}
             {languageSwitcherSlot}
             {onThemeChange && (
@@ -162,6 +163,52 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                 variant={themeSwitcherVariant}
               />
             )}
+          </div>
+
+          {/* Actions - Mobile Dropdown */}
+          <div className={styles.actionsMobile}>
+            <Dropdown>
+              <Dropdown.Trigger>
+                <button 
+                  className={styles.mobileSettingsBtn} 
+                  aria-label="Menu"
+                  style={{ color: token.colorPrimary }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="1.5" />
+                    <circle cx="12" cy="5" r="1.5" />
+                    <circle cx="12" cy="19" r="1.5" />
+                  </svg>
+                </button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="right" className={styles.mobileDropdownContent}>
+                {performanceToggleSlot && (
+                  <div className={styles.mobileDropdownSection}>
+                    <span className={styles.mobileDropdownSectionTitle} style={{ color: token.colorPrimary }}>Performance</span>
+                    {performanceToggleSlot}
+                  </div>
+                )}
+                {languageSwitcherSlot && (
+                  <div className={styles.mobileDropdownSection}>
+                    <span className={styles.mobileDropdownSectionTitle} style={{ color: token.colorPrimary }}>Language</span>
+                    {React.isValidElement(languageSwitcherSlot) 
+                      ? React.cloneElement(languageSwitcherSlot as React.ReactElement<any>, { variant: 'group' })
+                      : languageSwitcherSlot}
+                  </div>
+                )}
+                {onThemeChange && (
+                  <div className={styles.mobileDropdownSection}>
+                    <span className={styles.mobileDropdownSectionTitle} style={{ color: token.colorPrimary }}>Theme</span>
+                    <ThemeSwitcher
+                      onThemeChange={onThemeChange}
+                      activeTheme={currentTheme}
+                      size="sm"
+                      variant="group"
+                    />
+                  </div>
+                )}
+              </Dropdown.Content>
+            </Dropdown>
           </div>
         </div>
       </nav>

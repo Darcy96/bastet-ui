@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — Dropdown Component
+   ═══════════════════════════════════════════════════════════════ */
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.triggerWrapper {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: absolute;
+  top: calc(100% + 8px);
+  z-index: 1000;
+  min-width: 160px;
+  padding: 8px;
+  background-color: var(--bst-bg);
+  border: 1px solid var(--bst-border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  /* Entry animation */
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: top center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: var(--bst-text);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.item:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: var(--bst-primary);
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Alignments ─────────────────────────────────────────────── */
+
+.alignLeft {
+  left: 0;
+  transform-origin: top left;
+}
+
+.alignCenter {
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: top center;
+}
+
+.alignRight {
+  right: 0;
+  transform-origin: top right;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────── */
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THEME SPECIFIC STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 🌙 Dark Theme adjustments */
+.content[data-theme="dark"],
+.bst-theme-root[data-theme="dark"] .content {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* 🤘 Black Metal adjustments */
+.content[data-theme="black-metal"],
+.bst-theme-root[data-theme="black-metal"] .content {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0 !important;
+  box-shadow: 0 0 15px rgba(0,0,0,0.8);
+}
+
+/* 💖 Pink Theme adjustments */
+.content[data-theme="pink"],
+.bst-theme-root[data-theme="pink"] .content {
+  box-shadow: 0 10px 25px -5px rgba(255, 105, 180, 0.2);
+}
+
+/* 🏛️ White City adjustments */
+.content[data-theme="white-city"],
+.bst-theme-root[data-theme="white-city"] .content {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}

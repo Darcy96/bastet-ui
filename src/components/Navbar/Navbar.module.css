@@ -80,11 +80,55 @@
 }
 
 /* ─── Actions (ThemeSwitcher slot) ─────────────────────────── */
-.actions {
+.actionsDesktop {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   gap: 12px;
+}
+
+.actionsMobile {
+  display: none;
+}
+
+.mobileSettingsBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bst-text);
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.mobileSettingsBtn:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.mobileDropdownContent {
+  padding: 16px;
+  gap: 20px;
+  min-width: 200px;
+}
+
+.mobileDropdownSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobileDropdownSectionTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  border-bottom: 1px solid var(--bst-border);
+  padding-bottom: 4px;
 }
 
 /* ─── 💖 Barbie Theme ──────────────────────────────────────── */
@@ -163,8 +207,13 @@
     margin-top: 4px;
   }
 
-  .actions {
+  .actionsDesktop {
+    display: none;
+  }
+
+  .actionsMobile {
+    display: flex;
+    align-items: center;
     order: 2;
-    gap: 8px;
   }
 }

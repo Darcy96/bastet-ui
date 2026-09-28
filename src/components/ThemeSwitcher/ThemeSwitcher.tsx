@@ -1,6 +1,6 @@
-import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
 import React from 'react';
+import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
 import { useBstTheme } from '../../theme';
 import { themeNames, type ThemeName } from '../../theme/tokens';
 import { CONTRAST_DARK } from '../../utils/colors';
@@ -90,35 +90,34 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
     if (variant === 'dropdown') {
       const activeLabelInfo = themeLabels[activeTheme as ThemeName];
       
-      const items: MenuProps['items'] = themeNames.map((name) => {
-        const { emoji, label } = themeLabels[name];
-        return {
-          key: name,
-          label: (
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: token.fontFamily }}>
-              <span>{emoji}</span>
-              <span>{label}</span>
-            </span>
-          ),
-          onClick: () => onThemeChange(name),
-        };
-      });
-
       return (
-        <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-          <Button 
-            style={{ 
-              fontFamily: token.fontFamily, 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 8,
-              height: sizeValues.height,
-              borderRadius: token.borderRadius,
-            }}
-          >
-            <span>{activeLabelInfo.emoji}</span>
-            <span>{activeLabelInfo.label}</span>
-          </Button>
+        <Dropdown>
+          <Dropdown.Trigger>
+            <Button 
+              size={size}
+              style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+            >
+              <span>{activeLabelInfo.emoji}</span>
+              <span>{activeLabelInfo.label}</span>
+            </Button>
+          </Dropdown.Trigger>
+          <Dropdown.Content align="center">
+            {themeNames.map((name) => {
+              const { emoji, label } = themeLabels[name];
+              return (
+                <Dropdown.Item 
+                  key={name} 
+                  icon={emoji} 
+                  onClick={() => onThemeChange(name)}
+                  style={{
+                    backgroundColor: activeTheme === name ? 'rgba(128, 128, 128, 0.1)' : 'transparent'
+                  }}
+                >
+                  {label}
+                </Dropdown.Item>
+              );
+            })}
+          </Dropdown.Content>
         </Dropdown>
       );
     }

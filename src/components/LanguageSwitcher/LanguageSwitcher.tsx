@@ -1,6 +1,6 @@
-import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
 import React from 'react';
+import { Button } from '../Button';
+import { Dropdown } from '../Dropdown';
 import { useBstTheme } from '../../theme';
 import { CONTRAST_DARK } from '../../utils/colors';
 import styles from './LanguageSwitcher.module.css';
@@ -74,33 +74,32 @@ export const LanguageSwitcher = React.forwardRef<HTMLDivElement, LanguageSwitche
     const activeOption = locales.find((l) => l.value === activeLocale) || locales[0];
 
     if (variant === 'dropdown') {
-      const items: MenuProps['items'] = locales.map((locale) => ({
-        key: locale.value,
-        label: (
-          <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: token.fontFamily }}>
-            {locale.icon && <span>{locale.icon}</span>}
-            <span>{locale.label}</span>
-          </span>
-        ),
-        onClick: () => onLocaleChange(locale.value),
-      }));
-
       return (
         <div ref={ref} className={`${styles.langSwitcherDropdown} ${className || ''}`} data-theme={themeName}>
-          <Dropdown menu={{ items }} placement="bottomRight" trigger={['click']}>
-            <Button 
-              style={{ 
-                fontFamily: token.fontFamily, 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: 8,
-                height: sizeValues.height,
-                borderRadius: token.borderRadius,
-              }}
-            >
-              {activeOption?.icon && <span>{activeOption.icon}</span>}
-              <span>{activeOption?.label}</span>
-            </Button>
+          <Dropdown>
+            <Dropdown.Trigger>
+              <Button 
+                size={size}
+                style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+              >
+                {activeOption?.icon && <span>{activeOption.icon}</span>}
+                <span>{activeOption?.label}</span>
+              </Button>
+            </Dropdown.Trigger>
+            <Dropdown.Content align="center">
+              {locales.map((locale) => (
+                <Dropdown.Item
+                  key={locale.value}
+                  icon={locale.icon}
+                  onClick={() => onLocaleChange(locale.value)}
+                  style={{
+                    backgroundColor: activeLocale === locale.value ? 'rgba(128, 128, 128, 0.1)' : 'transparent'
+                  }}
+                >
+                  {locale.label}
+                </Dropdown.Item>
+              ))}
+            </Dropdown.Content>
           </Dropdown>
         </div>
       );
