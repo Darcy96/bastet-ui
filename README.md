@@ -14,6 +14,11 @@ npm install @darcysm/bastet-ui
 bun add @darcysm/bastet-ui
 ```
 
+## Documentation & Components
+
+Explore the interactive component catalog and read the full documentation here:
+👉 **[bastet-ui.vercel.app](https://bastet-ui.vercel.app)**
+
 ## Quick Start
 
 Wrap your application with the `BstThemeProvider` to enable the global design system and component styling.
