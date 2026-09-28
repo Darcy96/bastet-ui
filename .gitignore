@@ -37,3 +37,5 @@ storybook-static
 # Agents
 .agents/
 .vercel
+
+.cursor/
