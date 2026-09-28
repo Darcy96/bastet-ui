@@ -42,6 +42,9 @@ export type { LanguageOption, LanguageSwitcherProps, LanguageSwitcherSize } from
 export { Navbar } from './components/Navbar';
 export type { NavbarLink, NavbarProps } from './components/Navbar';
 
+export { List, ListItem } from './components/List';
+export type { ListProps, ListItemProps, ListVariant } from './components/List';
+
 export { Footer } from './components/Footer';
 export type { FooterProps, SocialLink, SocialPlatform } from './components/Footer';
 

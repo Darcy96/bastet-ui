@@ -1,0 +1,83 @@
+/* ═══════════════════════════════════════════════════════════════
+   Bastet UI — List Component
+   ═══════════════════════════════════════════════════════════════ */
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--bst-text, inherit);
+}
+
+/* ─── Shape Variant (CSS Geometric Markers) ─── */
+.hasShape {
+  padding-left: 24px;
+}
+
+.hasShape::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px; /* Aligned with first line of text */
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--bst-bg-container, transparent);
+  border: 2px solid var(--bst-border);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Oriental & Black Metal get diamonds */
+:global(.bst-theme-root)[data-theme="oriental"] .hasShape::before,
+:global(.bst-theme-root)[data-theme="black-metal"] .hasShape::before,
+.listItem[data-theme="oriental"].hasShape::before,
+.listItem[data-theme="black-metal"].hasShape::before {
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+
+/* Hover micro-interaction for shapes */
+.hasShape:hover::before {
+  border-color: var(--bst-primary);
+  background-color: var(--bst-primary);
+  box-shadow: 0 0 6px var(--bst-primary);
+}
+
+:global(.bst-theme-root)[data-theme="oriental"] .hasShape:hover::before,
+:global(.bst-theme-root)[data-theme="black-metal"] .hasShape:hover::before,
+.listItem[data-theme="oriental"].hasShape:hover::before,
+.listItem[data-theme="black-metal"].hasShape:hover::before {
+  transform: rotate(45deg) scale(1.2);
+}
+
+/* ─── Icon Variant ─── */
+.iconWrapper {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  font-size: 1.1rem;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.listItem:hover .iconWrapper {
+  transform: scale(1.2);
+}
+
+.content {
+  flex: 1;
+}

@@ -4,6 +4,7 @@ import { Modal } from '../Modal';
 import { Card, CardBody } from '../Card';
 import { Badge } from '../Badge';
 import { Heading, Text } from '../Typography';
+import { List, ListItem } from '../List';
 import styles from './ExperienceTimeline.module.css';
 
 // ─── Types ────────────────────────────────────────────────────
@@ -106,13 +107,13 @@ export const ExperienceTimeline = React.forwardRef<HTMLDivElement, ExperienceTim
 
               <div className={styles.desc}>
                 {Array.isArray(selectedItem.detailedDescription) ? (
-                  <ul className={styles.list}>
+                  <List variant="shape">
                     {selectedItem.detailedDescription.map((desc, idx) => (
-                      <li key={idx} className={styles.listItem}>
+                      <ListItem key={idx}>
                         <Text inline>{desc}</Text>
-                      </li>
+                      </ListItem>
                     ))}
-                  </ul>
+                  </List>
                 ) : (
                   <Text>{selectedItem.detailedDescription}</Text>
                 )}

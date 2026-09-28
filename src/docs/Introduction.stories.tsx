@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Heading, Text } from '../components/Typography';
 import { Card, CardBody } from '../components/Card';
+import { List, ListItem } from '../components/List';
 
 const IntroductionContent = () => (
   <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
@@ -12,13 +13,13 @@ const IntroductionContent = () => (
     <Heading level={2} style={{ marginTop: '32px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
       Core Features
     </Heading>
-    <ul style={{ fontSize: '1.1rem', lineHeight: '1.8', paddingLeft: '24px' }}>
-      <li><strong>CSS Modules:</strong> Total style encapsulation. Eliminates global styling conflicts.</li>
-      <li><strong>Multi-theme Architecture:</strong> Native support for multiple themes (Light, Dark, Black Metal, White City, Pink, Oriental).</li>
-      <li><strong>Ant Design Tokens:</strong> Seamless compatibility with the Ant Design variable architecture.</li>
-      <li><strong>Responsive Design:</strong> Built using Flexbox and CSS Grid to adapt to any screen size.</li>
-      <li><strong>High Performance:</strong> Hardware-accelerated transitions and animations.</li>
-    </ul>
+    <List variant="shape">
+      <ListItem><strong>CSS Modules:</strong> Total style encapsulation. Eliminates global styling conflicts.</ListItem>
+      <ListItem><strong>Multi-theme Architecture:</strong> Native support for multiple themes (Light, Dark, Black Metal, White City, Pink, Oriental).</ListItem>
+      <ListItem><strong>Ant Design Tokens:</strong> Seamless compatibility with the Ant Design variable architecture.</ListItem>
+      <ListItem><strong>Responsive Design:</strong> Built using Flexbox and CSS Grid to adapt to any screen size.</ListItem>
+      <ListItem><strong>High Performance:</strong> Hardware-accelerated transitions and animations.</ListItem>
+    </List>
 
     <Heading level={2} style={{ marginTop: '40px', marginBottom: '16px', borderBottom: '1px solid var(--bst-border)', paddingBottom: '8px' }}>
       Available Components

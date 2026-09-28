@@ -407,39 +407,3 @@
   color: var(--bst-text);
 }
 
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.listItem {
-  position: relative;
-  padding-left: 24px;
-  margin-bottom: 12px;
-}
-
-.listItem::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 8px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--bst-bg-container);
-  border: 2px solid var(--bst-border);
-  transition: all 0.3s ease;
-}
-
-:global(.bst-theme-root)[data-theme="oriental"] .listItem::before,
-:global(.bst-theme-root)[data-theme="black-metal"] .listItem::before {
-  border-radius: 0;
-  transform: rotate(45deg);
-}
-
-.listItem:hover::before {
-  border-color: var(--bst-primary);
-  background-color: var(--bst-primary);
-  box-shadow: 0 0 6px var(--bst-primary);
-}
