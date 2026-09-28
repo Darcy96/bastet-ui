@@ -50,7 +50,7 @@ describe('Navbar', () => {
     );
 
     const nav = container.querySelector('nav');
-    expect(nav).toHaveClass(styles.sticky);
+    expect(nav).toHaveClass(styles['navbar--sticky']);
   });
 
   // Test 5: No aplica sticky por defecto
@@ -60,7 +60,7 @@ describe('Navbar', () => {
     );
 
     const nav = container.querySelector('nav');
-    expect(nav).not.toHaveClass(styles.sticky);
+    expect(nav).not.toHaveClass(styles['navbar--sticky']);
   });
 
   // Test 6: Renderiza el slot de LanguageSwitcher

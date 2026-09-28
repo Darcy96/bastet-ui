@@ -12,6 +12,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { BstThemeProvider } from '../../theme';
 import { Button } from './Button';
+import styles from './Button.module.css';
 
 /**
  * Función helper para envolver componentes en el ThemeProvider.
@@ -45,7 +46,7 @@ describe('Button', () => {
 
     const button = screen.getByRole('button');
     // toHaveClass verifica que el elemento tenga esa clase CSS
-    expect(button).toHaveClass('bst-button--secondary');
+    expect(button).toHaveClass(styles.secondary);
   });
 
   // Test 3: ¿Aplica la clase CSS correcta según el size?
@@ -53,7 +54,7 @@ describe('Button', () => {
     renderWithTheme(<Button size="lg">Test</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bst-button--lg');
+    expect(button).toHaveStyle({ height: '48px' });
   });
 
   // Test 4: ¿El botón se desactiva cuando le pasamos disabled?
@@ -64,7 +65,7 @@ describe('Button', () => {
     // toBeDisabled es un matcher de jest-dom que verifica
     // que el elemento HTML tenga el atributo `disabled`
     expect(button).toBeDisabled();
-    expect(button).toHaveClass('bst-button--disabled');
+    expect(button).toHaveClass(styles.disabled);
   });
 
   // Test 5: ¿Llama a onClick cuando el usuario hace click?
@@ -100,7 +101,7 @@ describe('Button', () => {
     renderWithTheme(<Button fullWidth>Wide</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bst-button--full-width');
+    expect(button).toHaveClass(styles.fullWidth);
   });
 
   // Test 8: ¿Usa los valores por defecto correctos?
@@ -108,8 +109,8 @@ describe('Button', () => {
     renderWithTheme(<Button>Default</Button>);
 
     const button = screen.getByRole('button');
-    expect(button).toHaveClass('bst-button--primary');
-    expect(button).toHaveClass('bst-button--md');
+    expect(button).toHaveClass(styles.primary);
+    expect(button).toHaveStyle({ height: '40px' });
   });
 
   // Test 9: ¿Acepta className adicional?
@@ -119,7 +120,7 @@ describe('Button', () => {
     const button = screen.getByRole('button');
     expect(button).toHaveClass('my-custom');
     // Y también mantiene sus clases propias
-    expect(button).toHaveClass('bst-button');
+    expect(button).toHaveClass(styles.button);
   });
 
   // Test 10: ¿Acepta ref? (forwardRef funciona correctamente)

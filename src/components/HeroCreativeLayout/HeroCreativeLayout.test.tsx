@@ -8,6 +8,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { BstThemeProvider } from '../../theme';
 import { HeroCreativeLayout } from './HeroCreativeLayout';
+import styles from './HeroCreativeLayout.module.css';
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<BstThemeProvider>{ui}</BstThemeProvider>);
@@ -70,7 +71,7 @@ describe('HeroCreativeLayout', () => {
     );
 
     const section = container.querySelector('section');
-    expect(section).toHaveClass('bst-hero-creative');
+    expect(section).toHaveClass(styles.heroCreative);
     expect(section).toHaveClass('my-hero');
   });
 

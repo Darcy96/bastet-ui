@@ -17,8 +17,8 @@ const renderWithTheme = (ui: React.ReactElement) => {
 
 describe('ThemeSwitcher', () => {
 
-  // Test 1: Renderiza un botón por cada uno de los 5 temas
-  it('renders 5 theme buttons', () => {
+  // Test 1: Renderiza un botón por cada uno de los 6 temas
+  it('renders 6 theme buttons', () => {
     const handleChange = vi.fn();
     renderWithTheme(
       <ThemeSwitcher onThemeChange={handleChange} />
@@ -26,7 +26,7 @@ describe('ThemeSwitcher', () => {
 
     // Cada botón tiene role="radio" (definido en el componente)
     const buttons = screen.getAllByRole('radio');
-    expect(buttons).toHaveLength(5);
+    expect(buttons).toHaveLength(6);
   });
 
   // Test 2: El tema activo tiene aria-checked="true"
@@ -73,5 +73,6 @@ describe('ThemeSwitcher', () => {
     expect(screen.getByText('Oriental')).toBeInTheDocument();
     expect(screen.getByText('Black Metal')).toBeInTheDocument();
     expect(screen.getByText('Pink')).toBeInTheDocument();
+    expect(screen.getByText('Ciudad Blanca')).toBeInTheDocument();
   });
 });

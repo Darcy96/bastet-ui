@@ -4,7 +4,7 @@ import { Card, CardBody } from '../components/Card';
 
 const IntroductionContent = () => (
   <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
-    <Heading level={1} style={{ marginBottom: '16px' }}>Welcome to Bastet UI</Heading>
+    <Heading level={1} highlight style={{ marginBottom: '16px' }}>Welcome to Bastet UI</Heading>
     <Text size="lg" variant="secondary" style={{ marginBottom: '32px' }}>
       Bastet UI is a React component library built with modern design principles, fluid interfaces, and a powerful theme system powered by Ant Design tokens.
     </Text>

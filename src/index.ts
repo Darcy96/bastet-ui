@@ -8,7 +8,16 @@ import './styles/globals.css';
 // Theme system
 export { BstThemeProvider, useBstTheme } from './theme';
 export type { BstThemeProviderProps } from './theme';
-export { themeNames, themes } from './theme/tokens';
+export { 
+  themeNames, 
+  themes,
+  lightTheme,
+  darkTheme,
+  orientalTheme,
+  blackMetalTheme,
+  pinkTheme,
+  whiteCityTheme
+} from './theme/tokens';
 export type { ThemeName } from './theme/tokens';
 
 // Components

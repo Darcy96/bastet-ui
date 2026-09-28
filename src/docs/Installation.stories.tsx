@@ -18,7 +18,7 @@ const CodeBlock = ({ code }: { code: string }) => (
 
 const InstallationContent = () => (
   <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
-    <Heading level={1} style={{ marginBottom: '16px' }}>Installation & Quick Start</Heading>
+    <Heading level={1} highlight style={{ marginBottom: '16px' }}>Installation & Quick Start</Heading>
     <Text style={{ marginBottom: '32px' }}>
       Bastet UI is designed to be consumed directly as a local package or distributed via npm. Since the library exports the bundle in ES Modules and CommonJS formats, it is easily integrated into any modern React application (e.g., Next.js or Vite).
     </Text>
@@ -44,6 +44,13 @@ const InstallationContent = () => (
       To ensure the theme ecosystem and global components (like Toasts) work correctly, wrap the application root with the <code>BstThemeProvider</code>. <br />
       <em>Note for Next.js App Router:</em> The provider must be placed in a Client Component.
     </Text>
+
+    <Heading level={3} style={{ marginTop: '24px', marginBottom: '8px', fontSize: '1.25rem' }}>
+      Standard Usage
+    </Heading>
+    <Text style={{ marginBottom: '16px' }}>
+      Pass the theme name as a string. This is ideal if your application allows users to dynamically switch between multiple themes.
+    </Text>
     <CodeBlock code={`// src/components/ThemeShell.tsx
 'use client';
 
@@ -54,6 +61,27 @@ import '@darcysm/bastet-ui/styles.css'; // Required CSS import
 export function ThemeShell({ children }) {
   return (
     <BstThemeProvider theme="oriental">
+      {children}
+    </BstThemeProvider>
+  );
+}`} />
+
+    <Heading level={3} style={{ marginTop: '32px', marginBottom: '8px', fontSize: '1.25rem' }}>
+      Advanced: Tree Shaking
+    </Heading>
+    <Text style={{ marginBottom: '16px' }}>
+      If your application only uses a single theme, you can pass the direct theme object to optimize your final bundle size. Modern bundlers (Vite, Webpack) will automatically drop unused themes during the build process.
+    </Text>
+    <CodeBlock code={`'use client';
+
+import React from 'react';
+// Import the specific theme object to enable Tree Shaking
+import { BstThemeProvider, orientalTheme } from '@darcysm/bastet-ui';
+import '@darcysm/bastet-ui/styles.css';
+
+export function ThemeShell({ children }) {
+  return (
+    <BstThemeProvider theme={orientalTheme}>
       {children}
     </BstThemeProvider>
   );

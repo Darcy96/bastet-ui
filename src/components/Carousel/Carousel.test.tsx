@@ -9,6 +9,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Carousel } from './Carousel';
+import styles from './Carousel.module.css';
 
 // El Carousel no usa useBstTheme(), así que no necesita ThemeProvider 🎉
 
@@ -69,7 +70,7 @@ describe('Carousel', () => {
     const items = [<div key="1">A</div>];
     const { container } = render(<Carousel items={items} className="my-carousel" />);
 
-    expect(container.firstChild).toHaveClass('bst-carousel-wrapper');
+    expect(container.firstChild).toHaveClass(styles.carouselWrapper);
     expect(container.firstChild).toHaveClass('my-carousel');
   });
 

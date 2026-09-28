@@ -81,7 +81,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       styles.button,
       styles[variant],
       styles[size],
-      fullWidth && styles['full-width'],
+      fullWidth && styles.fullWidth,
       disabled && styles.disabled,
       className,
     ]
