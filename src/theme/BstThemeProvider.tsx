@@ -1,4 +1,4 @@
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, theme, type ThemeConfig } from 'antd';
 import React, { createContext, useContext, useMemo } from 'react';
 import { buildBstCssVars } from '../utils/buildBstCssVars';
 import { themes, type ThemeName } from './tokens';
@@ -20,8 +20,11 @@ const BstThemeContext = createContext<BstThemeContextValue>({
 // ─── Provider ─────────────────────────────────────────────────
 
 export interface BstThemeProviderProps {
-  /** Theme preset to apply. Defaults to 'light'. */
-  theme?: ThemeName;
+  /** 
+   * Theme preset to apply. Defaults to 'light'.
+   * For optimal tree-shaking, you can pass a direct ThemeConfig object instead of a string.
+   */
+  theme?: ThemeName | ThemeConfig;
   /** Efficiency mode to disable heavy animations. Defaults to 'auto' (respects OS). */
   performanceMode?: 'auto' | 'always' | 'never';
   children: React.ReactNode;
@@ -58,16 +61,21 @@ import { ToastProvider } from '../components/Toast';
  * Bastet custom components — will inherit the active theme tokens.
  */
 export function BstThemeProvider({
-  theme: themeName = 'light',
+  theme: themeInput = 'light',
   performanceMode = 'auto',
   children,
 }: BstThemeProviderProps) {
-  // Fallback to light if an invalid or old cached theme name is passed
-  const themeConfig = themes[themeName] || themes['light'];
-  const safeThemeName = themes[themeName] ? themeName : 'light';
+  // Determine if the user passed a string (ThemeName) or a direct object (ThemeConfig)
+  const isCustomObject = typeof themeInput === 'object';
+  
+  // Resolve the configuration
+  const themeConfig = isCustomObject ? themeInput : (themes[themeInput as ThemeName] || themes['light']);
+  
+  // We use "custom" as the internal name for data-theme if an object is passed
+  const safeThemeName = isCustomObject ? 'custom' : (themes[themeInput as ThemeName] ? themeInput : 'light');
 
   const contextValue = useMemo<BstThemeContextValue>(
-    () => ({ themeName: safeThemeName, performanceMode }),
+    () => ({ themeName: safeThemeName as ThemeName, performanceMode }),
     [safeThemeName, performanceMode],
   );
 

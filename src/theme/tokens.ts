@@ -12,7 +12,7 @@ import { theme, type ThemeConfig } from 'antd';
  */
 
 // ─── Light ────────────────────────────────────────────────────
-const lightTheme: ThemeConfig = {
+export const lightTheme: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: '#1677FF',
@@ -27,7 +27,7 @@ const lightTheme: ThemeConfig = {
 };
 
 // ─── Dark ─────────────────────────────────────────────────────
-const darkTheme: ThemeConfig = {
+export const darkTheme: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: '#1668DC',
@@ -42,7 +42,7 @@ const darkTheme: ThemeConfig = {
 };
 
 // ─── Oriental ─────────────────────────────────────────────────
-const orientalTheme: ThemeConfig = {
+export const orientalTheme: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: '#FA541C',
@@ -58,7 +58,7 @@ const orientalTheme: ThemeConfig = {
 };
 
 // ─── Black Metal (Bone White Dimmu Style) ─────────────────────
-const blackMetalTheme: ThemeConfig = {
+export const blackMetalTheme: ThemeConfig = {
   algorithm: theme.darkAlgorithm,
   token: {
     colorPrimary: '#F0EAD6',      // Bone white primary accent
@@ -76,7 +76,7 @@ const blackMetalTheme: ThemeConfig = {
 };
 
 // ─── Pink ───────────────────────────────────────────────────
-const pinkTheme: ThemeConfig = {
+export const pinkTheme: ThemeConfig = {
   algorithm: theme.defaultAlgorithm,
   token: {
     colorPrimary: '#FF69B4',
@@ -92,7 +92,7 @@ const pinkTheme: ThemeConfig = {
 };
 
 // ─── Popayán Ciudad Blanca (Estilo Colonial Tradicional) ─────────────────────
-const whiteCityTheme: ThemeConfig = {
+export const whiteCityTheme: ThemeConfig = {
   algorithm: theme.defaultAlgorithm, // Algoritmo claro para hacer honor a la "Ciudad Blanca"
   token: {
     colorPrimary: '#C25E3E',      // Teja Colonial (Terracota)
