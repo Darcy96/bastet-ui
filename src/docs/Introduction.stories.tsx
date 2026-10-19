@@ -5,7 +5,7 @@ import { List, ListItem } from '../components/List';
 
 const IntroductionContent = () => (
   <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
-    <Heading level={1} highlight style={{ marginBottom: '16px' }}>Welcome to Bastet UI 🐾</Heading>
+    <Heading level={1} highlight style={{ marginBottom: '16px' }}>Welcome to Bastet UI </Heading>
     <Text size="lg" variant="secondary" style={{ marginBottom: '32px' }}>
       Bastet UI is a modern, accessible React component library built with clean architectural principles, fluid interfaces, Radix UI Primitives, and a zero-dependency Native Token Engine.
     </Text>

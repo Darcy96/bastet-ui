@@ -15,7 +15,9 @@
     "./styles.css": "./dist/bastet-ui.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "llms.txt",
+    "README.md"
   ],
   "sideEffects": [
     "**/*.css"

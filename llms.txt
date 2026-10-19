@@ -1,0 +1,383 @@
+# @darcysm/bastet-ui
+
+> A modern, accessible, multi-themed React component library built with TypeScript, Radix UI primitives, and a zero-dependency Native CSS Token Engine.
+
+## Overview
+
+`@darcysm/bastet-ui` provides accessible, high-performance UI components with first-class theme switching. Components are unstyled at the logic layer via Radix UI primitives and styled with scoped CSS Modules powered by CSS custom properties.
+
+- **Package**: `@darcysm/bastet-ui`
+- **Version**: `0.2.0`
+- **Framework**: React 18+ / React 19+
+- **Styling**: Scoped CSS Modules + CSS Custom Properties (No Tailwind, No runtime CSS-in-JS, No Ant Design)
+- **Accessibility**: WAI-ARIA compliant via Radix UI primitives (`@radix-ui/react-*`)
+- **Theme Presets**: 6 built-in themes (Light, Dark, Oriental, Black Metal, Pink, Popayán Ciudad Blanca)
+
+---
+
+## Installation
+
+```bash
+# npm
+npm install @darcysm/bastet-ui
+
+# bun
+bun add @darcysm/bastet-ui
+
+# pnpm
+pnpm add @darcysm/bastet-ui
+
+# yarn
+yarn add @darcysm/bastet-ui
+```
+
+### Peer Dependencies
+Ensure `react` and `react-dom` are installed in your project:
+```bash
+npm install react react-dom
+```
+
+---
+
+## Quick Start
+
+### 1. Import CSS Styles
+Import the library styles once in your root layout or entry file (`App.tsx`, `main.tsx`, or `layout.tsx`):
+
+```tsx
+import '@darcysm/bastet-ui/styles.css';
+```
+
+### 2. Wrap your application with `BstThemeProvider`
+
+```tsx
+import React from 'react';
+import { BstThemeProvider, Button } from '@darcysm/bastet-ui';
+import '@darcysm/bastet-ui/styles.css';
+
+export default function App() {
+  return (
+    <BstThemeProvider themeName="dark">
+      <main>
+        <Button variant="primary">Hello Bastet UI</Button>
+      </main>
+    </BstThemeProvider>
+  );
+}
+```
+
+---
+
+## Theme System
+
+### Available Theme Presets
+The library includes 6 curated themes:
+
+| `ThemeName` | Description | Typical Palette |
+| :--- | :--- | :--- |
+| `'light'` | Crisp modern light theme | Clean slate, vibrant purple primary |
+| `'dark'` | Deep dark theme | Dark obsidian background, bright accent |
+| `'oriental'` | Asian-inspired aesthetic | Warm crimson reds, jade greens, soft paper |
+| `'black-metal'` | High-contrast monochromatic | Pure dark backgrounds, stark silver/white accents |
+| `'pink'` | Vibrant playful palette | Bubblegum pinks, magenta, soft pastels |
+| `'popayan-ciudad-blanca'` | Colonial Popayán heritage | White facades, colonial tile brown/gold, Cinzel serif typography |
+
+### `useBstTheme` Hook
+Access and toggle themes dynamically anywhere in your component tree:
+
+```tsx
+import { useBstTheme, Button } from '@darcysm/bastet-ui';
+
+function ThemeControls() {
+  const { currentTheme, setTheme, themeNames, tokens } = useBstTheme();
+
+  return (
+    <div>
+      <p>Current: {currentTheme}</p>
+      <Button onClick={() => setTheme('popayan-ciudad-blanca')}>
+        Switch to Ciudad Blanca
+      </Button>
+    </div>
+  );
+}
+```
+
+### Custom Token Overrides
+You can customize design tokens when initializing `BstThemeProvider`:
+
+```tsx
+<BstThemeProvider
+  themeName="dark"
+  customTokens={{
+    colorPrimary: '#8b5cf6',
+    borderRadius: 8,
+  }}
+>
+  <App />
+</BstThemeProvider>
+```
+
+---
+
+## Core Components Reference
+
+### 1. Button
+Polymorphic, accessible button supporting `@radix-ui/react-slot` composition via `asChild`.
+
+```tsx
+import { Button } from '@darcysm/bastet-ui';
+
+// Standard button
+<Button variant="primary" size="medium" onClick={() => console.log('clicked')}>
+  Click Me
+</Button>
+
+// Variants: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'ghost' | 'danger'
+// Sizes: 'small' | 'medium' | 'large'
+// States: loading, disabled, fullWidth
+
+// Composition with asChild (e.g. Next.js Link or React Router Link)
+<Button asChild variant="outline">
+  <a href="/projects">Go to Projects</a>
+</Button>
+```
+
+### 2. Select
+Accessible dropdown select powered by `@radix-ui/react-select`. Includes automatic collision detection and mobile-friendly viewport bounding.
+
+```tsx
+import { Select } from '@darcysm/bastet-ui';
+
+const options = [
+  { value: 'en', label: 'English' },
+  { value: 'es', label: 'Español' },
+  { value: 'fr', label: 'Français', disabled: true },
+];
+
+function LanguageSelector() {
+  const [lang, setLang] = React.useState('es');
+
+  return (
+    <Select
+      label="Choose Language"
+      value={lang}
+      onChange={setLang}
+      options={options}
+      placeholder="Select an option"
+      size="medium" // 'small' | 'medium' | 'large'
+    />
+  );
+}
+```
+
+### 3. Modal
+Dialog modal powered by `@radix-ui/react-dialog`. Accessible with automatic focus trapping, escape key dismiss, and smooth overlay backdrop.
+
+```tsx
+import { Modal, Button } from '@darcysm/bastet-ui';
+
+function ContactModal() {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
+      <Modal
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        title="Get in Touch"
+        description="Send a message directly to my inbox."
+        size="medium" // 'small' | 'medium' | 'large' | 'full'
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button variant="primary" onClick={() => setIsOpen(false)}>Confirm</Button>
+          </>
+        }
+      >
+        <p>Modal body content goes here.</p>
+      </Modal>
+    </>
+  );
+}
+```
+
+### 4. Dropdown
+Context/action menu powered by `@radix-ui/react-dropdown-menu`. Automatically detects boundaries so it never clips off-screen on mobile.
+
+```tsx
+import { Dropdown, Button } from '@darcysm/bastet-ui';
+
+function UserMenu() {
+  const items = [
+    { id: 'profile', label: 'Profile', onClick: () => navigate('/profile') },
+    { id: 'settings', label: 'Settings', onClick: () => navigate('/settings') },
+    { id: 'sep-1', label: '', separator: true },
+    { id: 'logout', label: 'Log out', danger: true, onClick: () => logout() },
+  ];
+
+  return (
+    <Dropdown
+      trigger={<Button variant="ghost">Options ▾</Button>}
+      items={items}
+      placement="bottom-end"
+    />
+  );
+}
+```
+
+### 5. Tooltip
+Accessible tooltip powered by `@radix-ui/react-tooltip` with dynamic arrow and collision padding.
+
+```tsx
+import { Tooltip, Button } from '@darcysm/bastet-ui';
+
+<Tooltip content="Copy link to clipboard" placement="top">
+  <Button variant="outline">Share</Button>
+</Tooltip>
+```
+
+### 6. Card
+Flexible container card with optional header, body, footer, and image cover.
+
+```tsx
+import { Card, CardHeader, CardBody, CardFooter, Button } from '@darcysm/bastet-ui';
+
+<Card hoverable bordered>
+  <CardHeader title="Project Title" extra={<Button size="small">Visit</Button>} />
+  <CardBody>
+    <p>Card description and content details.</p>
+  </CardBody>
+  <CardFooter>
+    <span>Updated 2 days ago</span>
+  </CardFooter>
+</Card>
+```
+
+### 7. Badge
+Status, count, and tag badges.
+
+```tsx
+import { Badge } from '@darcysm/bastet-ui';
+
+// Status badge
+<Badge status="success" text="Online" />
+
+// Count badge on elements
+<Badge count={5}>
+  <div style={{ width: 40, height: 40, background: '#eee' }} />
+</Badge>
+
+// Tag variant
+<Badge variant="pill" color="primary">React</Badge>
+```
+
+### 8. Typography (`Heading` & `Text`)
+Responsive typography with semantic HTML rendering and responsive fluid clamping.
+
+```tsx
+import { Heading, Text } from '@darcysm/bastet-ui';
+
+// Headings
+<Heading as="h1" size="2xl" weight="bold">
+  Portfolio Title
+</Heading>
+
+// Text
+<Text variant="secondary" size="medium">
+  Frontend Developer specializing in high-performance web applications.
+</Text>
+```
+
+### 9. FormField (`Input` & `Textarea`)
+Form inputs with accessible labels, helper text, and error states.
+
+```tsx
+import { Input, Textarea } from '@darcysm/bastet-ui';
+
+<Input
+  label="Email Address"
+  placeholder="you@example.com"
+  type="email"
+  required
+  helperText="We will never share your email."
+/>
+
+<Textarea
+  label="Message"
+  placeholder="Type your message..."
+  rows={4}
+/>
+```
+
+### 10. Toast Notification System
+Lightweight notification system with `ToastProvider` and `useToast`.
+
+```tsx
+import { ToastProvider, useToast, Button } from '@darcysm/bastet-ui';
+
+// Wrap near app root:
+// <ToastProvider position="bottom-right"><App /></ToastProvider>
+
+function TriggerButton() {
+  const { showToast } = useToast();
+
+  return (
+    <Button
+      onClick={() =>
+        showToast({
+          title: 'Message sent!',
+          type: 'success', // 'success' | 'error' | 'info' | 'warning'
+          duration: 3000,
+        })
+      }
+    >
+      Send
+    </Button>
+  );
+}
+```
+
+### 11. Theme & Language Switchers
+Ready-to-use controls for theme and locale switching:
+
+```tsx
+import { ThemeSwitcher, LanguageSwitcher } from '@darcysm/bastet-ui';
+
+<ThemeSwitcher size="medium" />
+<LanguageSwitcher
+  currentLanguage="es"
+  onLanguageChange={(lang) => setLocale(lang)}
+  options={[
+    { code: 'es', label: 'Español' },
+    { code: 'en', label: 'English' },
+  ]}
+/>
+```
+
+---
+
+## Design System Rules & Best Practices
+
+1. **Always import `@darcysm/bastet-ui/styles.css` once** at the application entrypoint.
+2. **Never apply hardcoded positioning overrides** to Radix portaled components (`Modal`, `Dropdown`, `Tooltip`, `Select`). They compute collision-aware floating coordinates dynamically.
+3. **Use `asChild` for router links:** Use `<Button asChild><Link href="...">...</Link></Button>` to avoid nested clickable element issues.
+4. **Use CSS variables for theme-aware custom styling:**
+   - `--bst-color-primary`
+   - `--bst-color-bg-base`
+   - `--bst-color-text-base`
+   - `--bst-border-radius-base`
+   - `--bst-font-family-base`
+   - `--bst-font-family-heading`
+
+---
+
+## AI Assistant Prompt Instructions
+
+When generating code using `@darcysm/bastet-ui`:
+- Import components directly from `'@darcysm/bastet-ui'`.
+- Do **not** import from `antd` or `@ant-design/*`; Bastet UI does not depend on Ant Design.
+- Use `BstThemeProvider` with one of the valid `themeName` strings: `'light'`, `'dark'`, `'oriental'`, `'black-metal'`, `'pink'`, `'popayan-ciudad-blanca'`.
+- For `Select`, pass `options={[{ value: 'val', label: 'Label' }]}` and `onChange={(val) => ...}`.
+- For `Modal`, pass `open`, `onOpenChange`, `title`, and optional `footer`.
+- For `Dropdown`, pass `trigger={<Element />}` and `items={[{ id: '1', label: 'Text', onClick: fn }]}`.
