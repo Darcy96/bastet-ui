@@ -1,19 +1,30 @@
-import { ConfigProvider, theme, type ThemeConfig } from 'antd';
 import React, { createContext, useContext, useMemo } from 'react';
+import { ToastProvider } from '../components/Toast';
 import { buildBstCssVars } from '../utils/buildBstCssVars';
-import { themes, type ThemeName } from './tokens';
+import {
+  themes,
+  resolveTokens,
+  type BstSeedTokens,
+  type BstThemeTokens,
+  type ThemeName,
+} from './tokens';
 
 // ─── Context ──────────────────────────────────────────────────
 
 interface BstThemeContextValue {
   /** Current active theme name */
   themeName: ThemeName;
+  /** Resolved active design tokens */
+  token: BstThemeTokens;
   /** Current performance mode */
   performanceMode: 'auto' | 'always' | 'never';
 }
 
+const defaultTokens = themes.light;
+
 const BstThemeContext = createContext<BstThemeContextValue>({
   themeName: 'light',
+  token: defaultTokens,
   performanceMode: 'auto',
 });
 
@@ -22,9 +33,9 @@ const BstThemeContext = createContext<BstThemeContextValue>({
 export interface BstThemeProviderProps {
   /** 
    * Theme preset to apply. Defaults to 'light'.
-   * For optimal tree-shaking, you can pass a direct ThemeConfig object instead of a string.
+   * Can be one of the preset names or a custom theme token object.
    */
-  theme?: ThemeName | ThemeConfig;
+  theme?: ThemeName | BstThemeTokens | BstSeedTokens;
   /** Efficiency mode to disable heavy animations. Defaults to 'auto' (respects OS). */
   performanceMode?: 'auto' | 'always' | 'never';
   children: React.ReactNode;
@@ -32,62 +43,90 @@ export interface BstThemeProviderProps {
 
 // ─── Internal Theme Root ────────────────────────────────────────
 
-function BstThemeRoot({ children, safeThemeName, performanceMode }: { children: React.ReactNode, safeThemeName: string, performanceMode: string }) {
-  const { token } = theme.useToken();
-
-  const containerStyle = useMemo<React.CSSProperties>(() => ({
-    fontFamily: token.fontFamily,
-    color: token.colorTextBase,
-    backgroundColor: token.colorBgBase,
-    minHeight: '100%',
-    transition: 'color 200ms ease, background-color 200ms ease',
-    ...buildBstCssVars(token),
-  } as React.CSSProperties), [token]);
+function BstThemeRoot({
+  children,
+  safeThemeName,
+  token,
+  performanceMode,
+}: {
+  children: React.ReactNode;
+  safeThemeName: string;
+  token: BstThemeTokens;
+  performanceMode: string;
+}) {
+  const containerStyle = useMemo<React.CSSProperties>(
+    () =>
+      ({
+        fontFamily: token.fontFamily,
+        color: token.colorTextBase,
+        backgroundColor: token.colorBgBase,
+        minHeight: '100%',
+        transition: 'color 200ms ease, background-color 200ms ease',
+        ...buildBstCssVars(token),
+      } as React.CSSProperties),
+    [token],
+  );
 
   return (
-    <div className="bst-theme-root" data-theme={safeThemeName} data-bst-reduce-motion={performanceMode} style={containerStyle}>
+    <div
+      className="bst-theme-root"
+      data-theme={safeThemeName}
+      data-bst-reduce-motion={performanceMode}
+      style={containerStyle}
+    >
       {children}
     </div>
   );
 }
 
-import { ToastProvider } from '../components/Toast';
-
 /**
  * BstThemeProvider
  *
- * Wraps Ant Design's ConfigProvider to apply one of Bastet UI's
- * 5 theme presets. All child components — both Ant Design and
- * Bastet custom components — will inherit the active theme tokens.
+ * Lightweight, zero-dependency theme provider for Bastet UI.
+ * Applies one of Bastet UI's theme presets (or a custom theme),
+ * computing CSS custom variables (`--bst-*`) and sharing tokens
+ * across the component tree.
  */
 export function BstThemeProvider({
   theme: themeInput = 'light',
   performanceMode = 'auto',
   children,
 }: BstThemeProviderProps) {
-  // Determine if the user passed a string (ThemeName) or a direct object (ThemeConfig)
   const isCustomObject = typeof themeInput === 'object';
-  
-  // Resolve the configuration
-  const themeConfig = isCustomObject ? themeInput : (themes[themeInput as ThemeName] || themes['light']);
-  
-  // We use "custom" as the internal name for data-theme if an object is passed
-  const safeThemeName = isCustomObject ? 'custom' : (themes[themeInput as ThemeName] ? themeInput : 'light');
+
+  // Resolve tokens
+  const token: BstThemeTokens = useMemo(() => {
+    if (isCustomObject) {
+      return resolveTokens(themeInput as BstSeedTokens);
+    }
+    const preset = themes[themeInput as ThemeName];
+    return preset || themes.light;
+  }, [themeInput, isCustomObject]);
+
+  const safeThemeName = (isCustomObject
+    ? 'light'
+    : themes[themeInput as ThemeName]
+    ? themeInput
+    : 'light') as ThemeName;
 
   const contextValue = useMemo<BstThemeContextValue>(
-    () => ({ themeName: safeThemeName as ThemeName, performanceMode }),
-    [safeThemeName, performanceMode],
+    () => ({
+      themeName: safeThemeName,
+      token,
+      performanceMode,
+    }),
+    [safeThemeName, token, performanceMode],
   );
 
   return (
     <BstThemeContext.Provider value={contextValue}>
-      <ConfigProvider theme={themeConfig}>
-        <BstThemeRoot safeThemeName={safeThemeName} performanceMode={performanceMode}>
-          <ToastProvider>
-            {children}
-          </ToastProvider>
-        </BstThemeRoot>
-      </ConfigProvider>
+      <BstThemeRoot
+        safeThemeName={safeThemeName}
+        token={token}
+        performanceMode={performanceMode}
+      >
+        <ToastProvider>{children}</ToastProvider>
+      </BstThemeRoot>
     </BstThemeContext.Provider>
   );
 }
@@ -97,22 +136,20 @@ export function BstThemeProvider({
 /**
  * useBstTheme
  *
- * Access the current Bastet theme name and Ant Design's resolved
- * design tokens from anywhere in the component tree.
+ * Access the current Bastet theme name and resolved design tokens
+ * from anywhere in the component tree.
  *
  * @example
  * ```tsx
  * const { themeName, token } = useBstTheme();
- * console.log(token.colorPrimary); // '#6366F1'
+ * console.log(token.colorPrimary); // '#1677FF'
  * ```
  */
 export function useBstTheme() {
-  const { themeName, performanceMode } = useContext(BstThemeContext);
-  const { token } = theme.useToken();
-
+  const context = useContext(BstThemeContext);
   return {
-    themeName,
-    performanceMode,
-    token,
+    themeName: context.themeName,
+    performanceMode: context.performanceMode,
+    token: context.token,
   };
 }

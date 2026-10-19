@@ -1,76 +1,43 @@
 /* ═══════════════════════════════════════════════════════════════
-   Bastet UI — Tooltip Component
+   Bastet UI — Tooltip Component (Radix UI Powered)
    ═══════════════════════════════════════════════════════════════ */
 
-.wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltipBubble {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  
+.content {
   padding: 6px 12px;
   background-color: var(--bst-bg-elevated);
   color: var(--bst-text);
   border: 1px solid var(--bst-border);
   border-radius: var(--bst-radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-family: var(--bst-font-family);
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  pointer-events: none;
-  
-  opacity: 0;
-  visibility: hidden;
+  user-select: none;
   z-index: 1000;
-  
-  /* Smooth transition, with delay when hovering */
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-  transition-delay: 0s; /* No delay when un-hovering */
+  animation: tooltipFadeIn 150ms ease;
 }
 
-/* ─── Outer Triangle (Border) ─── */
-.tooltipBubble::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--bst-border) transparent transparent transparent;
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-/* ─── Inner Triangle (Background) ─── */
-.tooltipBubble::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 4px;
-  border-style: solid;
-  border-color: var(--bst-bg-elevated) transparent transparent transparent;
-  z-index: 1;
-  margin-top: -1px; /* Pull it slightly up to cover the outer border */
+.arrow {
+  fill: var(--bst-bg-elevated);
+  stroke: var(--bst-border);
+  stroke-width: 1px;
 }
 
-/* ─── Hover & Focus States ─── */
-.wrapper:hover .tooltipBubble,
-.wrapper:focus-within .tooltipBubble {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-  transition-delay: 200ms; /* Delay before showing */
-}
-
-/* ─── Theme-specific adjustments ─── */
-[data-theme="black-metal"] .tooltipBubble {
-  border-radius: 0;
+/* 🤘 Black Metal */
+:global([data-theme='black-metal']) .content {
+  border-radius: 0 !important;
+  border-width: 2px !important;
+  font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif !important;
 }

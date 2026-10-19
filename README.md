@@ -1,6 +1,6 @@
 # Bastet UI
 
-A professional, thematic UI component library built with React 18, TypeScript, Vite, and Ant Design Design Tokens.
+An accessible, thematic UI component library built with React 18, TypeScript, Vite, Radix UI Primitives, and CSS Custom Properties.
 
 ---
 

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Bastet UI — Form Field Base Styles
+   Bastet UI — Form Field Base Styles (Radix UI Powered)
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Field Wrapper ────────────────────────────────────────── */
@@ -19,7 +19,7 @@
   line-height: 1.4;
 }
 
-/* ─── Shared Input / Textarea / Select Base ────────────────── */
+/* ─── Shared Input / Textarea Base ─────────────────────────── */
 .control {
   appearance: none;
   display: block;
@@ -85,74 +85,134 @@
   resize: vertical;
 }
 
-/* ─── Ant Select Custom Styles ───────────────────────────────── */
-.customAntSelect .ant-select-selector {
-  height: 44px !important;
-  padding: 0 14px !important;
-  font-size: 0.9375rem !important;
-  font-family: var(--bst-font-family) !important;
-  background-color: var(--bst-bg-container) !important;
-  border: 1px solid var(--bst-border) !important;
-  border-radius: var(--bst-radius) !important;
-  color: var(--bst-text) !important;
-  display: flex !important;
-  align-items: center !important;
-  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease !important;
-  box-shadow: none !important;
+/* ─── Radix Select Trigger ──────────────────────────────────── */
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.9375rem;
+  font-family: var(--bst-font-family);
+  line-height: 1.5;
+  color: var(--bst-text);
+  background-color: var(--bst-bg-container);
+  border: 1px solid var(--bst-border);
+  border-radius: var(--bst-radius);
+  outline: none;
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease;
 }
 
-.customAntSelect .ant-select-arrow {
+.selectTrigger:focus-visible,
+.selectTrigger[data-state='open'] {
+  border-color: var(--bst-primary);
+  box-shadow: 0 0 0 3px rgba(var(--bst-primary-rgb, 99, 102, 241), 0.15);
+}
+
+.selectTrigger[data-placeholder] {
   color: var(--bst-text-secondary);
+  opacity: 0.6;
 }
 
-.customAntSelect.ant-select-status-error .ant-select-selector {
-  border-color: var(--bst-error) !important;
+.selectTrigger[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--bst-bg-elevated);
 }
 
-.customAntSelect.ant-select-focused .ant-select-selector,
-.customAntSelect.ant-select-open .ant-select-selector {
-  border-color: var(--bst-primary) !important;
+.selectTriggerError {
+  border-color: var(--bst-error);
 }
 
-/* Apply box-shadow to the wrapper to prevent clipping by Ant Design's internal overflow rules */
-.customAntSelect.ant-select-focused,
-.customAntSelect.ant-select-open {
-  box-shadow: 0 0 0 3px rgba(var(--bst-primary-rgb, 99, 102, 241), 0.15) !important;
-  border-radius: var(--bst-radius) !important;
+.selectTriggerError:focus-visible,
+.selectTriggerError[data-state='open'] {
+  border-color: var(--bst-error);
+  box-shadow: 0 0 0 3px rgba(245, 34, 45, 0.15);
 }
 
-.customAntSelect.ant-select-status-error.ant-select-focused .ant-select-selector,
-.customAntSelect.ant-select-status-error.ant-select-open .ant-select-selector {
-  border-color: var(--bst-error) !important;
+.selectIcon {
+  display: flex;
+  align-items: center;
+  color: var(--bst-text-secondary);
+  transition: transform 200ms ease;
 }
 
-.customAntSelect.ant-select-status-error.ant-select-focused,
-.customAntSelect.ant-select-status-error.ant-select-open {
-  box-shadow: 0 0 0 3px rgba(245, 34, 45, 0.15) !important;
-  border-radius: var(--bst-radius) !important;
+.selectTrigger[data-state='open'] .selectIcon {
+  transform: rotate(180deg);
 }
 
-/* Ensure placeholder and selected text match colors */
-.customAntSelect .ant-select-selection-placeholder {
-  color: var(--bst-text-secondary) !important;
-  opacity: 0.6 !important;
-  line-height: normal !important;
-  display: flex !important;
-  align-items: center !important;
+/* ─── Radix Select Content (Popover) ───────────────────────── */
+.selectContent {
+  overflow: hidden;
+  background-color: var(--bst-bg-elevated);
+  border: 1px solid var(--bst-border);
+  border-radius: var(--bst-radius);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: var(--radix-select-trigger-width);
+  max-height: var(--radix-select-content-available-height);
+  font-family: var(--bst-font-family);
+  animation: selectFadeIn 150ms ease;
 }
-.customAntSelect .ant-select-selection-item {
-  color: var(--bst-text) !important;
-  line-height: normal !important;
-  display: flex !important;
-  align-items: center !important;
+
+@keyframes selectFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selectViewport {
+  padding: 6px;
+}
+
+.selectItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  font-family: var(--bst-font-family);
+  color: var(--bst-text);
+  border-radius: calc(var(--bst-radius) - 2px);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.selectItem[data-highlighted] {
+  background-color: var(--bst-primary);
+  color: #FFFFFF;
+}
+
+.selectItem[data-disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.selectItemIndicator {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
 }
 
 /* ─── Theme Micro-Interactions ─────────────────────────────── */
 
 /* 🤘 Black Metal — Sharp corners */
 :global(.bst-theme-root)[data-theme='black-metal'] .control,
-:global(.bst-theme-root)[data-theme='black-metal'] .customAntSelect .ant-select-selector,
-:global(.bst-theme-root)[data-theme='black-metal'] .customAntSelect {
+:global(.bst-theme-root)[data-theme='black-metal'] .selectTrigger,
+:global([data-theme='black-metal']) .selectContent,
+:global([data-theme='black-metal']) .selectItem {
   border-radius: 0 !important;
   border-width: 2px !important;
   font-family: 'UnifrakturMaguntia', 'Cinzel Decorative', serif !important;
@@ -165,19 +225,15 @@
 }
 
 /* 🏯 Oriental — Subtle ink wash effect */
-:global(.bst-theme-root)[data-theme='oriental'] .control:focus {
+:global(.bst-theme-root)[data-theme='oriental'] .control:focus,
+:global(.bst-theme-root)[data-theme='oriental'] .selectTrigger:focus-visible,
+:global(.bst-theme-root)[data-theme='oriental'] .selectTrigger[data-state='open'] {
   box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15);
-}
-:global(.bst-theme-root)[data-theme='oriental'] .customAntSelect.ant-select-focused,
-:global(.bst-theme-root)[data-theme='oriental'] .customAntSelect.ant-select-open {
-  box-shadow: 0 0 0 3px rgba(250, 84, 28, 0.15) !important;
 }
 
 /* 💖 Pink — Playful glow */
-:global(.bst-theme-root)[data-theme='pink'] .control:focus {
+:global(.bst-theme-root)[data-theme='pink'] .control:focus,
+:global(.bst-theme-root)[data-theme='pink'] .selectTrigger:focus-visible,
+:global(.bst-theme-root)[data-theme='pink'] .selectTrigger[data-state='open'] {
   box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25);
-}
-:global(.bst-theme-root)[data-theme='pink'] .customAntSelect.ant-select-focused,
-:global(.bst-theme-root)[data-theme='pink'] .customAntSelect.ant-select-open {
-  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.25) !important;
 }

@@ -1,6 +1,7 @@
-import { theme } from 'antd';
+import { Slot } from '@radix-ui/react-slot';
 import React from 'react';
 import { useBstTheme } from '../../theme';
+import type { BstThemeTokens } from '../../theme/tokens';
 import { CONTRAST_DARK, CONTRAST_LIGHT, DANGER_ACTIVE, DANGER_HOVER } from '../../utils/colors';
 import styles from './Button.module.css';
 
@@ -20,6 +21,8 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
   children?: React.ReactNode;
   /** HTML button type attribute */
   htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  /** Change the default rendered element for the one passed as a child, merging their props and behavior */
+  asChild?: boolean;
 }
 
 // ─── Size Map ─────────────────────────────────────────────────
@@ -35,8 +38,8 @@ const sizeMap: Record<ButtonSize, { height: number; fontSize: number; paddingInl
 /**
  * Button
  *
- * A themed button component that consumes Ant Design design tokens
- * via `theme.useToken()`. Supports 4 variants and 3 sizes.
+ * A themed button component powered by Bastet UI tokens and Radix Slot.
+ * Supports 4 variants, 3 sizes, and the `asChild` composition pattern.
  *
  * @example
  * ```tsx
@@ -53,6 +56,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       disabled = false,
       htmlType = 'button',
+      asChild = false,
       children,
       className,
       style,
@@ -63,7 +67,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const { themeName, token } = useBstTheme();
     const sizeValues = sizeMap[size];
 
-    // Resolve variant-specific colors from Ant Design tokens
+    // Resolve variant-specific colors from Bastet tokens
     const variantStyles = getVariantStyles(variant, token, themeName);
 
     const buttonStyle: React.CSSProperties = {
@@ -88,10 +92,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       .filter(Boolean)
       .join(' ');
 
+    const Comp = asChild ? Slot : 'button';
+
     return (
-      <button
+      <Comp
         ref={ref}
-        type={htmlType}
+        type={asChild ? undefined : htmlType}
         className={classNames}
         data-theme={themeName}
         disabled={disabled}
@@ -99,7 +105,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {children}
-      </button>
+      </Comp>
     );
   },
 );
@@ -110,7 +116,7 @@ Button.displayName = 'Button';
 
 function getVariantStyles(
   variant: ButtonVariant,
-  t: ReturnType<typeof theme.useToken>['token'],
+  t: BstThemeTokens,
   themeName?: string,
 ): React.CSSProperties {
   if (themeName === 'black-metal') {
@@ -213,8 +219,8 @@ function getVariantStyles(
         backgroundColor: t.colorPrimary,
         color: CONTRAST_LIGHT,
         borderColor: t.colorPrimary,
-        ['--bst-btn-hover-bg' as string]: t.colorPrimary,
-        ['--bst-btn-hover-border' as string]: t.colorPrimary,
+        ['--bst-btn-hover-bg' as string]: t.colorPrimaryHover,
+        ['--bst-btn-hover-border' as string]: t.colorPrimaryHover,
         ['--bst-btn-hover-color' as string]: CONTRAST_LIGHT,
         ['--bst-btn-active-bg' as string]: t.colorPrimaryActive,
       };

@@ -18,14 +18,14 @@ describe('Dropdown Compound Component', () => {
     // Content should not be visible initially
     expect(screen.queryByTestId('content')).toBeNull();
 
-    // Click trigger
-    fireEvent.click(screen.getByTestId('trigger'));
+    // Trigger open
+    fireEvent.pointerDown(screen.getByTestId('trigger'));
 
     // Content should now be visible
     expect(screen.getByTestId('content')).toBeDefined();
   });
 
-  it('closes content when clicking outside', () => {
+  it('closes content when clicking outside or pressing Escape', () => {
     render(
       <div>
         <div data-testid="outside">Outside</div>
@@ -41,11 +41,11 @@ describe('Dropdown Compound Component', () => {
     );
 
     // Open dropdown
-    fireEvent.click(screen.getByTestId('trigger'));
+    fireEvent.pointerDown(screen.getByTestId('trigger'));
     expect(screen.getByTestId('content')).toBeDefined();
 
-    // Click outside
-    fireEvent.mouseDown(screen.getByTestId('outside'));
+    // Press Escape to close (native Radix behavior)
+    fireEvent.keyDown(screen.getByTestId('content'), { key: 'Escape' });
     expect(screen.queryByTestId('content')).toBeNull();
   });
 });
