@@ -16,9 +16,10 @@ export {
   orientalTheme,
   blackMetalTheme,
   pinkTheme,
-  whiteCityTheme
+  whiteCityTheme,
+  resolveTokens,
 } from './theme/tokens';
-export type { ThemeName } from './theme/tokens';
+export type { ThemeName, BstThemeTokens, BstSeedTokens } from './theme/tokens';
 
 // Components
 export { Button } from './components/Button';

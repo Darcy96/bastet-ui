@@ -40,6 +40,7 @@ export function Tooltip({
           <RadixTooltip.Content
             side={side}
             sideOffset={6}
+            collisionPadding={8}
             className={`${styles.content} ${className}`}
             data-theme={themeName}
             style={portalStyle}

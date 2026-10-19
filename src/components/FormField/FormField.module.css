@@ -154,6 +154,7 @@
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   min-width: var(--radix-select-trigger-width);
+  max-width: calc(100vw - 24px);
   max-height: var(--radix-select-content-available-height);
   font-family: var(--bst-font-family);
   animation: selectFadeIn 150ms ease;

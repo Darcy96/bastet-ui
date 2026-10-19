@@ -159,6 +159,7 @@ const SelectBase = React.forwardRef<HTMLButtonElement, SelectProps>(
               className={styles.selectContent}
               position="popper"
               sideOffset={4}
+              collisionPadding={12}
               data-theme={themeName}
               style={portalStyle}
             >

@@ -30,34 +30,33 @@ const ModalBase: React.FC<ModalProps> = ({
   return (
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
-        <Dialog.Overlay className={styles.overlay} data-theme={themeName} style={portalStyle}>
-          <Dialog.Content
-            className={`${styles.content} ${className || ''}`}
-            data-theme={themeName}
-            style={portalStyle}
-          >
-            {title ? (
-              <Dialog.Title style={{ margin: '0 0 16px 0', fontSize: '1.25rem', fontWeight: 600 }}>
-                {title}
-              </Dialog.Title>
-            ) : (
-              <Dialog.Title style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>
-                Dialog
-              </Dialog.Title>
-            )}
+        <Dialog.Overlay className={styles.overlay} data-theme={themeName} style={portalStyle} />
+        <Dialog.Content
+          className={`${styles.content} ${className || ''}`}
+          data-theme={themeName}
+          style={portalStyle}
+        >
+          {title ? (
+            <Dialog.Title style={{ margin: '0 0 16px 0', fontSize: '1.25rem', fontWeight: 600 }}>
+              {title}
+            </Dialog.Title>
+          ) : (
+            <Dialog.Title style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', borderWidth: 0 }}>
+              Dialog
+            </Dialog.Title>
+          )}
 
-            <Dialog.Close asChild>
-              <button
-                className={styles.closeBtn}
-                aria-label="Close modal"
-              >
-                &times;
-              </button>
-            </Dialog.Close>
+          <Dialog.Close asChild>
+            <button
+              className={styles.closeBtn}
+              aria-label="Close modal"
+            >
+              &times;
+            </button>
+          </Dialog.Close>
 
-            {children}
-          </Dialog.Content>
-        </Dialog.Overlay>
+          {children}
+        </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
   );
