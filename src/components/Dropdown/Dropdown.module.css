@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Bastet UI — Dropdown Component
+   Bastet UI — Dropdown Component (Radix UI Powered)
    ═══════════════════════════════════════════════════════════════ */
 
 .dropdownContainer {
@@ -12,24 +12,29 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  background: transparent;
+  padding: 0;
+  outline: none;
 }
 
 .content {
-  position: absolute;
-  top: calc(100% + 8px);
   z-index: 1000;
-  min-width: 160px;
+  min-width: 180px;
+  max-width: calc(100vw - 24px);
   padding: 8px;
-  background-color: var(--bst-bg);
+  background-color: var(--bst-bg-elevated);
   border: 1px solid var(--bst-border);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--bst-radius);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  outline: none;
   
   /* Entry animation */
-  animation: dropdownFadeIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  transform-origin: top center;
+  animation: dropdownFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
 }
 
 .item {
@@ -38,15 +43,18 @@
   gap: 8px;
   padding: 8px 12px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: calc(var(--bst-radius) - 2px);
   color: var(--bst-text);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
   font-size: 0.9rem;
+  user-select: none;
+  outline: none;
 }
 
-.item:hover {
-  background-color: rgba(128, 128, 128, 0.1);
-  color: var(--bst-primary);
+.item:hover,
+.item[data-highlighted] {
+  background-color: var(--bst-primary);
+  color: #FFFFFF;
 }
 
 .itemIcon {
@@ -55,30 +63,12 @@
   justify-content: center;
 }
 
-/* ─── Alignments ─────────────────────────────────────────────── */
-
-.alignLeft {
-  left: 0;
-  transform-origin: top left;
-}
-
-.alignCenter {
-  left: 50%;
-  transform: translateX(-50%);
-  transform-origin: top center;
-}
-
-.alignRight {
-  right: 0;
-  transform-origin: top right;
-}
-
 /* ─── Keyframes ──────────────────────────────────────────────── */
 
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(-5px);
+    transform: scale(0.96) translateY(-4px);
   }
   to {
     opacity: 1;
@@ -105,6 +95,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.8);
 }
 
+.content[data-theme="black-metal"] .item,
+.bst-theme-root[data-theme="black-metal"] .item {
+  border-radius: 0 !important;
+}
+
 /* 💖 Pink Theme adjustments */
 .content[data-theme="pink"],
 .bst-theme-root[data-theme="pink"] .content {
@@ -114,5 +109,5 @@
 /* 🏛️ White City adjustments */
 .content[data-theme="white-city"],
 .bst-theme-root[data-theme="white-city"] .content {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
 }

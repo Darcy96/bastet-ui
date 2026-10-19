@@ -130,4 +130,9 @@
   .h2 { font-size: 1.75rem; }
   .h3 { font-size: 1.5rem; }
   .h4 { font-size: 1.25rem; }
+
+  .heading[data-theme="white-city"],
+  .bst-theme-root[data-theme="white-city"] .heading {
+    letter-spacing: 0.01em;
+  }
 }

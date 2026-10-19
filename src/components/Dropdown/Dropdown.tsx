@@ -76,6 +76,7 @@ const DropdownContent = React.forwardRef<HTMLDivElement, DropdownContentProps>(
           ref={ref}
           align={radixAlign}
           sideOffset={sideOffset}
+          collisionPadding={12}
           className={`${styles.content} ${className || ''}`}
           data-theme={themeName}
           style={{
