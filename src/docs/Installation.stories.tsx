@@ -7,7 +7,7 @@ const CodeBlock = ({ code }: { code: string }) => (
     color: '#d4d4d4', 
     padding: '16px', 
     borderRadius: '8px', 
-    overflowX: 'auto',
+    overflowX: 'auto', 
     fontFamily: 'monospace',
     fontSize: '0.95rem',
     border: '1px solid #333'
@@ -20,43 +20,41 @@ const InstallationContent = () => (
   <div style={{ maxWidth: '800px', margin: '0 auto', padding: '40px' }}>
     <Heading level={1} highlight style={{ marginBottom: '16px' }}>Installation & Quick Start</Heading>
     <Text style={{ marginBottom: '32px' }}>
-      Bastet UI is designed to be consumed directly as a local package or distributed via npm. Since the library exports the bundle in ES Modules and CommonJS formats, it is easily integrated into any modern React application (e.g., Next.js or Vite).
+      Bastet UI is distributed via npm and can also be consumed as a workspace package. It carries <strong>zero heavy peer dependencies</strong> (no Ant Design or Emotion required) and delivers native TypeScript types and compiled CSS out of the box.
     </Text>
 
     <Heading level={2} accent style={{ marginTop: '32px' }}>
-      1. Add to Project
+      1. Install Package
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
-      If using as a local workspace package, link it in your <code>package.json</code>:
+      Install with your preferred package manager:
     </Text>
-    <CodeBlock code={`"dependencies": {
-  "@darcysm/bastet-ui": "workspace:*"
-}`} />
-    <Text style={{ margin: '16px 0' }}>
-      Then, install dependencies:
-    </Text>
-    <CodeBlock code={`bun install`} />
+    <CodeBlock code={`bun add @darcysm/bastet-ui
+# or with npm
+npm install @darcysm/bastet-ui
+# or with yarn
+yarn add @darcysm/bastet-ui`} />
 
     <Heading level={2} accent style={{ marginTop: '40px' }}>
-      2. Configure Provider
+      2. Configure BstThemeProvider
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
-      To ensure the theme ecosystem and global components (like Toasts) work correctly, wrap the application root with the <code>BstThemeProvider</code>. <br />
-      <em>Note for Next.js App Router:</em> The provider must be placed in a Client Component.
+      Wrap your application root with <code>BstThemeProvider</code> and import the compiled stylesheet. <br />
+      <em>Note for Next.js App Router:</em> Place the provider inside a Client Component wrapper (e.g. <code>ThemeShell.tsx</code>).
     </Text>
 
     <Heading level={3} accent style={{ marginTop: '24px', fontSize: '1.25rem' }}>
-      Standard Usage
+      Dynamic Multi-Theme Usage
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
-      Pass the theme name as a string. This is ideal if your application allows users to dynamically switch between multiple themes.
+      Pass the theme name as a string (<code>light</code>, <code>dark</code>, <code>oriental</code>, <code>black-metal</code>, <code>pink</code>, or <code>white-city</code>):
     </Text>
     <CodeBlock code={`// src/components/ThemeShell.tsx
 'use client';
 
 import React from 'react';
 import { BstThemeProvider } from '@darcysm/bastet-ui';
-import '@darcysm/bastet-ui/styles.css'; // Required CSS import
+import '@darcysm/bastet-ui/styles.css'; // Global tokens and component styles
 
 export function ThemeShell({ children }) {
   return (
@@ -67,33 +65,33 @@ export function ThemeShell({ children }) {
 }`} />
 
     <Heading level={3} accent style={{ marginTop: '32px', fontSize: '1.25rem' }}>
-      Advanced: Tree Shaking
+      Single-Theme Tree Shaking
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
-      If your application only uses a single theme, you can pass the direct theme object to optimize your final bundle size. Modern bundlers (Vite, Webpack) will automatically drop unused themes during the build process.
+      If your application only needs one theme, pass the theme object directly to enable bundler tree-shaking:
     </Text>
     <CodeBlock code={`'use client';
 
 import React from 'react';
-// Import the specific theme object to enable Tree Shaking
-import { BstThemeProvider, orientalTheme } from '@darcysm/bastet-ui';
+import { BstThemeProvider, whiteCityTheme } from '@darcysm/bastet-ui';
 import '@darcysm/bastet-ui/styles.css';
 
 export function ThemeShell({ children }) {
   return (
-    <BstThemeProvider theme={orientalTheme}>
+    <BstThemeProvider theme={whiteCityTheme}>
       {children}
     </BstThemeProvider>
   );
 }`} />
 
     <Heading level={2} accent style={{ marginTop: '40px' }}>
-      3. Usage
+      3. Using Accessible Components
     </Heading>
     <Text style={{ marginBottom: '16px' }}>
-      You are now ready to consume components anywhere in your application.
+      Consume components anywhere with full TypeScript auto-completion and Radix UI composition (<code>asChild</code>):
     </Text>
-    <CodeBlock code={`import { Button, Heading } from '@darcysm/bastet-ui';
+    <CodeBlock code={`import { Button, Heading, Select } from '@darcysm/bastet-ui';
+import Link from 'next/link';
 
 export function MySection() {
   return (
@@ -101,9 +99,20 @@ export function MySection() {
       <Heading level={2} highlight>
         Hello Bastet UI
       </Heading>
-      <Button variant="primary" size="lg">
-        Click Me
+      
+      {/* Composable button with Next.js Link */}
+      <Button asChild variant="primary" size="lg">
+        <Link href="/projects">Explore Projects</Link>
       </Button>
+
+      {/* Fully accessible Radix Select */}
+      <Select
+        label="Country"
+        options={[
+          { value: 'co', label: 'Colombia' },
+          { value: 'mx', label: 'Mexico' },
+        ]}
+      />
     </section>
   );
 }`} />

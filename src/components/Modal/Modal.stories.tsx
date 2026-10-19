@@ -18,7 +18,7 @@ const InnerWrapper = ({ children, theme }: { children: React.ReactNode, theme?: 
         color: token.colorText,
         minHeight: '100vh',
         fontFamily: token.fontFamily,
-        // Map Ant Design tokens to our custom CSS variables
+        // Map Bastet UI tokens to custom CSS variables
         '--bst-primary': token.colorPrimary,
         '--bst-bg-container': token.colorBgContainer,
         '--bst-bg-elevated': token.colorBgElevated,
